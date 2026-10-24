@@ -1,0 +1,105 @@
+/* ---------- Avatar ---------- */
+
+.trc-avatar {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--trc-surface-alt);
+  font-family: var(--trc-font);
+  vertical-align: middle;
+}
+.trc-avatar--sm {
+  width: 28px;
+  height: 28px;
+}
+.trc-avatar--lg {
+  width: 56px;
+  height: 56px;
+}
+.trc-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.trc-avatar__initials {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--trc-fg-muted);
+}
+.trc-avatar--sm .trc-avatar__initials {
+  font-size: 11px;
+}
+.trc-avatar--lg .trc-avatar__initials {
+  font-size: 19px;
+}
+.trc-avatar-group {
+  display: inline-flex;
+}
+/* Overlap, with a ring of the page color between avatars. */
+.trc-avatar-group > .trc-avatar {
+  box-shadow: 0 0 0 2px var(--trc-bg);
+}
+.trc-avatar-group > .trc-avatar + .trc-avatar {
+  margin-left: -10px;
+}
+.trc-avatar--more {
+  background: var(--trc-surface);
+  border: 1px solid var(--trc-border-strong);
+}
+
+/* ---------- Tag ---------- */
+
+.trc-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--trc-border-strong);
+  border-radius: var(--trc-radius-pill);
+  font-family: var(--trc-font);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--trc-fg-muted);
+  white-space: nowrap;
+}
+.trc-tag--accent {
+  border-color: color-mix(in srgb, var(--trc-accent) 40%, transparent);
+  color: var(--trc-accent);
+}
+.trc-tag:has(.trc-tag__remove) {
+  padding-right: 4px;
+}
+.trc-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.trc-tag__remove:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+.trc-tag__remove:focus-visible {
+  outline: none;
+  box-shadow: var(--trc-ring);
+}
+.trc-tag__remove svg {
+  width: 12px;
+  height: 12px;
+}

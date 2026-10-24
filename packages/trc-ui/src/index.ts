@@ -68,3 +68,7 @@ export { Slider } from "./components/slider";
 export type { SliderProps } from "./components/slider";
 export { DatePicker } from "./components/date-picker";
 export type { DatePickerProps } from "./components/date-picker";
+export { Avatar, AvatarGroup, initials } from "./components/avatar";
+export type { AvatarGroupProps, AvatarProps } from "./components/avatar";
+export { Tag } from "./components/tag";
+export type { TagProps } from "./components/tag";
