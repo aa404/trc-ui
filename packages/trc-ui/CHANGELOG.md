@@ -23,6 +23,16 @@
 - `LanguageSwitcher`: the EN | FR pill, as links (with `lang` and `hreflang`) or buttons.
 - `Steps`: vertical timeline with large thin numbers and the current step.
 
+### Forms
+
+- `RadioGroup`: native radio buttons in a fieldset, hint and error tied to the group, vertical or horizontal.
+- `PasswordInput`: Show / Hide button whose accessible name includes its visible text.
+- `PinInput`: one box per character, paste and text-message autofill, Backspace and arrow keys.
+- `Combobox`: search with suggestions, case and accent insensitive, `aria-activedescendant` keyboard navigation.
+- `FileInput` and `Dropzone`: native file input, drag and drop, validation by type, size and count, announced rejections; `formatBytes`, `acceptsFile` and `validateFiles` helpers.
+- `Slider`: native range input filled with the accent, formatted and announced value.
+- `DatePicker`: calendar dialog with full keyboard support, `Intl` month and day names, min and max dates.
+
 ### Fixes
 
 - Header dropdowns opened by hovering no longer close on the click that follows.

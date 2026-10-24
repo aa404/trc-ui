@@ -177,6 +177,51 @@ export const DOCS_NAV: DocSection[] = [
           fr: "Champ, zone de texte, liste, case et interrupteur.",
         },
       },
+      {
+        title: { en: "Radio group", fr: "Boutons radio" },
+        href: "/docs/radio-group/",
+        description: {
+          en: "One choice among a few options, in a fieldset.",
+          fr: "Un choix parmi quelques options, dans un groupe.",
+        },
+      },
+      {
+        title: { en: "Password and code", fr: "Mot de passe et code" },
+        href: "/docs/password/",
+        description: {
+          en: "Show / hide password, one-time code boxes.",
+          fr: "Mot de passe à afficher, cases pour code à usage unique.",
+        },
+      },
+      {
+        title: { en: "Combobox", fr: "Liste avec recherche" },
+        href: "/docs/combobox/",
+        description: {
+          en: "Search field with suggestions, accent insensitive.",
+          fr: "Recherche avec suggestions, insensible aux accents.",
+        },
+      },
+      {
+        title: { en: "File upload", fr: "Envoi de fichiers" },
+        href: "/docs/file-upload/",
+        description: {
+          en: "Compact file field and drop zone, with validation.",
+          fr: "Champ fichier compact et zone de dépôt, avec validation.",
+        },
+      },
+      {
+        title: { en: "Slider", fr: "Curseur" },
+        href: "/docs/slider/",
+        description: { en: "Range slider filled with the accent.", fr: "Curseur rempli de l'accent." },
+      },
+      {
+        title: { en: "Date picker", fr: "Sélecteur de date" },
+        href: "/docs/date-picker/",
+        description: {
+          en: "Calendar fully usable with the keyboard.",
+          fr: "Calendrier entièrement utilisable au clavier.",
+        },
+      },
     ],
   },
 ];

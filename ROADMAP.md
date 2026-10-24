@@ -24,13 +24,13 @@ What comes next for trc ui, release by release. Every component ships with its d
 
 ## 0.4 — Forms
 
-- [ ] `RadioGroup`.
-- [ ] `PasswordInput`: show and hide the password.
-- [ ] `PinInput`: one-time codes (OTP), with paste support.
-- [ ] `Combobox`: search with suggestions.
-- [ ] `FileInput` and `Dropzone`.
-- [ ] `Slider`.
-- [ ] `DatePicker`.
+- [x] `RadioGroup`.
+- [x] `PasswordInput`: show and hide the password.
+- [x] `PinInput`: one-time codes (OTP), with paste support.
+- [x] `Combobox`: search with suggestions.
+- [x] `FileInput` and `Dropzone`.
+- [x] `Slider`.
+- [x] `DatePicker`.
 
 ## 0.5 — Data display
 
