@@ -76,3 +76,5 @@ export { Stat } from "./components/stat";
 export type { StatProps } from "./components/stat";
 export { Table } from "./components/table";
 export type { SortState, TableColumn, TableProps } from "./components/table";
+export { Progress, Skeleton, Spinner } from "./components/loading";
+export type { ProgressProps, SkeletonProps, SpinnerProps } from "./components/loading";
