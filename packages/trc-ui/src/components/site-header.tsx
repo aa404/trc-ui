@@ -61,7 +61,7 @@ export function SiteHeader({
   linkAs: LinkTag = "a",
   scrollThreshold = 24,
   menuLabel = "Menu",
-  closeLabel = "Fermer",
+  closeLabel = "Close",
   className,
 }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false);

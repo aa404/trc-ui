@@ -12,7 +12,7 @@ export type BackToTopProps = {
 };
 
 /** Pastille d'accent flottante « Haut de page » : apparaît une fois le premier écran dépassé. */
-export function BackToTop({ label = "Haut de page", threshold = 0.8, className }: BackToTopProps) {
+export function BackToTop({ label = "Back to top", threshold = 0.8, className }: BackToTopProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

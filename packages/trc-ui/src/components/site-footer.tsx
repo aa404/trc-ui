@@ -34,10 +34,10 @@ export function SiteFooter({
   tagline,
   children,
   columns = [],
-  columnsLabel = "Plan du site",
+  columnsLabel = "Site map",
   copyright,
   legal = [],
-  legalLabel = "Informations légales",
+  legalLabel = "Legal",
   linkAs: LinkTag = "a",
   className,
 }: SiteFooterProps) {
