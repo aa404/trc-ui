@@ -372,6 +372,20 @@
   color: var(--trc-fg-faint);
   text-align: center;
 }
+/* On small screens the nine controls stay on one line. */
+@media (max-width: 480px) {
+  .trc-pagination__list {
+    gap: 2px;
+  }
+  .trc-pagination__control {
+    min-width: 32px;
+    height: 34px;
+    padding: 0 4px;
+  }
+  .trc-pagination__ellipsis {
+    min-width: 16px;
+  }
+}
 
 /* ---------- Language switcher ---------- */
 
