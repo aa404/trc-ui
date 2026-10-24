@@ -3,7 +3,7 @@
 React components with a deep black design: near-black backgrounds, graphite cards, thin headings, a single accent color and pill buttons whose dot stretches on hover.
 
 [![npm](https://img.shields.io/npm/v/trc-ui?color=08c8d8&label=npm)](https://www.npmjs.com/package/trc-ui)
-[![license](https://img.shields.io/npm/l/trc-ui?color=08c8d8)](https://github.com/aa404/trc-ui/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-08c8d8)](https://github.com/aa404/trc-ui/blob/main/LICENSE)
 
 - **Sober.** Near-black backgrounds, graphite cards, one accent color. Depth comes from shades of grey, not shadows.
 - **Thin.** Light Montserrat headings carry the page, with one accent word per title.

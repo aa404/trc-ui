@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/trc-ui"><img src="https://img.shields.io/npm/v/trc-ui?color=08c8d8&label=npm" alt="npm version" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/npm/l/trc-ui?color=08c8d8" alt="MIT license" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08c8d8" alt="MIT license" /></a>
 </p>
 
 ```bash
