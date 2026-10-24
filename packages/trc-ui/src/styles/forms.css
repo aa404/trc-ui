@@ -596,3 +596,90 @@
   width: 16px;
   height: 16px;
 }
+
+/* ---------- Slider ---------- */
+
+.trc-slider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--trc-font);
+}
+.trc-slider__input {
+  flex: 1;
+  min-width: 0;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+.trc-slider__input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+/* Track: accent up to the thumb, faint after it. */
+.trc-slider__input::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: var(--trc-radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--trc-accent) 0 var(--trc-slider-progress),
+    rgba(255, 255, 255, 0.14) var(--trc-slider-progress)
+  );
+}
+.trc-slider__input::-moz-range-track {
+  height: 4px;
+  border-radius: var(--trc-radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+}
+.trc-slider__input::-moz-range-progress {
+  height: 4px;
+  border-radius: var(--trc-radius-pill);
+  background: var(--trc-accent);
+}
+.trc-slider__input::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--trc-fg);
+  box-shadow: 0 0 0 4px var(--trc-bg);
+  appearance: none;
+  transition: transform 200ms var(--trc-ease-out);
+}
+.trc-slider__input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--trc-fg);
+  box-shadow: 0 0 0 4px var(--trc-bg);
+}
+.trc-slider__input:hover:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+.trc-slider__input:focus-visible {
+  outline: none;
+}
+.trc-slider__input:focus-visible::-webkit-slider-thumb {
+  box-shadow: var(--trc-ring);
+}
+.trc-slider__input:focus-visible::-moz-range-thumb {
+  box-shadow: var(--trc-ring);
+}
+.trc-slider__input[aria-invalid="true"]::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--trc-danger) 0 var(--trc-slider-progress),
+    rgba(255, 255, 255, 0.14) var(--trc-slider-progress)
+  );
+}
+.trc-slider__value {
+  min-width: 3ch;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: var(--trc-fg);
+  text-align: right;
+}

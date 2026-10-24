@@ -64,3 +64,5 @@ export { Combobox } from "./components/combobox";
 export type { ComboboxOption, ComboboxProps } from "./components/combobox";
 export { Dropzone, FileInput, acceptsFile, formatBytes, validateFiles } from "./components/file-input";
 export type { DropzoneProps, FileInputProps, FileRejection } from "./components/file-input";
+export { Slider } from "./components/slider";
+export type { SliderProps } from "./components/slider";
