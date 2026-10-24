@@ -1,0 +1,199 @@
+:root {
+  --trc-font: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+html {
+  scroll-padding-top: 120px;
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+/* ---------- Mise en page de la documentation ---------- */
+
+.docs-shell {
+  box-sizing: border-box;
+  display: grid;
+  gap: 48px;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 112px 16px 64px;
+}
+/* Sans cela, une longue ligne de code élargit la colonne au-delà de l'écran. */
+.docs-shell > main {
+  min-width: 0;
+}
+@media (min-width: 640px) {
+  .docs-shell {
+    padding: 136px 24px 80px;
+  }
+}
+@media (min-width: 1024px) {
+  .docs-shell {
+    grid-template-columns: 240px minmax(0, 1fr);
+    padding-inline: 40px;
+  }
+}
+
+.docs-sidebar {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .docs-sidebar {
+    position: sticky;
+    top: 136px;
+    display: block;
+    align-self: start;
+    max-height: calc(100dvh - 160px);
+    overflow-y: auto;
+  }
+}
+.docs-sidebar__section + .docs-sidebar__section {
+  margin-top: 32px;
+}
+.docs-sidebar__title {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--trc-fg-faint);
+}
+.docs-sidebar__list {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0 0 0 12px;
+  list-style: none;
+  border-left: 1px solid var(--trc-border);
+}
+.docs-sidebar__link {
+  position: relative;
+  display: block;
+  padding: 6px 0;
+  font-size: 15px;
+  color: var(--trc-fg-subtle);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.docs-sidebar__link:hover {
+  color: var(--trc-fg);
+}
+/* Page courante : texte en accent et trait d'accent sur la ligne de gauche. */
+.docs-sidebar__link[aria-current="page"] {
+  color: var(--trc-accent);
+}
+.docs-sidebar__link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: -13px;
+  width: 1px;
+  background: var(--trc-accent);
+}
+.docs-sidebar__link:focus-visible {
+  outline: 2px solid var(--trc-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Contenu d'une page ---------- */
+
+.docs-content {
+  min-width: 0;
+  max-width: 820px;
+}
+.docs-content > * + * {
+  margin-top: 20px;
+}
+.docs-content h2 {
+  margin-top: 64px;
+  scroll-margin-top: 120px;
+}
+.docs-content h3 {
+  margin-top: 40px;
+}
+.docs-content p,
+.docs-content li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--trc-fg-muted);
+}
+.docs-content ul {
+  padding-left: 20px;
+}
+.docs-content a:not([class]) {
+  color: var(--trc-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--trc-accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+.docs-content :not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--trc-surface-alt);
+  font-family: var(--trc-font-mono);
+  font-size: 0.875em;
+  color: var(--trc-fg);
+}
+.docs-lead {
+  font-size: 18px !important;
+}
+
+/* ---------- Blocs de code ---------- */
+
+.docs-code {
+  overflow: hidden;
+  border: 1px solid var(--trc-border);
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+}
+.docs-code__title {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--trc-border);
+  font-size: 13px;
+  color: var(--trc-fg-subtle);
+}
+.docs-code pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  background: transparent !important;
+  font-family: var(--trc-font-mono);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+/* ---------- Pied de page d'article : précédent / suivant ---------- */
+
+.docs-pager {
+  display: grid;
+  gap: 16px;
+  margin-top: 80px !important;
+}
+@media (min-width: 640px) {
+  .docs-pager {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.docs-pager__label {
+  display: block;
+  font-size: 13px;
+  color: var(--trc-fg-subtle);
+}
+.docs-pager__title {
+  display: block;
+  margin-top: 6px;
+  font-size: 17px;
+  color: var(--trc-fg);
+}
+.docs-pager__next {
+  text-align: right;
+}
+
+.docs-logo {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
