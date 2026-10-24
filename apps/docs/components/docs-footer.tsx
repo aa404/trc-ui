@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PillLink, SiteFooter } from "trc-ui";
 import { Logo } from "@/components/logo";
 import { UI, localePath, type Lang } from "@/lib/i18n";
-import { AUTHOR, DOCS_NAV, NPM_URL, REPO_URL } from "@/lib/nav";
+import { AUTHOR, COMPONENT_SECTIONS, DOCS_NAV, NPM_URL, REPO_URL } from "@/lib/nav";
 
 const T = {
   en: {
@@ -42,10 +42,17 @@ export function DocsFooter({ lang }: { lang: Lang }) {
       columnsLabel={t.siteMap}
       legalLabel={t.legal}
       columns={[
-        ...DOCS_NAV.map((section) => ({
-          title: section.title[lang],
-          links: section.pages.map((page) => ({ label: page.title[lang], href: localePath(lang, page.href) })),
-        })),
+        {
+          title: DOCS_NAV[0]!.title[lang],
+          links: DOCS_NAV[0]!.pages.map((page) => ({ label: page.title[lang], href: localePath(lang, page.href) })),
+        },
+        {
+          title: UI[lang].components,
+          links: COMPONENT_SECTIONS.map((section) => ({
+            label: section.title[lang],
+            href: `${localePath(lang, "/docs/components/")}#${section.id}`,
+          })),
+        },
         {
           title: t.project,
           links: [

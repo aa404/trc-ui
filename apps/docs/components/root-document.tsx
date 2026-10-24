@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import type { ReactNode } from "react";
+import { Toaster } from "trc-ui";
 import { BASE_PATH } from "@/lib/asset";
 import { UI, type Lang } from "@/lib/i18n";
 import "trc-ui/styles.css";
@@ -18,7 +19,10 @@ export const rootMetadata = (lang: Lang): Metadata => ({
 export function RootDocument({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
     <html lang={lang} className={montserrat.variable}>
-      <body className="trc">{children}</body>
+      <body className="trc">
+        {children}
+        <Toaster label={UI[lang].notifications} closeLabel={UI[lang].close} />
+      </body>
     </html>
   );
 }

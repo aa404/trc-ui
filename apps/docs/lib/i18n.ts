@@ -29,6 +29,8 @@ export const UI = {
     home: "trc-ui, home",
     language: "Language",
     colorsGenerator: "Colors generator",
+    components: "Components",
+    notifications: "Notifications",
   },
   fr: {
     tagline:
@@ -46,5 +48,7 @@ export const UI = {
     home: "trc-ui, accueil",
     language: "Langue",
     colorsGenerator: "Générateur de couleurs",
+    components: "Composants",
+    notifications: "Notifications",
   },
 } satisfies Record<Lang, Record<string, string>>;

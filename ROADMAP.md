@@ -4,13 +4,13 @@ What comes next for trc ui, release by release. Every component ships with its d
 
 ## 0.2 — Overlays and feedback
 
-- [ ] `Dialog`: modal window with title, description and actions; focus kept inside, closes with Escape (reuses `useModal`).
-- [ ] `Drawer`: side panel from the left or right, extracted from the `SiteHeader` mobile menu.
-- [ ] `DropdownMenu`: menu of actions, arrow keys and typeahead.
-- [ ] `Popover`: floating panel anchored to a trigger.
-- [ ] `Tooltip`: on hover and focus, with a delay; never the only way to get the information.
-- [ ] `Toast` and `Toaster`: announced to screen readers, paused on hover, stacked at the bottom.
-- [ ] `Alert`: inline message (info, success, error) without a colored icon badge.
+- [x] `Dialog`: modal window with title, description and actions; focus kept inside, closes with Escape (reuses `useModal`).
+- [x] `Drawer`: side panel from the left or right, extracted from the `SiteHeader` mobile menu.
+- [x] `DropdownMenu`: menu of actions, arrow keys and typeahead.
+- [x] `Popover`: floating panel anchored to a trigger.
+- [x] `Tooltip`: on hover and focus, with a delay; never the only way to get the information.
+- [x] `Toast` and `Toaster`: announced to screen readers, paused on hover, stacked at the bottom.
+- [x] `Alert`: inline message (info, success, error) without a colored icon badge.
 
 ## 0.3 — Navigation
 

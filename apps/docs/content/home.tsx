@@ -6,7 +6,7 @@ import { Compass, Layers, Spark } from "@/components/demo-icons";
 import { DocsFooter } from "@/components/docs-footer";
 import { DocsHeader } from "@/components/docs-header";
 import { UI, localePath, type Lang } from "@/lib/i18n";
-import { DOCS_NAV, REPO_URL } from "@/lib/nav";
+import { COMPONENT_SECTIONS, DOCS_NAV, REPO_URL } from "@/lib/nav";
 
 const T = {
   en: {
@@ -20,14 +20,6 @@ const T = {
     ],
     components: "Everything for a *showcase site*",
     componentsLead: "From the floating header to the card footer, with forms that are accessible out of the box.",
-    descriptions: {
-      "/docs/typography/": "Thin headings, accent words, step numbers.",
-      "/docs/pill/": "The signature button, with its stretching dot.",
-      "/docs/surfaces/": "Graphite cards, inset sections, containers.",
-      "/docs/forms/": "Fields, select, checkbox and switch, wired for screen readers.",
-      "/docs/site-chrome/": "Floating header with dropdowns, footer as a card.",
-      "/docs/heroes/": "Photo and video heroes inset from the edges.",
-    } as Record<string, string>,
     ctaTitle: "Make it *yours.*",
     ctaBody: "Pick your brand color, check its contrast on deep black and copy the code.",
     generator: "Open the colors generator",
@@ -46,14 +38,6 @@ const T = {
     ],
     components: "Tout pour un *site vitrine*",
     componentsLead: "De l'en-tête flottant au pied de page en carte, avec des formulaires accessibles d'office.",
-    descriptions: {
-      "/docs/typography/": "Titres fins, mots d'accent, numéros d'étape.",
-      "/docs/pill/": "Le bouton signature, avec sa pastille qui s'étire.",
-      "/docs/surfaces/": "Cartes graphite, sections en retrait, conteneurs.",
-      "/docs/forms/": "Champs, liste, case et interrupteur, reliés pour les lecteurs d'écran.",
-      "/docs/site-chrome/": "En-tête flottant avec menus, pied de page en carte.",
-      "/docs/heroes/": "Héros photo et vidéo, en retrait des bords.",
-    } as Record<string, string>,
     ctaTitle: "À vos *couleurs.*",
     ctaBody: "Choisissez la couleur de votre marque, vérifiez son contraste sur le noir profond et copiez le code.",
     generator: "Ouvrir le générateur de couleurs",
@@ -62,7 +46,6 @@ const T = {
 
 const ICONS = [Compass, Layers, Spark];
 const enter = (ms: number) => ({ "--trc-delay": `${ms}ms` }) as CSSProperties;
-const COMPONENTS = DOCS_NAV.find((section) => section.title.en === "Components")?.pages ?? [];
 
 export function HomeContent({ lang }: { lang: Lang }) {
   const t = T[lang];
@@ -126,13 +109,22 @@ export function HomeContent({ lang }: { lang: Lang }) {
               {t.componentsLead}
             </Text>
             <div className="home-grid home-grid--3">
-              {COMPONENTS.map((page) => (
-                <Card key={page.href} as={Link} href={localePath(lang, page.href)} interactive className="home-link">
+              {COMPONENT_SECTIONS.map((section) => (
+                <Card
+                  key={section.id}
+                  as={Link}
+                  href={`${localePath(lang, "/docs/components/")}#${section.id}`}
+                  interactive
+                  className="home-link"
+                >
                   <Heading as="h3" size="sm">
-                    {page.title[lang]}
+                    {section.title[lang]}
                   </Heading>
                   <Text size="sm" style={{ marginTop: 8 }}>
-                    {t.descriptions[page.href]}
+                    {section.description?.[lang]}
+                  </Text>
+                  <Text size="sm" tone="subtle" style={{ marginTop: 12 }}>
+                    {section.pages.map((page) => page.title[lang]).join(" · ")}
                   </Text>
                 </Card>
               ))}
