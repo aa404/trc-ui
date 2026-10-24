@@ -228,3 +228,103 @@
     transition-duration: 1ms;
   }
 }
+
+/* ---------- Radio group ---------- */
+
+.trc-radio-group {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.trc-radio-group > legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 0;
+}
+.trc-radio-group__options {
+  display: grid;
+  gap: 14px;
+  clear: both;
+}
+.trc-radio-group__options--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+}
+.trc-radio {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.trc-radio__input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--trc-border-pill);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  appearance: none;
+  cursor: inherit;
+  outline: none;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.trc-toggle:hover .trc-radio__input:not(:disabled, :checked) {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+/* Checked: a thick accent ring around a dark center. */
+.trc-radio__input:checked {
+  border-color: var(--trc-accent);
+  box-shadow: inset 0 0 0 5px var(--trc-accent);
+}
+.trc-radio__input:focus-visible {
+  box-shadow: var(--trc-ring);
+}
+.trc-radio__input:checked:focus-visible {
+  box-shadow:
+    inset 0 0 0 5px var(--trc-accent),
+    var(--trc-ring);
+}
+.trc-radio-group[aria-invalid="true"] .trc-radio__input:not(:checked) {
+  border-color: var(--trc-danger);
+}
+
+/* ---------- Password ---------- */
+
+.trc-password {
+  position: relative;
+  display: block;
+}
+.trc-password .trc-control {
+  padding-right: 88px;
+}
+.trc-password__toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: var(--trc-radius-pill);
+  background: none;
+  color: var(--trc-fg-subtle);
+  font: 500 13px/1.2 var(--trc-font);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
+}
+.trc-password__toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--trc-fg);
+}
+.trc-password__toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--trc-ring);
+}

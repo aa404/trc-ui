@@ -54,3 +54,7 @@ export { Pagination, paginationRange } from "./components/pagination";
 export type { PaginationProps } from "./components/pagination";
 export { LanguageSwitcher } from "./components/language-switcher";
 export type { Language, LanguageSwitcherProps } from "./components/language-switcher";
+export { RadioGroup } from "./components/radio-group";
+export type { RadioGroupProps, RadioOption } from "./components/radio-group";
+export { PasswordInput } from "./components/password-input";
+export type { PasswordInputProps } from "./components/password-input";

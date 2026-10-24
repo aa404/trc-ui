@@ -55,8 +55,8 @@ export function Field({ label, hint, error, required = false, id, className, chi
   );
 }
 
-/** Accessibility attributes from the parent `Field`, without overriding those passed to the control. */
-function useFieldProps(props: { id?: string; required?: boolean; invalid?: boolean; "aria-describedby"?: string }) {
+/** Accessibility attributes from the parent `Field`, without overriding those passed to the control. Internal: shared by every control. */
+export function useFieldProps(props: { id?: string; required?: boolean; invalid?: boolean; "aria-describedby"?: string }) {
   const field = useContext(FieldContext);
   const invalid = props.invalid ?? field?.invalid ?? false;
   return {
