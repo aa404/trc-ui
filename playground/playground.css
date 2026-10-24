@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+}
+.pg {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 16px 96px;
+}
+.pg-section {
+  display: grid;
+  gap: 24px;
+  padding: 48px 0;
+  border-top: 1px solid var(--trc-border);
+}
+.pg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}

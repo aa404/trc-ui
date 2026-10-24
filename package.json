@@ -36,9 +36,10 @@
     "dist"
   ],
   "scripts": {
+    "dev": "vite --config playground/vite.config.ts",
     "build": "tsup",
-    "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit",
+    "build:watch": "tsup --watch",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p playground",
     "prepublishOnly": "npm run typecheck && npm run build"
   },
   "peerDependencies": {
@@ -46,11 +47,14 @@
     "react-dom": ">=18"
   },
   "devDependencies": {
+    "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tsup": "^9.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
   }
 }
