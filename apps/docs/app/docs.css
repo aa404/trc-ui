@@ -197,3 +197,34 @@ body {
   font-weight: 500;
   letter-spacing: -0.04em;
 }
+
+/* ---------- Bascule de langue ---------- */
+
+.docs-lang {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--trc-radius-pill);
+}
+.docs-lang__link {
+  padding: 6px 10px;
+  border-radius: var(--trc-radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--trc-fg-subtle);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.docs-lang__link:hover {
+  color: var(--trc-fg);
+}
+.docs-lang__link[aria-current="true"] {
+  color: var(--trc-accent);
+}
+.docs-lang__link:focus-visible {
+  outline: 2px solid var(--trc-accent);
+  outline-offset: -2px;
+}

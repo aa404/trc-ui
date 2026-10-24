@@ -1,24 +1,26 @@
-/** Plan du site de documentation : sert à la barre latérale, au menu mobile et aux liens précédent / suivant. */
-export type DocPage = { title: string; href: string };
-export type DocSection = { title: string; pages: DocPage[] };
+import type { Lang } from "./i18n";
+
+/** Plan du site de documentation : barre latérale, menu mobile et liens précédent / suivant. */
+export type DocPage = { title: Record<Lang, string>; href: string };
+export type DocSection = { title: Record<Lang, string>; pages: DocPage[] };
 
 export const DOCS_NAV: DocSection[] = [
   {
-    title: "Démarrer",
+    title: { en: "Getting started", fr: "Démarrer" },
     pages: [
-      { title: "Installation", href: "/docs/getting-started/" },
-      { title: "Thème", href: "/docs/theming/" },
+      { title: { en: "Installation", fr: "Installation" }, href: "/docs/getting-started/" },
+      { title: { en: "Theming", fr: "Thème" }, href: "/docs/theming/" },
     ],
   },
   {
-    title: "Composants",
+    title: { en: "Components", fr: "Composants" },
     pages: [
-      { title: "Typographie", href: "/docs/typography/" },
-      { title: "Boutons pilule", href: "/docs/pill/" },
-      { title: "Surfaces", href: "/docs/surfaces/" },
-      { title: "Formulaires", href: "/docs/forms/" },
-      { title: "En-tête et pied de page", href: "/docs/site-chrome/" },
-      { title: "Héros", href: "/docs/heroes/" },
+      { title: { en: "Typography", fr: "Typographie" }, href: "/docs/typography/" },
+      { title: { en: "Pill buttons", fr: "Boutons pilule" }, href: "/docs/pill/" },
+      { title: { en: "Surfaces", fr: "Surfaces" }, href: "/docs/surfaces/" },
+      { title: { en: "Forms", fr: "Formulaires" }, href: "/docs/forms/" },
+      { title: { en: "Header and footer", fr: "En-tête et pied de page" }, href: "/docs/site-chrome/" },
+      { title: { en: "Heroes", fr: "Héros" }, href: "/docs/heroes/" },
     ],
   },
 ];
