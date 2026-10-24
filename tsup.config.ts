@@ -7,7 +7,6 @@ export default defineConfig([
     dts: true,
     sourcemap: true,
     clean: true,
-    treeshake: true,
     external: ["react", "react-dom"],
     // Les composants utilisent des hooks : utilisables tels quels dans l'App Router de Next.js.
     banner: { js: '"use client";' },
