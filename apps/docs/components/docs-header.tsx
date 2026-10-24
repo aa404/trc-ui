@@ -10,13 +10,18 @@ import { DOCS_NAV, REPO_URL } from "@/lib/nav";
 /** Site header: docs sections become dropdown menus (and groups in the mobile menu). */
 export function DocsHeader({ lang }: { lang: Lang }) {
   const pathname = usePathname();
-  const nav: NavItem[] = DOCS_NAV.map((section) => ({
-    label: section.title[lang],
-    items: section.pages.map((page) => {
-      const href = localePath(lang, page.href);
-      return { label: page.title[lang], href, active: pathname === href };
-    }),
-  }));
+  const generator = localePath(lang, "/docs/colors-generator/");
+  const nav: NavItem[] = [
+    ...DOCS_NAV.map((section) => ({
+      label: section.title[lang],
+      items: section.pages.map((page) => {
+        const href = localePath(lang, page.href);
+        return { label: page.title[lang], href, active: pathname === href };
+      }),
+    })),
+    // Direct link to the most used tool, third in the menu.
+    { label: UI[lang].colorsGenerator, href: generator, active: pathname === generator },
+  ];
   return (
     <SiteHeader
       logo={<span className="docs-logo">trc</span>}
