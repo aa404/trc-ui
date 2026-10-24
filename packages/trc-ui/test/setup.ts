@@ -19,5 +19,6 @@ if (!window.matchMedia) {
     }) as MediaQueryList;
 }
 window.scrollTo = () => {};
+Element.prototype.scrollIntoView = () => {};
 HTMLMediaElement.prototype.play = () => Promise.resolve();
 HTMLMediaElement.prototype.pause = () => {};

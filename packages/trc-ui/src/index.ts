@@ -60,3 +60,5 @@ export { PasswordInput } from "./components/password-input";
 export type { PasswordInputProps } from "./components/password-input";
 export { PinInput } from "./components/pin-input";
 export type { PinInputProps } from "./components/pin-input";
+export { Combobox } from "./components/combobox";
+export type { ComboboxOption, ComboboxProps } from "./components/combobox";
