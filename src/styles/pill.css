@@ -1,0 +1,108 @@
+/*
+ * Bouton pilule : bordure fine, pastille ronde d'accent avec flèche.
+ * Au survol, la pastille s'étire jusqu'à remplir la pilule (sous la bordure) et le texte fonce.
+ */
+.trc-pill {
+  --pill-inset: 6px;
+  --pill-dot: 44px;
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  max-width: 100%;
+  padding: var(--pill-inset) 24px var(--pill-inset) var(--pill-inset);
+  overflow: hidden;
+  border: 1px solid var(--trc-border-pill);
+  border-radius: var(--trc-radius-pill);
+  background: transparent;
+  color: var(--trc-fg);
+  font: 500 15px/1 var(--trc-font);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.trc-pill--sm {
+  --pill-inset: 4px;
+  --pill-dot: 32px;
+  gap: 10px;
+  height: 40px;
+  padding-right: 16px;
+  font-size: 14px;
+}
+.trc-pill--solid {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--trc-bg);
+}
+.trc-pill:focus-visible {
+  box-shadow: var(--trc-ring);
+}
+.trc-pill:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.trc-pill__fill {
+  position: absolute;
+  z-index: -1;
+  top: var(--pill-inset);
+  bottom: var(--pill-inset);
+  left: var(--pill-inset);
+  width: var(--pill-dot);
+  border-radius: var(--trc-radius-pill);
+  background: var(--trc-accent);
+  transition: width var(--trc-duration) var(--trc-ease);
+}
+.trc-pill__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--pill-dot);
+  height: var(--pill-dot);
+  color: var(--trc-on-accent);
+}
+.trc-pill__icon svg {
+  width: 18px;
+  height: 18px;
+}
+.trc-pill--sm .trc-pill__icon svg {
+  width: 16px;
+  height: 16px;
+}
+/* Le texte s'éclaircit tout de suite à la sortie… */
+.trc-pill__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: color 300ms ease;
+}
+
+/* … et fonce avec un léger délai à l'entrée, quand le remplissage passe dessous. */
+@media (hover: hover) {
+  .trc-pill:not(:disabled):hover .trc-pill__fill {
+    width: calc(100% - 2 * var(--pill-inset));
+  }
+  .trc-pill:not(:disabled):hover .trc-pill__label {
+    color: var(--trc-on-accent);
+    transition-delay: 150ms;
+  }
+}
+.trc-pill:focus-visible .trc-pill__fill {
+  width: calc(100% - 2 * var(--pill-inset));
+}
+.trc-pill:focus-visible .trc-pill__label {
+  color: var(--trc-on-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trc-pill__fill {
+    transition-duration: 1ms;
+  }
+}
