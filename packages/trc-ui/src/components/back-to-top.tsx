@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { cx } from "../utils/cx";
 import { ArrowUp } from "../utils/icons";

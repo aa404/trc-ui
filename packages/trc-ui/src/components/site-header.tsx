@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useId, useRef, useState, type ElementType, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useModal } from "../hooks/use-modal";

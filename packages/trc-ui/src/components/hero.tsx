@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { cx } from "../utils/cx";
 import { AccentText } from "./typography";
