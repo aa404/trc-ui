@@ -46,8 +46,15 @@
 .trc-avatar-group > .trc-avatar {
   box-shadow: 0 0 0 2px var(--trc-bg);
 }
+/* The overlap follows the size, so that initials stay readable. */
 .trc-avatar-group > .trc-avatar + .trc-avatar {
-  margin-left: -10px;
+  margin-left: -8px;
+}
+.trc-avatar-group > .trc-avatar--sm + .trc-avatar {
+  margin-left: -5px;
+}
+.trc-avatar-group > .trc-avatar--lg + .trc-avatar {
+  margin-left: -12px;
 }
 .trc-avatar--more {
   background: var(--trc-surface);
