@@ -28,3 +28,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.pg-form {
+  display: grid;
+  gap: 24px;
+}

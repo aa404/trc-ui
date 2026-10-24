@@ -30,3 +30,15 @@ export const Spinner = (props: IconProps) => (
     <path d="M21 12a9 9 0 1 1-6.22-8.56" />
   </svg>
 );
+
+export const ChevronDown = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);
+
+export const Check = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);

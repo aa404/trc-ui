@@ -1,5 +1,21 @@
 import { useState } from "react";
-import { ArrowLeft, Card, Container, Heading, PillButton, PillLink, Section, StepNumber, Text } from "../src";
+import {
+  ArrowLeft,
+  Card,
+  Checkbox,
+  Container,
+  Field,
+  Heading,
+  Input,
+  PillButton,
+  PillLink,
+  Section,
+  Select,
+  StepNumber,
+  Switch,
+  Text,
+  Textarea,
+} from "../src";
 
 const Compass = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
@@ -96,6 +112,42 @@ export function App() {
               </Card>
             ))}
           </div>
+        </section>
+
+        <section className="pg-section">
+          <Heading size="lg">Champs de *formulaire*</Heading>
+          <Card padding="lg" className="pg-form">
+            <div className="pg-grid pg-grid--2">
+              <Field label="Nom" required>
+                <Input placeholder="Aurel Agbado" autoComplete="name" />
+              </Field>
+              <Field label="E-mail" error="Cette adresse n'est pas valide.">
+                <Input type="email" defaultValue="aurel@" />
+              </Field>
+              <Field label="Sujet" hint="Nous répondons sous 48 heures.">
+                <Select placeholder="Choisir un sujet">
+                  <option value="devis">Demande de devis</option>
+                  <option value="support">Assistance</option>
+                  <option value="autre">Autre</option>
+                </Select>
+              </Field>
+              <Field label="Désactivé">
+                <Input disabled defaultValue="Lecture seule" />
+              </Field>
+            </div>
+            <Field label="Message">
+              <Textarea placeholder="Votre message" />
+            </Field>
+            <div className="pg-grid pg-grid--2">
+              <Checkbox label="J'accepte les conditions d'utilisation" defaultChecked />
+              <Checkbox label="Recevoir les nouveautés" description="Une lettre par mois, sans publicité." />
+              <Switch label="Notifications" description="Être prévenu des réponses." defaultChecked />
+              <Switch label="Mode compact" disabled />
+            </div>
+            <PillButton solid type="submit" style={{ justifySelf: "start" }}>
+              Envoyer le message
+            </PillButton>
+          </Card>
         </section>
       </Container>
       <Section inset spacing="lg">
