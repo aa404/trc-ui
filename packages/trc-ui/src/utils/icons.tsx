@@ -60,3 +60,22 @@ export const ArrowUp = (props: IconProps) => (
     <path d="M12 19V5M6 11l6-6 6 6" />
   </svg>
 );
+
+export const Calendar = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <rect x="3" y="5" width="18" height="16" rx="3" />
+    <path d="M3 10h18M8 3v4M16 3v4" />
+  </svg>
+);
+
+export const ChevronLeft = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m15 6-6 6 6 6" />
+  </svg>
+);
+
+export const ChevronRight = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="m9 6 6 6-6 6" />
+  </svg>
+);

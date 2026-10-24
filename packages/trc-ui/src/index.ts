@@ -6,7 +6,7 @@ export type { HeadingProps, HeadingSize, TextProps } from "./components/typograp
 export { PillButton, PillLink } from "./components/pill";
 export type { PillButtonProps, PillLinkProps } from "./components/pill";
 
-export { ArrowLeft, ArrowRight, ArrowUp, Check, ChevronDown, Close, Menu } from "./utils/icons";
+export { ArrowLeft, ArrowRight, ArrowUp, Calendar, Check, ChevronDown, ChevronLeft, ChevronRight, Close, Menu } from "./utils/icons";
 
 export { Card, Container, Section } from "./components/surfaces";
 export type { CardProps, ContainerProps, SectionProps } from "./components/surfaces";
@@ -66,3 +66,5 @@ export { Dropzone, FileInput, acceptsFile, formatBytes, validateFiles } from "./
 export type { DropzoneProps, FileInputProps, FileRejection } from "./components/file-input";
 export { Slider } from "./components/slider";
 export type { SliderProps } from "./components/slider";
+export { DatePicker } from "./components/date-picker";
+export type { DatePickerProps } from "./components/date-picker";
