@@ -71,7 +71,7 @@ export function AvatarContent({ lang }: { lang: Lang }) {
           <Avatar name="Ama Mensah" />
           <Avatar name="Koffi" size="sm" />
         </div>
-        <AvatarGroup max={3} moreLabel={(n) => (en ? `${n} more` : `${n} de plus`)}>
+        <AvatarGroup max={3} moreLabel={en ? "{count} more" : "{count} de plus"}>
           <Avatar name="Ama Mensah" />
           <Avatar name="Koffi Adjovi" />
           <Avatar name="Sena Houngbo" />

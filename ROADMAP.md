@@ -34,13 +34,13 @@ What comes next for trc ui, release by release. Every component ships with its d
 
 ## 0.5 — Data display
 
-- [ ] `Avatar` and `AvatarGroup`.
-- [ ] `Tag`: small label for metadata; never placed over photos.
-- [ ] `Stat`: a key figure with its label.
-- [ ] `Table`: dense and readable, with sortable headers.
-- [ ] `Skeleton`, `Spinner` and `Progress`.
-- [ ] `Kbd` and `Divider`.
-- [ ] `CodeBlock`: the docs code block with its copy button, as a component.
+- [x] `Avatar` and `AvatarGroup`.
+- [x] `Tag`: small label for metadata; never placed over photos.
+- [x] `Stat`: a key figure with its label.
+- [x] `Table`: dense and readable, with sortable headers.
+- [x] `Skeleton`, `Spinner` and `Progress`.
+- [x] `Kbd` and `Divider`.
+- [x] `CodeBlock`: the docs code block with its copy button, as a component.
 
 ## 0.6 — Showcase blocks
 
@@ -57,7 +57,7 @@ Ready-made sections for landing pages, assembled from the components above.
 
 ## Quality and tooling
 
-- [ ] Unit tests with Vitest and Testing Library, accessibility checks with axe.
+- [x] Unit tests with Vitest and Testing Library, accessibility checks with axe.
 - [ ] Visual regression tests with Playwright screenshots (desktop and mobile).
 - [ ] CI on pull requests: typecheck, build, tests.
 - [ ] Release automation with Changesets, and npm provenance.

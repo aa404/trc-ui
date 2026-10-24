@@ -33,6 +33,21 @@
 - `Slider`: native range input filled with the accent, formatted and announced value.
 - `DatePicker`: calendar dialog with full keyboard support, `Intl` month and day names, min and max dates.
 
+### Data display
+
+- `Avatar` and `AvatarGroup`: picture or initials, overlapping group with a counter.
+- `Tag`: small label, accent tone, optional remove button.
+- `Stat`: key figure in a large thin number, with its change.
+- `Table`: captioned data table, sortable columns announced with `aria-sort`, keyboard-scrollable region.
+- `Skeleton`, `Spinner` and `Progress`: loading placeholders, status spinner, determinate or indeterminate progress bar.
+- `Kbd` and `Divider`: keyboard keys, hairlines with an optional label.
+- `CodeBlock`: file tab and copy button; bring your own highlighting.
+
+### Tooling
+
+- Unit and accessibility tests (Vitest, Testing Library, axe) for every component.
+- Label props that took a function (`moreLabel`, `pageLabel`, `charLabel`, `countLabel`, `removeLabel`, `rejectionLabel`) also accept string templates such as `"{count} more"`, usable from server components.
+
 ### Fixes
 
 - Header dropdowns opened by hovering no longer close on the click that follows.
