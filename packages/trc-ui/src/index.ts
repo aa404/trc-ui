@@ -40,3 +40,7 @@ export { Toaster, toast } from "./components/toast";
 export type { ToasterProps, ToastOptions, ToastTone } from "./components/toast";
 export { Alert } from "./components/alert";
 export type { AlertProps } from "./components/alert";
+export { Tabs } from "./components/tabs";
+export type { TabItem, TabsProps } from "./components/tabs";
+export { SegmentedControl } from "./components/segmented-control";
+export type { SegmentedControlProps, SegmentedOption } from "./components/segmented-control";

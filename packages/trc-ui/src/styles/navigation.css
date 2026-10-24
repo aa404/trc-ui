@@ -1,0 +1,126 @@
+/* ---------- Tabs ---------- */
+
+/* Thin labels on a hairline; the selected one is underlined with the accent. */
+.trc-tabs__list {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--trc-border);
+  scrollbar-width: none;
+}
+.trc-tabs__list::-webkit-scrollbar {
+  display: none;
+}
+.trc-tabs__tab {
+  position: relative;
+  flex-shrink: 0;
+  padding: 12px 0 14px;
+  border: 0;
+  background: none;
+  color: var(--trc-fg-subtle);
+  font: 400 15px/1.3 var(--trc-font);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.trc-tabs__tab::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--trc-accent);
+  transform: scaleX(0);
+  transition: transform 300ms var(--trc-ease-out);
+}
+.trc-tabs__tab:hover:not(:disabled) {
+  color: var(--trc-fg);
+}
+.trc-tabs__tab[aria-selected="true"] {
+  color: var(--trc-fg);
+}
+.trc-tabs__tab[aria-selected="true"]::after {
+  transform: scaleX(1);
+}
+.trc-tabs__tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.trc-tabs__tab:focus-visible {
+  outline: 2px solid var(--trc-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.trc-tabs__panel {
+  padding-top: 24px;
+  outline: none;
+}
+.trc-tabs__panel:focus-visible {
+  box-shadow: var(--trc-ring);
+  border-radius: 8px;
+}
+
+/* ---------- Segmented control ---------- */
+
+.trc-segmented {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--trc-border-strong);
+  border-radius: var(--trc-radius-pill);
+  font-family: var(--trc-font);
+}
+.trc-segmented__option {
+  position: relative;
+  flex-shrink: 0;
+}
+.trc-segmented__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.trc-segmented__input:disabled {
+  cursor: not-allowed;
+}
+.trc-segmented__label {
+  display: block;
+  padding: 8px 16px;
+  border-radius: var(--trc-radius-pill);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--trc-fg-subtle);
+  white-space: nowrap;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
+  pointer-events: none;
+}
+.trc-segmented--sm .trc-segmented__label {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.trc-segmented__option:hover .trc-segmented__input:not(:disabled) + .trc-segmented__label {
+  color: var(--trc-fg);
+}
+.trc-segmented__input:checked + .trc-segmented__label {
+  background: var(--trc-surface-alt);
+  color: var(--trc-fg);
+}
+.trc-segmented__input:disabled + .trc-segmented__label {
+  opacity: 0.4;
+}
+.trc-segmented__input:focus-visible + .trc-segmented__label {
+  box-shadow: var(--trc-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trc-tabs__tab::after {
+    transition-duration: 1ms;
+  }
+}
