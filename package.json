@@ -11,6 +11,7 @@
     "build:docs": "npm run build -w trc-ui && npm run build -w docs",
     "dev:docs": "npm run dev -w docs",
     "dev:playground": "npm run dev -w playground",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test -w trc-ui"
   }
 }

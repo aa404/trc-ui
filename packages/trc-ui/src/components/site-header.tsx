@@ -145,9 +145,12 @@ function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: Element
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<number | undefined>(undefined);
   const button = useRef<HTMLButtonElement>(null);
+  // Opened by hovering: the click that usually follows must not close it right away.
+  const openedByHover = useRef(false);
 
   const show = () => {
     window.clearTimeout(closeTimer.current);
+    if (!open) openedByHover.current = true;
     setOpen(true);
   };
   // Short delay: the pointer may cross the gap between the button and the panel.
@@ -174,7 +177,10 @@ function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: Element
         type="button"
         aria-expanded={open}
         aria-controls={id}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (open && openedByHover.current) openedByHover.current = false;
+          else setOpen((o) => !o);
+        }}
         className={cx("trc-header__link", "trc-dropdown__trigger", open && "trc-dropdown__trigger--open")}
       >
         {menu.label}
