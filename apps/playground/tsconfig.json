@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "paths": {
+      "trc-ui": [
+        "../../packages/trc-ui/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "."
+  ]
+}

@@ -1,60 +1,14 @@
 {
-  "name": "trc-ui",
-  "version": "0.0.0",
-  "description": "Composants React au design « noir profond » : fonds quasi noirs, cartes graphite, titres fins et boutons pilule.",
+  "name": "trc-ui-monorepo",
+  "private": true,
   "license": "MIT",
-  "author": "Aurel Agbado <agbadoaurel@gmail.com>",
-  "keywords": [
-    "react",
-    "ui",
-    "components",
-    "design-system",
-    "dark"
-  ],
-  "type": "module",
-  "sideEffects": [
-    "*.css"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    },
-    "./styles.css": "./dist/styles.css",
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "dist"
+  "workspaces": [
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
-    "dev": "vite --config playground/vite.config.ts",
-    "build": "tsup",
-    "build:watch": "tsup --watch",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p playground",
-    "prepublishOnly": "npm run typecheck && npm run build"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
-  },
-  "devDependencies": {
-    "@types/node": "^24.19.2",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.2",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "tsup": "^9.0.0",
-    "typescript": "^5.9.3",
-    "vite": "^8.3.5"
+    "build": "npm run build -w trc-ui",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "dev:playground": "npm run dev -w playground"
   }
 }

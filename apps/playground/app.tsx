@@ -20,7 +20,7 @@ import {
   Switch,
   Text,
   Textarea,
-} from "../src";
+} from "trc-ui";
 
 const Compass = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
