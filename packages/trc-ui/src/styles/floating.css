@@ -1,0 +1,129 @@
+/* ---------- Floating elements: menus, popovers, tooltips ---------- */
+
+/* Placed in `position: fixed` by useAnchoredPosition; they rise from the side of their anchor. */
+.trc-floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  box-sizing: border-box;
+  font-family: var(--trc-font);
+  letter-spacing: -0.01em;
+  color: var(--trc-fg);
+  animation: trc-floating-in 200ms var(--trc-ease-out);
+}
+.trc-floating[data-side="top"] {
+  animation-name: trc-floating-in-top;
+}
+@keyframes trc-floating-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@keyframes trc-floating-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+/* Menu: graphite panel, no numbers, no icons in bordered badges. */
+.trc-menu {
+  min-width: 200px;
+  max-width: min(320px, calc(100vw - 16px));
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--trc-surface) 96%, transparent);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.trc-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--trc-fg);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+.trc-menu__item:focus {
+  background: rgba(255, 255, 255, 0.06);
+}
+.trc-menu__item:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--trc-border-strong);
+}
+.trc-menu__item[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.trc-menu__item--danger {
+  color: var(--trc-danger);
+}
+.trc-menu__hint {
+  font-size: 13px;
+  color: var(--trc-fg-faint);
+}
+.trc-menu__separator {
+  height: 1px;
+  margin: 6px 8px;
+  background: var(--trc-border);
+}
+
+/* Popover: a small graphite card. */
+.trc-popover {
+  width: min(320px, calc(100vw - 16px));
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  outline: none;
+}
+.trc-popover__title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--trc-fg);
+}
+.trc-popover__body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--trc-fg-muted);
+}
+
+/* Tooltip: always in the DOM for aria-describedby, shown only when open. */
+.trc-tooltip {
+  max-width: 260px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: var(--trc-surface-alt);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--trc-fg);
+  visibility: hidden;
+  animation: none;
+}
+.trc-tooltip--open {
+  visibility: visible;
+  animation: trc-floating-in 160ms var(--trc-ease-out);
+}
+.trc-tooltip--open[data-side="top"] {
+  animation-name: trc-floating-in-top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trc-floating,
+  .trc-tooltip--open {
+    animation: none;
+  }
+}
