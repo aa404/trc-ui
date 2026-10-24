@@ -30,3 +30,4 @@ export const ALL_PAGES = DOCS_NAV.flatMap((section) => section.pages);
 
 export const REPO_URL = "https://github.com/aa404/trc-ui";
 export const NPM_URL = "https://www.npmjs.com/package/trc-ui";
+export const AUTHOR = { name: "The Ring Concept", url: "https://www.theringconcept.com/" };

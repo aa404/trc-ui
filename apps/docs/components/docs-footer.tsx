@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PillLink, SiteFooter } from "trc-ui";
 import { Logo } from "@/components/logo";
 import { UI, localePath, type Lang } from "@/lib/i18n";
-import { DOCS_NAV, NPM_URL, REPO_URL } from "@/lib/nav";
+import { AUTHOR, DOCS_NAV, NPM_URL, REPO_URL } from "@/lib/nav";
 
 const T = {
   en: {
@@ -12,6 +12,7 @@ const T = {
     releases: "Releases",
     license: "MIT License",
     rights: "Released under the MIT License.",
+    by: "by",
     siteMap: "Site map",
     legal: "License",
   },
@@ -22,6 +23,7 @@ const T = {
     releases: "Versions",
     license: "Licence MIT",
     rights: "Publié sous licence MIT.",
+    by: "par",
     siteMap: "Plan du site",
     legal: "Licence",
   },
@@ -51,10 +53,19 @@ export function DocsFooter({ lang }: { lang: Lang }) {
             { label: "npm", href: NPM_URL },
             { label: t.releases, href: `${REPO_URL}/releases` },
             { label: t.issues, href: `${REPO_URL}/issues` },
+            { label: AUTHOR.name, href: AUTHOR.url },
           ],
         },
       ]}
-      copyright={`© 2026 trc ui. ${t.rights}`}
+      copyright={
+        <>
+          © 2026 trc ui, {t.by}{" "}
+          <a href={AUTHOR.url} className="docs-footer__author">
+            {AUTHOR.name}
+          </a>
+          . {t.rights}
+        </>
+      }
       legal={[{ label: t.license, href: `${REPO_URL}/blob/main/LICENSE` }]}
     >
       <PillLink as={Link} href={localePath(lang, "/docs/getting-started/")}>

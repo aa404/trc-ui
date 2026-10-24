@@ -780,3 +780,12 @@ body {
 .home-gap {
   height: 16px;
 }
+
+.docs-footer__author {
+  color: var(--trc-fg);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.docs-footer__author:hover {
+  color: var(--trc-accent);
+}
