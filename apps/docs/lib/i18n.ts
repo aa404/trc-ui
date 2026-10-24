@@ -1,17 +1,17 @@
-/** Langues du site : l'anglais à la racine, le français sous /fr. */
+/** Site languages: English at the root, French under /fr. */
 export const LANGS = ["en", "fr"] as const;
 export type Lang = (typeof LANGS)[number];
 
-/** Chemin d'une page dans une langue donnée (`/docs/x/` → `/fr/docs/x/`). */
+/** Path of a page in a given language (`/docs/x/` → `/fr/docs/x/`). */
 export const localePath = (lang: Lang, path: string) => (lang === "en" ? path : `/fr${path === "/" ? "/" : path}`);
 
-/** Langue d'un chemin, et le même chemin sans préfixe de langue. */
+/** Language of a path, and the same path without the language prefix. */
 export const splitPath = (pathname: string): { lang: Lang; path: string } =>
   pathname === "/fr" || pathname.startsWith("/fr/")
     ? { lang: "fr", path: pathname.slice(3) || "/" }
     : { lang: "en", path: pathname };
 
-/** Textes de l'interface du site (le contenu des pages est dans `content/`). */
+/** Site UI strings (page content lives in `content/`). */
 export const UI = {
   en: {
     tagline:

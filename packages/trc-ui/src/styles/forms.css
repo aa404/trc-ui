@@ -1,7 +1,7 @@
-/* Champ : libellé, contrôle, puis aide ou erreur. */
+/* Field: label, control, then hint or error. */
 .trc-field {
   display: grid;
-  /* Étiré par une grille parente, le champ garde ses lignes serrées en haut. */
+  /* When stretched by a parent grid, the field keeps its rows packed at the top. */
   align-content: start;
   gap: 8px;
   min-width: 0;
@@ -25,7 +25,7 @@
   color: var(--trc-danger);
 }
 
-/* Contrôles texte : fond à peine éclairci, bordure fine qui prend l'accent au focus. */
+/* Text controls: slightly lighter background, thin border that takes the accent on focus. */
 .trc-control {
   box-sizing: border-box;
   width: 100%;
@@ -73,7 +73,7 @@
   resize: vertical;
 }
 
-/* Liste : chevron fin posé à droite ; l'option vide reste en gris tant que rien n'est choisi. */
+/* Select: thin chevron on the right; the empty option stays grey until something is chosen. */
 .trc-select {
   position: relative;
   display: block;
@@ -101,7 +101,7 @@
   transform: translateY(-50%);
 }
 
-/* Case à cocher et interrupteur : tout le libellé est cliquable. */
+/* Checkbox and switch: the whole label is clickable. */
 .trc-toggle {
   display: flex;
   align-items: flex-start;

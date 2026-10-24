@@ -6,12 +6,12 @@ import { ArrowUp } from "../utils/icons";
 
 export type BackToTopProps = {
   label?: string;
-  /** Défilement, en hauteurs d'écran, à partir duquel le bouton apparaît. */
+  /** Scroll offset, in viewport heights, from which the button appears. */
   threshold?: number;
   className?: string;
 };
 
-/** Pastille d'accent flottante « Haut de page » : apparaît une fois le premier écran dépassé. */
+/** Floating accent "Back to top" button: appears once the first screen is scrolled past. */
 export function BackToTop({ label = "Back to top", threshold = 0.8, className }: BackToTopProps) {
   const [visible, setVisible] = useState(false);
 

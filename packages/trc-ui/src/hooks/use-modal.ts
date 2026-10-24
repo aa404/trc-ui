@@ -4,11 +4,11 @@ const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
- * Comportement d'un panneau modal ouvert : focus placé dedans et gardé à l'intérieur (Tab / Maj+Tab),
- * fermeture avec Échap, défilement de la page bloqué, focus rendu à l'élément d'origine à la fermeture.
+ * Behavior of an open modal panel: focus moved inside and kept there (Tab / Shift+Tab),
+ * closes with Escape, page scroll locked, focus returned to the original element on close.
  */
 export function useModal(open: boolean, panelRef: RefObject<HTMLElement | null>, onClose: () => void) {
-  // La fonction de fermeture la plus récente, sans relancer l'effet à chaque rendu.
+  // Latest close callback, without re-running the effect on every render.
   const close = useRef(onClose);
   close.current = onClose;
 

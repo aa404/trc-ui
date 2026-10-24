@@ -1,4 +1,4 @@
-/* Carte de héros en retrait des bords, comme les sections `inset`. */
+/* Hero card inset from the screen edges, like `inset` sections. */
 .trc-hero-inset {
   box-sizing: border-box;
   padding: 8px;
@@ -9,7 +9,7 @@
   }
 }
 
-/* Fond photo ou vidéo, couvrant la carte sous les voiles. */
+/* Photo or video background, covering the card under the veils. */
 .trc-hero__media {
   position: absolute;
   inset: 0;
@@ -37,7 +37,7 @@
   background: var(--trc-surface);
   color: var(--trc-fg);
 }
-/* Sans photo : un halo d'accent discret. */
+/* Without a photo: a subtle accent glow. */
 .trc-page-hero__glow {
   position: absolute;
   inset: 0;
@@ -110,7 +110,7 @@
   border-radius: var(--trc-radius);
   background: var(--trc-surface);
   color: var(--trc-fg);
-  /* `overflow: hidden` ne rogne pas toujours l'arrondi d'une couche animée (vidéo en parallaxe). */
+  /* `overflow: hidden` does not always clip the rounded corners of an animated layer (parallax video). */
   clip-path: inset(0 round var(--trc-radius));
 }
 @media (min-width: 640px) {
@@ -118,7 +118,7 @@
     min-height: calc(100svh - 32px);
   }
 }
-/* Couche plus haute que la carte : la parallaxe la fait descendre sans découvrir le fond. */
+/* Layer taller than the card: the parallax moves it down without uncovering the background. */
 .trc-hero-video__media {
   inset: -16px 0 -128px;
   will-change: transform;
@@ -131,7 +131,7 @@
 .trc-hero-video__clip--active {
   opacity: 1;
 }
-/* Voiles : assombrit la vidéo, renforce le bas (texte) et la gauche. */
+/* Veils: darken the video, more at the bottom (text) and on the left. */
 .trc-hero-video__veil {
   position: absolute;
   inset: 0;
@@ -163,7 +163,7 @@
   }
 }
 
-/* ---------- Haut de page ---------- */
+/* ---------- Back to top ---------- */
 
 .trc-back-to-top {
   position: fixed;

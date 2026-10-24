@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LANGS, UI, localePath, splitPath } from "@/lib/i18n";
 
-/** Bascule EN / FR : mène à la même page dans l'autre langue. */
+/** EN / FR switch: leads to the same page in the other language. */
 export function LanguageSwitch() {
   const { lang, path } = splitPath(usePathname());
   return (

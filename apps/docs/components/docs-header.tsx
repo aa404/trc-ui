@@ -7,7 +7,7 @@ import { LanguageSwitch } from "@/components/language-switch";
 import { UI, localePath, type Lang } from "@/lib/i18n";
 import { DOCS_NAV, REPO_URL } from "@/lib/nav";
 
-/** En-tête du site : les sections de la doc deviennent des menus déroulants (et des groupes dans le menu mobile). */
+/** Site header: docs sections become dropdown menus (and groups in the mobile menu). */
 export function DocsHeader({ lang }: { lang: Lang }) {
   const pathname = usePathname();
   const nav: NavItem[] = DOCS_NAV.map((section) => ({

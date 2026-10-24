@@ -10,20 +10,20 @@ const FieldContext = createContext<FieldContextValue | null>(null);
 
 export type FieldProps = {
   label: ReactNode;
-  /** Aide affichée sous le champ. */
+  /** Hint shown under the control. */
   hint?: ReactNode;
-  /** Message d'erreur : remplace l'aide et marque le champ comme invalide. */
+  /** Error message: replaces the hint and marks the control as invalid. */
   error?: ReactNode;
   required?: boolean;
-  /** Identifiant du champ ; généré sinon. */
+  /** Control id; generated when omitted. */
   id?: string;
   className?: string;
   children: ReactNode;
 };
 
 /**
- * Libellé, aide et erreur d'un champ. Le champ placé dedans (`Input`, `Textarea`, `Select`)
- * reçoit automatiquement son `id`, `aria-describedby` et `aria-invalid`.
+ * Label, hint and error of a form control. The control placed inside (`Input`, `Textarea`, `Select`)
+ * automatically receives its `id`, `aria-describedby` and `aria-invalid`.
  */
 export function Field({ label, hint, error, required = false, id, className, children }: FieldProps) {
   const generated = useId();
@@ -55,7 +55,7 @@ export function Field({ label, hint, error, required = false, id, className, chi
   );
 }
 
-/** Attributs d'accessibilité venant du `Field` parent, sans écraser ceux passés au champ. */
+/** Accessibility attributes from the parent `Field`, without overriding those passed to the control. */
 function useFieldProps(props: { id?: string; required?: boolean; invalid?: boolean; "aria-describedby"?: string }) {
   const field = useContext(FieldContext);
   const invalid = props.invalid ?? field?.invalid ?? false;
@@ -96,17 +96,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
 
 export type SelectProps = ComponentPropsWithoutRef<"select"> &
   ControlProps & {
-    /** Option vide affichée tant que rien n'est choisi. */
+    /** Empty option shown until something is chosen. */
     placeholder?: string;
   };
 
-/** Liste native (accessible et adaptée au mobile), habillée d'un chevron fin. */
+/** Native select (accessible and mobile friendly), dressed with a thin chevron. */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
   { invalid, placeholder, defaultValue, className, children, ...props },
   ref,
 ) {
   const a11y = useFieldProps({ ...props, invalid });
-  // Sans valeur fournie, l'option vide reste affichée (sinon le navigateur choisit la première option active).
+  // Without a given value, keep the empty option shown (otherwise the browser picks the first enabled option).
   const initial = defaultValue ?? (props.value === undefined && placeholder != null ? "" : undefined);
   return (
     <span className={cx("trc-select", className)}>

@@ -1,6 +1,6 @@
 /*
- * Bouton pilule : bordure fine, pastille ronde d'accent avec flèche.
- * Au survol, la pastille s'étire jusqu'à remplir la pilule (sous la bordure) et le texte fonce.
+ * Pill button: thin border, round accent dot with an arrow.
+ * On hover, the dot stretches to fill the pill (under the border) and the text turns dark.
  */
 .trc-pill {
   --pill-inset: 6px;
@@ -76,7 +76,7 @@
   width: 16px;
   height: 16px;
 }
-/* Le texte s'éclaircit tout de suite à la sortie… */
+/* The text lightens right away on leave… */
 .trc-pill__label {
   overflow: hidden;
   white-space: nowrap;
@@ -84,7 +84,7 @@
   transition: color 300ms ease;
 }
 
-/* … et fonce avec un léger délai à l'entrée, quand le remplissage passe dessous. */
+/* … and darkens with a slight delay on enter, once the fill is underneath. */
 @media (hover: hover) {
   .trc-pill:not(:disabled):hover .trc-pill__fill {
     width: calc(100% - 2 * var(--pill-inset));

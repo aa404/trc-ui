@@ -1,7 +1,7 @@
 {
   "name": "trc-ui",
   "version": "0.0.0",
-  "description": "Composants React au design « noir profond » : fonds quasi noirs, cartes graphite, titres fins et boutons pilule.",
+  "description": "React components with a deep black design: near-black backgrounds, graphite cards, thin headings and pill buttons.",
   "license": "MIT",
   "author": "Aurel Agbado <agbadoaurel@gmail.com>",
   "keywords": [

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { UI, localePath, type Lang } from "@/lib/i18n";
 import { DOCS_NAV } from "@/lib/nav";
 
-/** Barre latérale (grand écran) : sections de la doc, page courante en accent. */
+/** Sidebar (large screens): docs sections, current page in the accent color. */
 export function DocsSidebar({ lang }: { lang: Lang }) {
   const pathname = usePathname();
   return (

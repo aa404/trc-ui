@@ -8,11 +8,11 @@ export default defineConfig([
     sourcemap: true,
     clean: true,
     external: ["react", "react-dom"],
-    // Les composants utilisent des hooks : utilisables tels quels dans l'App Router de Next.js.
+    // Components use hooks: usable as-is in the Next.js App Router.
     banner: { js: '"use client";' },
   },
   {
-    // Feuille de style unique : les @import de src/styles sont regroupés par esbuild.
+    // Single stylesheet: esbuild inlines the @imports of src/styles.
     entry: { styles: "src/styles/index.css" },
     minify: true,
   },

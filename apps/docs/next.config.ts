@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const config: NextConfig = {
-  // Site entièrement statique : hébergeable sur GitHub Pages, Vercel ou n'importe quel serveur de fichiers.
+  // Fully static site: can be hosted on GitHub Pages, Vercel or any file server.
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },

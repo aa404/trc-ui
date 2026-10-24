@@ -9,18 +9,18 @@ import { cx } from "../utils/cx";
 import { ArrowRight, Spinner } from "../utils/icons";
 
 type PillStyle = {
-  /** Fond blanc : l'action principale d'un écran. */
+  /** White background: the main action of a screen. */
   solid?: boolean;
-  /** Version compacte (en-tête, barres d'outils). */
+  /** Compact version (header, toolbars). */
   size?: "md" | "sm";
-  /** Remplace la flèche de la pastille (par exemple une flèche vers la gauche pour « Retour »). */
+  /** Replaces the dot's arrow (for instance a left arrow for "Back"). */
   icon?: ReactNode;
 };
 
 const pillClass = ({ solid, size }: PillStyle, className?: string) =>
   cx("trc-pill", size === "sm" && "trc-pill--sm", solid && "trc-pill--solid", className);
 
-/** La pastille et le remplissage sont une seule forme : elle s'étire au survol sans laisser voir de rond. */
+/** The dot and the fill are one shape: it stretches on hover without a visible circle. */
 function PillInner({ icon, children }: { icon?: ReactNode; children: ReactNode }) {
   return (
     <>
@@ -35,11 +35,11 @@ function PillInner({ icon, children }: { icon?: ReactNode; children: ReactNode }
 
 export type PillButtonProps = ComponentPropsWithoutRef<"button"> &
   PillStyle & {
-    /** Remplace l'icône par un indicateur de chargement et désactive le bouton. */
+    /** Replaces the icon with a spinner and disables the button. */
     loading?: boolean;
   };
 
-/** Bouton pilule : bordure fine, pastille d'accent avec flèche, qui s'étire au survol. */
+/** Pill button: thin border, accent dot with an arrow that stretches on hover. */
 export const PillButton = forwardRef<HTMLButtonElement, PillButtonProps>(function PillButton(
   { solid, size = "md", icon, loading = false, disabled, type = "button", className, children, ...props },
   ref,
@@ -59,11 +59,11 @@ export const PillButton = forwardRef<HTMLButtonElement, PillButtonProps>(functio
 });
 
 export type PillLinkProps<C extends ElementType = "a"> = PillStyle & {
-  /** Composant de lien du routeur (`Link` de Next.js, de React Router…) ; `<a>` par défaut. */
+  /** Router link component (Next.js or React Router `Link`…); `<a>` by default. */
   as?: C;
 } & Omit<ComponentPropsWithoutRef<C>, "as" | keyof PillStyle>;
 
-/** Même pilule pour un lien. Avec un routeur : `<PillLink as={Link} href="/">`. */
+/** Same pill as a link. With a router: `<PillLink as={Link} href="/">`. */
 export const PillLink = forwardRef(function PillLink(
   { as, solid, size = "md", icon, className, children, ...props }: PillLinkProps<ElementType>,
   ref: Ref<HTMLAnchorElement>,

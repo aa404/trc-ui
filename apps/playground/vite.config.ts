@@ -7,7 +7,7 @@ const lib = (path: string) => fileURLToPath(new URL(`../../packages/trc-ui/src/$
 export default defineConfig({
   root: import.meta.dirname,
   plugins: [react()],
-  // Le bac à sable lit directement les sources : chaque modification de la bibliothèque est visible tout de suite.
+  // The playground reads the library sources directly: every change shows up right away.
   resolve: {
     alias: [
       { find: /^trc-ui\/styles\.css$/, replacement: lib("styles/index.css") },

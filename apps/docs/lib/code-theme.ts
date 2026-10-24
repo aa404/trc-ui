@@ -1,8 +1,8 @@
 import type { ThemeRegistration } from "shiki";
 
 /**
- * Thème de coloration « noir profond » : niveaux de gris et une seule couleur d'accent
- * (mots-clés, balises), comme le reste du site.
+ * Deep black syntax theme: shades of grey and a single accent color
+ * (keywords, tags), like the rest of the site.
  */
 export const noirProfond: ThemeRegistration = {
   name: "noir-profond",

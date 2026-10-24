@@ -13,7 +13,7 @@ export const rootMetadata = (lang: Lang): Metadata => ({
   alternates: { languages: { en: "/", fr: "/fr/" } },
 });
 
-/** Document HTML commun aux deux langues : chacune a son propre gabarit racine, pour un `<html lang>` juste. */
+/** HTML document shared by both languages: each has its own root layout, for a correct `<html lang>`. */
 export function RootDocument({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
     <html lang={lang} className={montserrat.variable}>

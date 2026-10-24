@@ -4,11 +4,11 @@ import { Check } from "../utils/icons";
 
 type ToggleProps = Omit<ComponentPropsWithoutRef<"input">, "type"> & {
   label: ReactNode;
-  /** Précision sous le libellé. */
+  /** Extra detail under the label. */
   description?: ReactNode;
 };
 
-/** Le libellé enveloppe la case : tout le bloc est cliquable. */
+/** The label wraps the control: the whole block is clickable. */
 function ToggleLabel({
   kind,
   label,
@@ -35,7 +35,7 @@ function ToggleLabel({
 
 export type CheckboxProps = ToggleProps;
 
-/** Case à cocher native, remplie de la couleur d'accent une fois cochée. */
+/** Native checkbox, filled with the accent color once checked. */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
   { label, description, className, ...props },
   ref,
@@ -52,7 +52,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
 
 export type SwitchProps = ToggleProps;
 
-/** Interrupteur : une case à cocher native annoncée comme `switch` aux lecteurs d'écran. */
+/** Switch: a native checkbox announced as a `switch` to screen readers. */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(function Switch(
   { label, description, className, ...props },
   ref,

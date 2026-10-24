@@ -1,44 +1,44 @@
 /*
- * Jetons du thème « noir profond ».
- * Posés sur :root pour que les éléments rendus en portail (menus, fenêtres) en profitent aussi.
- * Tous sont préfixés `--trc-` : redéfinissez-les pour adapter le thème, à commencer par l'accent.
+ * Design tokens of the deep black theme.
+ * Set on :root so that portaled elements (menus, dialogs) get them too.
+ * All are prefixed with `--trc-`: override them to adapt the theme, starting with the accent.
  */
 :root {
-  /* Fonds et surfaces : la profondeur vient des écarts de gris, pas des ombres. */
+  /* Backgrounds and surfaces: depth comes from shades of grey, not shadows. */
   --trc-bg: #0b0c0f;
   --trc-surface: #151618;
   --trc-surface-raised: #1b1c1f;
   --trc-surface-alt: #232428;
 
-  /* Texte */
+  /* Text */
   --trc-fg: #ffffff;
   --trc-fg-muted: rgba(255, 255, 255, 0.72);
   --trc-fg-subtle: rgba(255, 255, 255, 0.55);
   --trc-fg-faint: rgba(255, 255, 255, 0.4);
 
-  /* Bordures à peine visibles */
+  /* Barely visible borders */
   --trc-border: rgba(255, 255, 255, 0.08);
   --trc-border-strong: rgba(255, 255, 255, 0.16);
   --trc-border-pill: rgba(255, 255, 255, 0.2);
 
-  /* Une seule couleur d'accent ; `--trc-on-accent` est le texte posé dessus. */
+  /* A single accent color; `--trc-on-accent` is the text placed on it. */
   --trc-accent: #08c8d8;
   --trc-accent-soft: color-mix(in srgb, var(--trc-accent) 12%, transparent);
   --trc-on-accent: #0b0c0f;
 
-  /* Réservé aux messages d'erreur des formulaires. */
+  /* Reserved for form error messages. */
   --trc-danger: #ff6b6b;
 
-  /* Typographie */
+  /* Typography */
   --trc-font: "Montserrat", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --trc-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  /* Formes */
+  /* Shapes */
   --trc-radius-sm: 10px;
   --trc-radius: 16px;
   --trc-radius-pill: 999px;
 
-  /* Mouvements : la courbe des pilules (easeInOutQuart) et une sortie douce pour les apparitions. */
+  /* Motion: the pill curve (easeInOutQuart) and a soft ease-out for entrances. */
   --trc-ease: cubic-bezier(0.77, 0, 0.175, 1);
   --trc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --trc-duration: 500ms;

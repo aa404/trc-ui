@@ -3,7 +3,7 @@ import { DocsHeader } from "@/components/docs-header";
 import { DocsSidebar } from "@/components/docs-sidebar";
 import type { Lang } from "@/lib/i18n";
 
-/** Cadre des pages de doc : en-tête, barre latérale et contenu. */
+/** Frame of the docs pages: header, sidebar and content. */
 export function DocsFrame({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
     <>

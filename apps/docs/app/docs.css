@@ -9,7 +9,7 @@ body {
   min-height: 100dvh;
 }
 
-/* ---------- Mise en page de la documentation ---------- */
+/* ---------- Documentation layout ---------- */
 
 .docs-shell {
   box-sizing: border-box;
@@ -19,7 +19,7 @@ body {
   margin-inline: auto;
   padding: 112px 16px 64px;
 }
-/* Sans cela, une longue ligne de code élargit la colonne au-delà de l'écran. */
+/* Without this, a long line of code widens the column beyond the screen. */
 .docs-shell > main {
   min-width: 0;
 }
@@ -79,7 +79,7 @@ body {
 .docs-sidebar__link:hover {
   color: var(--trc-fg);
 }
-/* Page courante : texte en accent et trait d'accent sur la ligne de gauche. */
+/* Current page: accent text and an accent stroke on the left line. */
 .docs-sidebar__link[aria-current="page"] {
   color: var(--trc-accent);
 }
@@ -98,7 +98,7 @@ body {
   border-radius: 4px;
 }
 
-/* ---------- Contenu d'une page ---------- */
+/* ---------- Page content ---------- */
 
 .docs-content {
   min-width: 0;
@@ -141,7 +141,7 @@ body {
   font-size: 18px !important;
 }
 
-/* ---------- Blocs de code ---------- */
+/* ---------- Code blocks ---------- */
 
 .docs-code {
   overflow: hidden;
@@ -165,7 +165,7 @@ body {
   line-height: 1.7;
 }
 
-/* ---------- Pied de page d'article : précédent / suivant ---------- */
+/* ---------- Article footer: previous / next ---------- */
 
 .docs-pager {
   display: grid;
@@ -198,7 +198,7 @@ body {
   letter-spacing: -0.04em;
 }
 
-/* ---------- Bascule de langue ---------- */
+/* ---------- Language switch ---------- */
 
 .docs-lang {
   display: inline-flex;

@@ -4,32 +4,32 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { cx } from "../utils/cx";
 import { AccentText } from "./typography";
 
-/** Délai d'une apparition (`.trc-enter`) en millisecondes. */
+/** Delay of an entrance (`.trc-enter`) in milliseconds. */
 const delay = (ms: number) => ({ "--trc-delay": `${ms}ms` }) as CSSProperties;
 
 export type PageHeroProps = {
-  /** Titre ; le passage entre *astérisques* est en accent, sinon les derniers mots (`accentLast`). */
+  /** Title; the words between *asterisks* take the accent, otherwise the last words (`accentLast`). */
   title: string;
-  /** Nombre de derniers mots en accent quand le titre n'a pas d'astérisques (2 pour un titre long, 1 sinon). */
+  /** Number of trailing words in the accent color when the title has no asterisks (2 for a long title, 1 otherwise). */
   accentLast?: number;
   description?: ReactNode;
-  /** Ligne discrète sous la description (date de mise à jour, fil d'Ariane…). */
+  /** Discreet line under the description (last updated date, breadcrumb…). */
   meta?: ReactNode;
   /**
-   * Photo de fond, très assombrie : une URL, ou un élément déjà prêt (`<Image fill />` de Next.js…).
-   * Sans photo, un halo d'accent discret sur fond graphite.
+   * Background photo, heavily darkened: a URL, or a ready-made element (Next.js `<Image fill />`…).
+   * Without a photo, a subtle accent glow on a graphite background.
    */
   image?: string | ReactNode;
-  /** Position de la photo (`object-position`). */
+  /** Photo position (`object-position`). */
   imagePosition?: string;
-  /** Contenu sous le texte (pilules…). */
+  /** Content under the text (pills…). */
   children?: ReactNode;
   className?: string;
 };
 
 /**
- * En-tête des pages intérieures : carte arrondie en retrait des bords, photo de fond assombrie,
- * titre fin dont les derniers mots prennent l'accent. Laisse la place à l'en-tête flottant au-dessus.
+ * Header of inner pages: rounded card inset from the edges, darkened background photo,
+ * thin title whose last words take the accent. Leaves room for the floating header above.
  */
 export function PageHero({
   title,
@@ -81,23 +81,23 @@ export function PageHero({
 }
 
 export type HeroClip = {
-  /** Vidéo muette, 1280 px, sans piste audio. Fournir WebM et/ou MP4. */
+  /** Muted video, 1280 px, without an audio track. Provide WebM and/or MP4. */
   webm?: string;
   mp4?: string;
-  /** Image affichée avant la lecture, et seule si l'utilisateur limite les animations. */
+  /** Image shown before playback, and alone when the user prefers reduced motion. */
   poster?: string;
 };
 
 export type HeroVideoProps = {
-  /** Vidéos jouées l'une après l'autre en fondu enchaîné ; la première est tirée au hasard. */
+  /** Videos played one after another with a crossfade; the first one is picked at random. */
   clips: HeroClip[];
-  /** Texte du héros (titre, description, pilules), calé en bas à gauche. */
+  /** Hero text (title, description, pills), pinned to the bottom left. */
   children: ReactNode;
-  /** Bloc facultatif calé en bas à droite sur grand écran. */
+  /** Optional block pinned to the bottom right on large screens. */
   aside?: ReactNode;
-  /** Durée du fondu enchaîné, en secondes. */
+  /** Crossfade duration, in seconds. */
   fade?: number;
-  /** Parallaxe douce : la vidéo descend moins vite que la page. */
+  /** Soft parallax: the video moves down slower than the page. */
   parallax?: boolean;
   className?: string;
 };
@@ -105,21 +105,21 @@ export type HeroVideoProps = {
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
- * Héros d'accueil : carte arrondie en retrait des bords, vidéos muettes en fond qui alternent en
- * fondu enchaîné, voiles sombres pour la lisibilité. Aucune vidéo au rendu serveur : le choix
- * se fait après l'hydratation, puis la vidéo apparaît en fondu. Mouvement réduit : l'image fixe seule.
+ * Home page hero: rounded card inset from the edges, muted background videos that alternate with
+ * a crossfade, dark veils for legibility. No video in the server render: the pick happens
+ * after hydration, then the video fades in. Reduced motion: the still image only.
  */
 export function HeroVideo({ clips, children, aside, fade = 1.2, parallax = true, className }: HeroVideoProps) {
   const videos = useRef<(HTMLVideoElement | null)[]>([]);
   const section = useRef<HTMLElement>(null);
   const media = useRef<HTMLDivElement>(null);
-  // -1 tant que le choix n'est pas fait : même rendu côté serveur et côté client.
+  // -1 until the pick is made: same render on the server and on the client.
   const [active, setActive] = useState(-1);
 
   useEffect(() => {
     if (clips.length === 0) return;
     const start = Math.floor(Math.random() * clips.length);
-    // Élément capturé ici : en mode strict, React détache les refs avant le nettoyage.
+    // Element captured here: in strict mode, React detaches refs before the cleanup runs.
     const video = videos.current[start];
     if (!prefersReducedMotion()) void video?.play().catch(() => {});
     const frame = requestAnimationFrame(() => setActive(start));
@@ -175,12 +175,12 @@ export function HeroVideo({ clips, children, aside, fade = 1.2, parallax = true,
               playsInline
               preload="metadata"
               poster={clip.poster}
-              // Peu avant la fin de la vidéo active, la suivante repart du début et passe au premier plan.
+              // Shortly before the active video ends, the next one restarts and comes to the front.
               onTimeUpdate={(e) => {
                 const v = e.currentTarget;
                 if (i === active && v.duration && v.duration - v.currentTime <= fade) playNext(i);
               }}
-              // Filet de sécurité si `timeupdate` n'a pas déclenché l'enchaînement (onglet en arrière-plan…).
+              // Safety net when `timeupdate` did not trigger the switch (background tab…).
               onEnded={() => i === active && playNext(i)}
             >
               {clip.webm && <source src={clip.webm} type="video/webm" />}

@@ -1,4 +1,4 @@
-/* ---------- En-tête flottant ---------- */
+/* ---------- Floating header ---------- */
 
 .trc-header {
   position: fixed;
@@ -27,7 +27,7 @@
     border-color 300ms ease,
     backdrop-filter 300ms ease;
 }
-/* Dès que la page défile : barre graphite floutée. */
+/* As soon as the page scrolls: blurred graphite bar. */
 .trc-header__bar--scrolled {
   border-color: rgba(255, 255, 255, 0.1);
   background: color-mix(in srgb, var(--trc-surface) 80%, transparent);
@@ -75,7 +75,7 @@
 .trc-header__link--active {
   color: var(--trc-fg);
 }
-/* Page courante : un point d'accent sous le lien. */
+/* Current page: an accent dot under the link. */
 .trc-header__link--active::after {
   content: "";
   position: absolute;
@@ -138,7 +138,7 @@
   }
 }
 
-/* Menu déroulant : panneau graphite, libellé et courte description par entrée. */
+/* Dropdown menu: graphite panel, a label and a short description per item. */
 .trc-dropdown {
   position: relative;
 }
@@ -209,7 +209,7 @@
   color: var(--trc-fg-subtle);
 }
 
-/* ---------- Panneau latéral (menu mobile) ---------- */
+/* ---------- Side panel (mobile menu) ---------- */
 
 .trc-drawer {
   position: fixed;
@@ -348,7 +348,7 @@
   }
 }
 
-/* ---------- Pied de page en carte ---------- */
+/* ---------- Card footer ---------- */
 
 .trc-footer {
   box-sizing: border-box;
@@ -394,7 +394,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px 32px;
 }
-/* Seul endroit où les petites capitales espacées sont admises. */
+/* The only place where spaced small caps are allowed. */
 .trc-footer__heading {
   margin: 0;
   font-size: 12px;
@@ -470,7 +470,7 @@
   }
 }
 
-/* Focus clavier commun aux liens de l'en-tête, des menus et du pied de page. */
+/* Keyboard focus shared by header, menu and footer links. */
 .trc-header__logo:focus-visible,
 .trc-header__link:focus-visible,
 .trc-header__burger:focus-visible,

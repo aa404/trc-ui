@@ -1,4 +1,4 @@
-/* Racine d'une page ou d'une zone au design noir profond (toujours sombre). */
+/* Root of a page or area in the deep black design (always dark). */
 .trc {
   background-color: var(--trc-bg);
   color: var(--trc-fg);
@@ -9,7 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Titres fins, interlignage serré : la finesse donne l'élégance. */
+/* Thin headings, tight line height: thinness is what makes it elegant. */
 .trc-display {
   font-family: var(--trc-font);
   font-weight: 400;
@@ -42,7 +42,7 @@
   }
 }
 
-/* Apparition douce au chargement ; `--trc-delay` échelonne les éléments. */
+/* Soft entrance on load; `--trc-delay` staggers the elements. */
 .trc-enter {
   animation: trc-enter 900ms var(--trc-ease-out) both;
   animation-delay: var(--trc-delay, 0ms);

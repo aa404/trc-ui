@@ -6,12 +6,12 @@ type Polymorphic<C extends ElementType, P> = P & { as?: C } & Omit<ComponentProp
 export type ContainerProps<C extends ElementType = "div"> = Polymorphic<
   C,
   {
-    /** `default` : 1280 px, pour le texte et les grilles ; `wide` : 1600 px, pour les cartes pleine largeur. */
+    /** `default`: 1280 px, for text and grids; `wide`: 1600 px, for full-width cards; `narrow`: 768 px. */
     size?: "default" | "wide" | "narrow";
   }
 >;
 
-/** Largeur maximale centrée, avec des marges latérales qui grandissent avec l'écran. */
+/** Centered max width, with side gutters that grow with the screen. */
 export function Container<C extends ElementType = "div">({ as, size = "default", className, ...props }: ContainerProps<C>) {
   const Tag: ElementType = as ?? "div";
   return <Tag className={cx("trc-container", size !== "default" && `trc-container--${size}`, className)} {...props} />;
@@ -20,17 +20,17 @@ export function Container<C extends ElementType = "div">({ as, size = "default",
 export type SectionProps<C extends ElementType = "section"> = Polymorphic<
   C,
   {
-    /** Espacement vertical. */
+    /** Vertical spacing. */
     spacing?: "sm" | "md" | "lg" | "none";
     /**
-     * Carte en retrait des bords de l'écran (effet « magazine ») : fond graphite et coins arrondis,
-     * pour les bandeaux, les appels à l'action, les héros.
+     * Card inset from the screen edges ("magazine" effect): graphite background and rounded corners,
+     * for banners, calls to action and heroes.
      */
     inset?: boolean;
   }
 >;
 
-/** Bloc vertical d'une page. Avec `inset`, il devient une grande carte arrondie à quelques pixels des bords. */
+/** Vertical block of a page. With `inset`, it becomes a large rounded card a few pixels from the edges. */
 export function Section<C extends ElementType = "section">({
   as,
   spacing = "md",
@@ -57,17 +57,17 @@ export function Section<C extends ElementType = "section">({
 export type CardProps<C extends ElementType = "div"> = Polymorphic<
   C,
   {
-    /** `alt` : un gris un peu plus clair, pour distinguer deux blocs parallèles. */
+    /** `alt`: a slightly lighter grey, to tell two side-by-side blocks apart. */
     tone?: "default" | "alt";
     padding?: "none" | "sm" | "md" | "lg";
-    /** S'éclaircit au survol (cartes cliquables : liens, boutons). */
+    /** Lightens on hover (clickable cards: links, buttons). */
     interactive?: boolean;
-    /** Icône décorative en filigrane : très grande, trait fin, à demi sortie du coin ; s'éveille au survol. */
+    /** Decorative watermark icon: very large, thin stroke, half out of the corner; wakes up on hover. */
     watermark?: ReactNode;
   }
 >;
 
-/** Carte graphite, coins arrondis, sans ombre : la profondeur vient des écarts de gris. */
+/** Graphite card, rounded corners, no shadow: depth comes from shades of grey. */
 export function Card<C extends ElementType = "div">({
   as,
   tone = "default",

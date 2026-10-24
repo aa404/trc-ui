@@ -2,8 +2,8 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { cx } from "../utils/cx";
 
 /**
- * Met en couleur d'accent le passage entre astérisques : « Comment ça *marche* ».
- * Sans astérisques, `accentLast` colore les derniers mots (titres venant d'un CMS).
+ * Colors the words between asterisks with the accent: "How it *works*".
+ * Without asterisks, `accentLast` colors the last words (titles coming from a CMS).
  */
 export function AccentText({ text, accentLast = 0 }: { text: string; accentLast?: number }) {
   if (text.includes("*")) {
@@ -31,21 +31,21 @@ export function AccentText({ text, accentLast = 0 }: { text: string; accentLast?
   );
 }
 
-/** Texte brut d'un titre balisé, pour les attributs (`alt`, `title`, métadonnées). */
+/** Plain text of a marked-up title, for attributes (`alt`, `title`, metadata). */
 export const plainText = (text: string) => text.replaceAll("*", "");
 
 export type HeadingSize = "display" | "xl" | "lg" | "md" | "sm";
 
 export type HeadingProps = Omit<ComponentPropsWithoutRef<"h2">, "children"> & {
-  /** Balise rendue ; la taille visuelle se règle à part avec `size`. */
+  /** Rendered tag; the visual size is set separately with `size`. */
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
   size?: HeadingSize;
-  /** Si `children` est une chaîne sans astérisques, nombre de derniers mots mis en accent. */
+  /** When `children` is a string without asterisks, number of trailing words in the accent color. */
   accentLast?: number;
   children: ReactNode;
 };
 
-/** Titre fin en Montserrat 400 ; une chaîne peut contenir un *mot d'accent* entre astérisques. */
+/** Thin Montserrat 400 heading; a string may contain an *accent word* between asterisks. */
 export function Heading({ as: Tag = "h2", size = "xl", accentLast, className, children, ...props }: HeadingProps) {
   return (
     <Tag className={cx("trc-display", `trc-heading--${size}`, className)} {...props}>
@@ -60,13 +60,13 @@ export type TextProps<C extends ElementType = "p"> = {
   tone?: "default" | "muted" | "subtle";
 } & Omit<ComponentPropsWithoutRef<C>, "as" | "size">;
 
-/** Texte courant ; `tone="muted"` (par défaut) pour le corps, qui ne doit pas rivaliser avec les titres. */
+/** Body text; `tone="muted"` (default) so that it does not compete with headings. */
 export function Text<C extends ElementType = "p">({ as, size = "md", tone = "muted", className, ...props }: TextProps<C>) {
   const Tag: ElementType = as ?? "p";
   return <Tag className={cx("trc-text", `trc-text--${size}`, `trc-text--${tone}`, className)} {...props} />;
 }
 
-/** Grand numéro fin en couleur d'accent (« 01 », « 02 »…), réservé aux étapes d'un ordre réel. */
+/** Large thin number in the accent color ("01", "02"…), reserved for steps in a real order. */
 export function StepNumber({ n, size = "md", className }: { n: number; size?: "md" | "sm"; className?: string }) {
   return (
     <span aria-hidden className={cx("trc-step-number", size === "sm" && "trc-step-number--sm", className)}>

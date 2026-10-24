@@ -1,4 +1,4 @@
-/* Largeur maximale centrée : marges de 16 px sur mobile, 24 px sur tablette, 40 px au-delà. */
+/* Centered max width: 16 px gutters on mobile, 24 px on tablets, 40 px beyond. */
 .trc-container {
   box-sizing: border-box;
   width: 100%;
@@ -23,7 +23,7 @@
   }
 }
 
-/* Espacement vertical des sections */
+/* Vertical spacing of sections */
 .trc-section--sm {
   padding-block: 48px;
 }
@@ -42,7 +42,7 @@
   }
 }
 
-/* Section en carte, à 8 px des bords sur mobile et 16 px au-delà. */
+/* Section as a card, 8 px from the edges on mobile and 16 px beyond. */
 .trc-section-inset {
   box-sizing: border-box;
   padding-inline: 8px;
@@ -63,7 +63,7 @@
   }
 }
 
-/* Carte graphite, sans ombre, bordure à peine visible. */
+/* Graphite card, no shadow, barely visible border. */
 .trc-card {
   position: relative;
   box-sizing: border-box;
@@ -90,7 +90,7 @@
   }
 }
 
-/* Carte cliquable : le fond s'éclaircit à peine. */
+/* Clickable card: the background lightens slightly. */
 .trc-card--interactive {
   display: block;
   text-decoration: none;
@@ -116,7 +116,7 @@ button.trc-card--interactive {
   box-shadow: var(--trc-ring);
 }
 
-/* Icône en filigrane : très grande, trait fin, à demi sortie du coin, presque invisible au repos. */
+/* Watermark icon: very large, thin stroke, half out of the corner, almost invisible at rest. */
 .trc-card--watermark {
   isolation: isolate;
   overflow: hidden;
@@ -137,7 +137,7 @@ button.trc-card--interactive {
     color 600ms var(--trc-ease-out),
     transform 600ms var(--trc-ease-out);
 }
-/* Trait fin quelle que soit la taille de l'icône. */
+/* Thin stroke whatever the icon size. */
 .trc-card__watermark svg {
   width: 100%;
   height: 100%;

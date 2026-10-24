@@ -4,7 +4,7 @@ import { Card, Heading, Text } from "trc-ui";
 import { UI, localePath, type Lang } from "@/lib/i18n";
 import { ALL_PAGES } from "@/lib/nav";
 
-/** Gabarit d'une page de doc : titre, chapeau, contenu, puis liens vers les pages précédente et suivante. */
+/** Docs page template: title, lead, content, then links to the previous and next pages. */
 export function DocPage({
   lang,
   href,

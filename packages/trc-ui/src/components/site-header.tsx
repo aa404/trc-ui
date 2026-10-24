@@ -10,34 +10,34 @@ import { PillLink } from "./pill";
 export type NavLink = {
   label: ReactNode;
   href: string;
-  /** Page courante : marquée d'un point d'accent. */
+  /** Current page: marked with an accent dot. */
   active?: boolean;
 };
 
 export type NavMenu = {
   label: ReactNode;
-  /** Entrées du menu déroulant, avec une courte description facultative (sans numéro). */
+  /** Dropdown items, with an optional short description (no numbers). */
   items: (NavLink & { description?: ReactNode })[];
 };
 
 export type NavItem = NavLink | NavMenu;
 
 export type SiteHeaderProps = {
-  /** Logo (blanc), placé dans un lien vers `homeHref`. */
+  /** Logo (white), wrapped in a link to `homeHref`. */
   logo: ReactNode;
-  /** Nom accessible du lien du logo, souvent le nom de la marque. */
+  /** Accessible name of the logo link, usually the brand name. */
   logoLabel: string;
   homeHref?: string;
   nav?: NavItem[];
-  /** Action principale, affichée en pilule compacte (et en grand dans le menu mobile). */
+  /** Main action, shown as a compact pill (and a large one in the mobile menu). */
   cta?: { label: ReactNode; href: string };
-  /** Éléments supplémentaires à droite sur grand écran (sélecteur de langue…). */
+  /** Extra elements on the right on large screens (language switcher…). */
   actions?: ReactNode;
-  /** Contenu ajouté au bas du menu mobile. */
+  /** Content added at the bottom of the mobile menu. */
   mobileFooter?: ReactNode;
-  /** Composant de lien du routeur (`Link` de Next.js…) ; `<a>` par défaut. */
+  /** Router link component (Next.js `Link`…); `<a>` by default. */
   linkAs?: ElementType;
-  /** Défilement (px) à partir duquel la barre devient graphite floutée. */
+  /** Scroll offset (px) from which the bar becomes blurred graphite. */
   scrollThreshold?: number;
   menuLabel?: string;
   closeLabel?: string;
@@ -47,8 +47,8 @@ export type SiteHeaderProps = {
 const isMenu = (item: NavItem): item is NavMenu => "items" in item;
 
 /**
- * En-tête flottant : transparent sur le héros en haut de page, il devient une barre graphite
- * floutée dès que la page défile. Menus déroulants sur grand écran, panneau latéral sur mobile.
+ * Floating header: transparent over the hero at the top of the page, it becomes a blurred
+ * graphite bar as soon as the page scrolls. Dropdowns on large screens, side panel on mobile.
  */
 export function SiteHeader({
   logo,
@@ -67,7 +67,7 @@ export function SiteHeader({
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Lu après l'hydratation : même rendu côté serveur et côté client.
+  // Read after hydration: same render on the server and on the client.
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > scrollThreshold);
     update();
@@ -137,8 +137,8 @@ export function SiteHeader({
 }
 
 /**
- * Menu déroulant (grand écran) : s'ouvre au survol ou au clic, se ferme en sortant,
- * avec Échap, en quittant le menu au clavier ou après un choix.
+ * Dropdown menu (large screens): opens on hover or click, closes on leave, with Escape,
+ * when keyboard focus leaves the menu, or after a choice.
  */
 function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: ElementType }) {
   const id = useId();
@@ -150,7 +150,7 @@ function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: Element
     window.clearTimeout(closeTimer.current);
     setOpen(true);
   };
-  // Petit délai : le pointeur peut traverser l'espace entre le bouton et le panneau.
+  // Short delay: the pointer may cross the gap between the button and the panel.
   const hide = () => {
     closeTimer.current = window.setTimeout(() => setOpen(false), 120);
   };
@@ -202,8 +202,8 @@ function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: Element
 }
 
 /**
- * Panneau latéral du menu mobile, rendu dans `document.body` : la barre floutée de l'en-tête
- * (`backdrop-filter`) enfermerait sinon un élément `fixed` dans ses propres limites.
+ * Side panel of the mobile menu, rendered into `document.body`: otherwise the header's blurred bar
+ * (`backdrop-filter`) would trap a `fixed` element within its own bounds.
  */
 function MobileMenu({
   open,

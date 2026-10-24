@@ -4,29 +4,29 @@ import { cx } from "../utils/cx";
 export type FooterLink = { label: ReactNode; href: string };
 
 export type SiteFooterProps = {
-  /** Logo (blanc), placé dans un lien vers `homeHref`. */
+  /** Logo (white), wrapped in a link to `homeHref`. */
   logo?: ReactNode;
   logoLabel?: string;
   homeHref?: string;
-  /** Phrase courte sous le logo. */
+  /** Short sentence under the logo. */
   tagline?: ReactNode;
-  /** Sous la phrase : une pilule, un contact… */
+  /** Under the sentence: a pill, a contact… */
   children?: ReactNode;
-  /** Plan du site en colonnes, avec un titre en petites capitales espacées. */
+  /** Site map in columns, each with a spaced small-caps title. */
   columns?: { title: ReactNode; links: FooterLink[] }[];
-  /** Nom accessible du plan du site. */
+  /** Accessible name of the site map. */
   columnsLabel?: string;
-  /** Mentions de bas de page (droits, fabrication…). */
+  /** Bottom line (copyright, credits…). */
   copyright?: ReactNode;
-  /** Liens légaux, alignés à droite sur grand écran. */
+  /** Legal links, aligned right on large screens. */
   legal?: FooterLink[];
   legalLabel?: string;
-  /** Composant de lien du routeur (`Link` de Next.js…) ; `<a>` par défaut. */
+  /** Router link component (Next.js `Link`…); `<a>` by default. */
   linkAs?: ElementType;
   className?: string;
 };
 
-/** Pied de page en carte graphite : marque et appel à l'action, plan du site en colonnes, liens légaux. */
+/** Graphite card footer: brand and call to action, site map in columns, legal links. */
 export function SiteFooter({
   logo,
   logoLabel,

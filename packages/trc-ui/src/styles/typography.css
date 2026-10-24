@@ -1,4 +1,4 @@
-/* Tailles des titres : de 48 à 72 px pour l'accroche, de 36 à 48 px pour les titres de section. */
+/* Heading sizes: 48 to 72 px for the display heading, 36 to 48 px for section headings. */
 .trc-heading--display {
   font-size: clamp(3rem, 2.2rem + 3.6vw, 4.5rem);
 }

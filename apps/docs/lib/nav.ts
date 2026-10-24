@@ -1,6 +1,6 @@
 import type { Lang } from "./i18n";
 
-/** Plan du site de documentation : barre latérale, menu mobile et liens précédent / suivant. */
+/** Docs site map: sidebar, mobile menu and previous / next links. */
 export type DocPage = { title: Record<Lang, string>; href: string };
 export type DocSection = { title: Record<Lang, string>; pages: DocPage[] };
 
