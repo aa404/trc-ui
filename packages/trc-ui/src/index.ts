@@ -36,3 +36,7 @@ export { Popover } from "./components/popover";
 export type { PopoverProps } from "./components/popover";
 export { Tooltip } from "./components/tooltip";
 export type { TooltipProps } from "./components/tooltip";
+export { Toaster, toast } from "./components/toast";
+export type { ToasterProps, ToastOptions, ToastTone } from "./components/toast";
+export { Alert } from "./components/alert";
+export type { AlertProps } from "./components/alert";

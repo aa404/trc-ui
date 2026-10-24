@@ -1,0 +1,201 @@
+/* ---------- Toasts ---------- */
+
+.trc-toaster {
+  position: fixed;
+  z-index: 70;
+  box-sizing: border-box;
+  width: min(380px, calc(100vw - 32px));
+  font-family: var(--trc-font);
+  letter-spacing: -0.01em;
+  pointer-events: none;
+}
+.trc-toaster--bottom-right {
+  right: 16px;
+  bottom: 16px;
+}
+.trc-toaster--bottom-center {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.trc-toaster--top-right {
+  top: 16px;
+  right: 16px;
+}
+@media (min-width: 640px) {
+  .trc-toaster--bottom-right {
+    right: 24px;
+    bottom: 24px;
+  }
+  .trc-toaster--top-right {
+    top: 24px;
+    right: 24px;
+  }
+}
+.trc-toaster__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.trc-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 10px 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: var(--trc-surface);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  color: var(--trc-fg);
+  pointer-events: auto;
+  animation: trc-toast-in 300ms var(--trc-ease-out);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+.trc-toast--leaving {
+  opacity: 0;
+  transform: translateY(8px);
+}
+@keyframes trc-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.trc-toast__text {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+/* A small dot before the title: accent for success, error color for errors. */
+.trc-toast__title {
+  position: relative;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.trc-toast--success .trc-toast__title,
+.trc-toast--error .trc-toast__title {
+  padding-left: 16px;
+}
+.trc-toast--success .trc-toast__title::before,
+.trc-toast--error .trc-toast__title::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--trc-accent);
+}
+.trc-toast--error .trc-toast__title::before {
+  background: var(--trc-danger);
+}
+.trc-toast__description {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--trc-fg-muted);
+}
+.trc-toast--success .trc-toast__description,
+.trc-toast--error .trc-toast__description {
+  padding-left: 16px;
+}
+.trc-toast__action {
+  flex-shrink: 0;
+  margin-top: 1px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--trc-accent);
+  font: 500 14px/1.4 var(--trc-font);
+  cursor: pointer;
+}
+.trc-toast__action:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.trc-toast__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--trc-fg-subtle);
+  cursor: pointer;
+}
+.trc-toast__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--trc-fg);
+}
+.trc-toast__close svg {
+  width: 16px;
+  height: 16px;
+}
+.trc-toast__action:focus-visible,
+.trc-toast__close:focus-visible {
+  outline: none;
+  box-shadow: var(--trc-ring);
+}
+
+/* ---------- Alerts ---------- */
+
+/* A graphite card with a thin colored left edge, instead of an icon badge. */
+.trc-alert {
+  position: relative;
+  padding: 16px 20px 16px 22px;
+  overflow: hidden;
+  border: 1px solid var(--trc-border);
+  border-radius: 14px;
+  background: var(--trc-surface);
+  color: var(--trc-fg);
+}
+.trc-alert::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--trc-accent);
+}
+.trc-alert--error::before {
+  background: var(--trc-danger);
+}
+.trc-alert__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.trc-alert__body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--trc-fg-muted);
+}
+.trc-alert__title + .trc-alert__body {
+  margin-top: 4px;
+}
+.trc-alert__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trc-toast {
+    animation: none;
+    transition-duration: 1ms;
+  }
+}
