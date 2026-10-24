@@ -78,3 +78,7 @@ export { Table } from "./components/table";
 export type { SortState, TableColumn, TableProps } from "./components/table";
 export { Progress, Skeleton, Spinner } from "./components/loading";
 export type { ProgressProps, SkeletonProps, SpinnerProps } from "./components/loading";
+export { Divider, Kbd } from "./components/kbd";
+export type { DividerProps } from "./components/kbd";
+export { CodeBlock } from "./components/code-block";
+export type { CodeBlockProps } from "./components/code-block";
