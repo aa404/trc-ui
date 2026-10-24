@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "build": "npm run build -w trc-ui",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "dev:playground": "npm run dev -w playground"
+    "build:docs": "npm run build -w trc-ui && npm run build -w docs",
+    "dev:docs": "npm run dev -w docs",
+    "dev:playground": "npm run dev -w playground",
+    "typecheck": "npm run typecheck --workspaces --if-present"
   }
 }
