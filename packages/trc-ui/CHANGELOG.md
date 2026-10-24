@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.5.0
+
+Covers releases 0.2 to 0.5 of the roadmap: 33 new components, each with its documentation page in English and French at [ui.theringconcept.com](https://ui.theringconcept.com).
 
 ### Overlays and feedback
 
@@ -51,7 +53,10 @@
 ### Fixes
 
 - Header dropdowns opened by hovering no longer close on the click that follows.
-- Derived accent tokens follow an accent overridden on a single area.
+
+### Changes to note
+
+- The `SiteHeader` mobile menu is now a `Drawer`: if you styled its panel through the internal `.trc-drawer` classes, use the new `.trc-layer` and `.trc-drawer` structure.
 
 ## 0.1.0
 
