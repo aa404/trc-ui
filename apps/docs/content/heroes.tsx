@@ -4,6 +4,7 @@ import { CodeBlock } from "@/components/code-block";
 import { Demo } from "@/components/demo";
 import { DocPage } from "@/components/doc-page";
 import { PropsTable, type PropRow } from "@/components/props-table";
+import { asset } from "@/lib/asset";
 import type { Lang } from "@/lib/i18n";
 
 export const heroesTitle = { en: "Heroes", fr: "Héros" };
@@ -158,7 +159,7 @@ export function HeroesContent({ lang }: { lang: Lang }) {
   image="/media/page.webp"
 />`}
       >
-        <PageHero title={t.pageTitle} description={t.pageDesc} meta={t.meta} image="/media/page.webp" />
+        <PageHero title={t.pageTitle} description={t.pageDesc} meta={t.meta} image={asset("/media/page.webp")} />
       </Demo>
       <Demo frame code={`<PageHero title="${t.noPhoto}" description="${t.noPhotoDesc}" />`}>
         <PageHero title={t.noPhoto} description={t.noPhotoDesc} />
@@ -188,9 +189,9 @@ export function HeroesContent({ lang }: { lang: Lang }) {
       >
         <HeroVideo
           clips={[1, 2].map((n) => ({
-            webm: `/media/hero-${n}.webm`,
-            mp4: `/media/hero-${n}.mp4`,
-            poster: `/media/hero-${n}-poster.jpg`,
+            webm: asset(`/media/hero-${n}.webm`),
+            mp4: asset(`/media/hero-${n}.mp4`),
+            poster: asset(`/media/hero-${n}-poster.jpg`),
           }))}
         >
           <Heading as="p" size="display" className="trc-enter" style={enter(150)}>

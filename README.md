@@ -21,6 +21,8 @@
 npm install trc-ui
 ```
 
+**Documentation and live demos: [ui.theringconcept.com](https://ui.theringconcept.com)**
+
 See the [package README](packages/trc-ui/README.md) for setup, usage, components and theming.
 
 ## Repository
@@ -46,6 +48,8 @@ npm run typecheck       # all workspaces
 npm run build           # build the library into packages/trc-ui/dist
 npm run build:docs      # build the library, then the static docs into apps/docs/out
 ```
+
+Every push to `main` deploys the documentation to GitHub Pages (`.github/workflows/docs.yml`).
 
 The docs and the playground read the library sources directly: every change shows up right away, without a rebuild.
 

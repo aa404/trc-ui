@@ -11,6 +11,8 @@ React components with a deep black design: near-black backgrounds, graphite card
 - **Accessible.** Native form controls, labels and messages wired automatically, keyboard focus everywhere, reduced motion respected.
 - **Light.** No runtime dependency besides React. One stylesheet, themable with CSS variables.
 
+**Documentation and live demos: [ui.theringconcept.com](https://ui.theringconcept.com)**
+
 ## Installation
 
 ```bash
@@ -110,7 +112,7 @@ Every color, radius and motion setting is a CSS variable prefixed with `--trc-`.
 
 Variables cascade, so you can also theme a single area: `<div style={{ "--trc-accent": "#d41367" }}>`.
 
-The documentation includes a colors generator that builds a 10-shade scale from your brand color, checks WCAG contrast on deep black and gives you the code.
+The documentation includes a [colors generator](https://ui.theringconcept.com/docs/colors-generator/) that builds a 10-shade scale from your brand color, checks WCAG contrast on deep black and gives you the code.
 
 ## Browser support
 
