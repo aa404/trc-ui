@@ -2,7 +2,12 @@ body {
   margin: 0;
 }
 .pg {
-  padding-block: 64px 96px;
+  padding-block: 160px 96px;
+}
+.pg-logo {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
 }
 .pg-section {
   display: grid;

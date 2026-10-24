@@ -42,3 +42,15 @@ export const Check = (props: IconProps) => (
     <path d="M20 6 9 17l-5-5" />
   </svg>
 );
+
+export const Menu = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </svg>
+);
+
+export const Close = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);

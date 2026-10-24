@@ -11,6 +11,8 @@ import {
   PillLink,
   Section,
   Select,
+  SiteFooter,
+  SiteHeader,
   StepNumber,
   Switch,
   Text,
@@ -24,6 +26,22 @@ const Compass = () => (
   </svg>
 );
 
+const Logo = () => <span className="pg-logo">trc</span>;
+
+const NAV = [
+  {
+    label: "Composants",
+    items: [
+      { label: "Typographie", href: "#", description: "Titres fins et mot d'accent." },
+      { label: "Boutons pilule", href: "#", description: "L'interaction signature." },
+      { label: "Formulaires", href: "#", description: "Champs, cases et interrupteurs." },
+    ],
+  },
+  { label: "Démarrer", href: "#", active: true },
+  { label: "Thème", href: "#" },
+  { label: "GitHub", href: "#" },
+];
+
 const PILLARS = [
   ["Sobre", "Beaucoup de noir, une seule couleur d'accent, rien qui crie."],
   ["Fin", "Une typographie légère qui porte la page à elle seule."],
@@ -34,6 +52,7 @@ export function App() {
   const [loading, setLoading] = useState(false);
   return (
     <>
+      <SiteHeader logo={<Logo />} logoLabel="trc-ui" nav={NAV} cta={{ label: "Installer", href: "#" }} />
       <Container as="main" className="pg">
         <Heading as="h1" size="display">
           Des interfaces en *noir profond.*
@@ -162,6 +181,39 @@ export function App() {
         </Container>
       </Section>
       <div style={{ height: 16 }} />
+      <SiteFooter
+        logo={<Logo />}
+        logoLabel="trc-ui"
+        tagline="Des composants React au design noir profond, sobres et soignés."
+        columns={[
+          {
+            title: "Composants",
+            links: [
+              { label: "Typographie", href: "#" },
+              { label: "Boutons", href: "#" },
+              { label: "Formulaires", href: "#" },
+            ],
+          },
+          {
+            title: "Ressources",
+            links: [
+              { label: "Démarrer", href: "#" },
+              { label: "Thème", href: "#" },
+            ],
+          },
+          {
+            title: "Projet",
+            links: [
+              { label: "GitHub", href: "#" },
+              { label: "npm", href: "#" },
+            ],
+          },
+        ]}
+        copyright="© 2026 trc-ui. Licence MIT."
+        legal={[{ label: "Licence", href: "#" }]}
+      >
+        <PillLink href="#">Commencer</PillLink>
+      </SiteFooter>
     </>
   );
 }
