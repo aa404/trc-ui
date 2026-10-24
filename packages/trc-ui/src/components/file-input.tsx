@@ -11,6 +11,7 @@ import {
 } from "react";
 import { cx } from "../utils/cx";
 import { Close } from "../utils/icons";
+import { fill } from "../utils/label";
 import { useFieldProps } from "./field";
 
 /** Readable size: 820 B, 14.2 KB, 3.5 MB. */
@@ -66,8 +67,8 @@ export type FileInputProps = Omit<ComponentPropsWithoutRef<"input">, "type" | "v
   onFilesChange?: (files: File[]) => void;
   buttonLabel?: string;
   placeholder?: string;
-  /** Text when several files are chosen: "3 files". */
-  countLabel?: (count: number) => string;
+  /** Text when several files are chosen: a template such as "{count} files", or a function. */
+  countLabel?: string | ((count: number) => string);
   invalid?: boolean;
 };
 
@@ -80,7 +81,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(function F
     onFilesChange,
     buttonLabel = "Choose a file",
     placeholder = "No file chosen",
-    countLabel = (count) => `${count} files`,
+    countLabel = "{count} files",
     disabled,
     invalid,
     className,
@@ -90,7 +91,14 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(function F
 ) {
   const [files, setFiles] = useState<File[]>([]);
   const a11y = useFieldProps({ ...props, invalid });
-  const summary = files.length === 0 ? placeholder : files.length === 1 ? files[0]!.name : countLabel(files.length);
+  const summary =
+    files.length === 0
+      ? placeholder
+      : files.length === 1
+        ? files[0]!.name
+        : typeof countLabel === "string"
+          ? fill(countLabel, { count: files.length })
+          : countLabel(files.length);
   return (
     <label className={cx("trc-file-input", disabled && "trc-file-input--disabled", className)}>
       <input
@@ -124,17 +132,23 @@ export type DropzoneProps = Rules & {
   browseLabel?: ReactNode;
   /** Constraints shown under the title: "PNG or PDF, up to 5 MB". */
   hint?: ReactNode;
-  removeLabel?: (file: File) => string;
-  /** Message of a rejected file. */
-  rejectionLabel?: (rejection: FileRejection) => string;
+  /** Name of the remove button: a template such as "Remove {name}", or a function. */
+  removeLabel?: string | ((file: File) => string);
+  /**
+   * Message of a rejected file: one template per reason, with {name}, or a function.
+   */
+  rejectionLabel?: Partial<Record<FileRejection["reason"], string>> | ((rejection: FileRejection) => string);
   name?: string;
   disabled?: boolean;
   id?: string;
   className?: string;
 };
 
-const defaultRejection = ({ file, reason }: FileRejection) =>
-  `${file.name}: ${reason === "type" ? "this type of file is not accepted" : reason === "size" ? "the file is too large" : "too many files"}`;
+const DEFAULT_REJECTIONS: Record<FileRejection["reason"], string> = {
+  type: "{name}: this type of file is not accepted",
+  size: "{name}: the file is too large",
+  count: "{name}: too many files",
+};
 
 /**
  * Area to drop files on, or to click (and reach with the keyboard) to browse. Accepted files are
@@ -149,8 +163,8 @@ export function Dropzone({
   title = "Drop files here or",
   browseLabel = "browse",
   hint,
-  removeLabel = (file) => `Remove ${file.name}`,
-  rejectionLabel = defaultRejection,
+  removeLabel = "Remove {name}",
+  rejectionLabel = DEFAULT_REJECTIONS,
   name,
   disabled,
   id,
@@ -158,6 +172,10 @@ export function Dropzone({
 }: DropzoneProps) {
   const [files, setFiles] = useState<File[]>([]);
   const [rejections, setRejections] = useState<FileRejection[]>([]);
+  const rejectionText = (rejection: FileRejection) =>
+    typeof rejectionLabel === "function"
+      ? rejectionLabel(rejection)
+      : fill(rejectionLabel[rejection.reason] ?? DEFAULT_REJECTIONS[rejection.reason], { name: rejection.file.name });
   const [dragging, setDragging] = useState(false);
   const hintId = useId();
   const a11y = useFieldProps({ id });
@@ -235,7 +253,7 @@ export function Dropzone({
         {rejections.length > 0 && (
           <ul className="trc-dropzone__rejections">
             {rejections.map((rejection, i) => (
-              <li key={i}>{rejectionLabel(rejection)}</li>
+              <li key={i}>{rejectionText(rejection)}</li>
             ))}
           </ul>
         )}
@@ -250,7 +268,9 @@ export function Dropzone({
               <button
                 type="button"
                 className="trc-dropzone__remove"
-                aria-label={removeLabel(file)}
+                aria-label={
+                  typeof removeLabel === "string" ? fill(removeLabel, { name: file.name }) : removeLabel(file)
+                }
                 onClick={() => remove(i)}
               >
                 <Close />

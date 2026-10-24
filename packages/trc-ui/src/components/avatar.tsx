@@ -2,6 +2,7 @@
 
 import { Children, useState, type ReactNode } from "react";
 import { cx } from "../utils/cx";
+import { fill } from "../utils/label";
 
 /** Up to two initials from a name: "Aurel Agbado" → "AA", "trc" → "T". */
 export function initials(name: string) {
@@ -39,8 +40,8 @@ export type AvatarGroupProps = {
   children: ReactNode;
   /** Avatars shown before the "+n" counter. */
   max?: number;
-  /** Accessible name of the counter: "3 more". */
-  moreLabel?: (count: number) => string;
+  /** Accessible name of the counter: a template such as "{count} more", or a function. */
+  moreLabel?: string | ((count: number) => string);
   size?: AvatarProps["size"];
   className?: string;
 };
@@ -49,7 +50,7 @@ export type AvatarGroupProps = {
 export function AvatarGroup({
   children,
   max = 4,
-  moreLabel = (n) => `${n} more`,
+  moreLabel = "{count} more",
   size = "md",
   className,
 }: AvatarGroupProps) {
@@ -60,7 +61,11 @@ export function AvatarGroup({
       {items.slice(0, max)}
       {hidden > 0 && (
         <span className={cx("trc-avatar", `trc-avatar--${size}`, "trc-avatar--more")}>
-          <span role="img" aria-label={moreLabel(hidden)} className="trc-avatar__initials">
+          <span
+            role="img"
+            aria-label={typeof moreLabel === "string" ? fill(moreLabel, { count: hidden }) : moreLabel(hidden)}
+            className="trc-avatar__initials"
+          >
             +{hidden}
           </span>
         </span>

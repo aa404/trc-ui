@@ -1,6 +1,7 @@
 import type { ElementType, ReactNode } from "react";
 import { cx } from "../utils/cx";
 import { ArrowLeft, ArrowRight } from "../utils/icons";
+import { fill } from "../utils/label";
 
 type Entry = number | "ellipsis";
 
@@ -34,8 +35,8 @@ export type PaginationProps = {
   label?: string;
   previousLabel?: string;
   nextLabel?: string;
-  /** Accessible name of a page number, such as "Page 3". */
-  pageLabel?: (page: number) => string;
+  /** Accessible name of a page number: a template such as "Page {page}", or a function. */
+  pageLabel?: string | ((page: number) => string);
   className?: string;
 };
 
@@ -50,13 +51,18 @@ export function Pagination({
   label = "Pagination",
   previousLabel = "Previous",
   nextLabel = "Next",
-  pageLabel = (p) => `Page ${p}`,
+  pageLabel = "Page {page}",
   className,
 }: PaginationProps) {
   if (total <= 1) return null;
-  const getHref = href === undefined ? undefined : typeof href === "string" ? (p: number) => href.replace("{page}", String(p)) : href;
+  const getHref =
+    href === undefined ? undefined : typeof href === "string" ? (p: number) => href.replace("{page}", String(p)) : href;
 
-  const control = (target: number, content: ReactNode, extra: { className: string; ariaLabel: string; current?: boolean }) => {
+  const control = (
+    target: number,
+    content: ReactNode,
+    extra: { className: string; ariaLabel: string; current?: boolean },
+  ) => {
     const disabled = target < 1 || target > total;
     const common = {
       className: cx("trc-pagination__control", extra.className),
@@ -94,7 +100,7 @@ export function Pagination({
             <li key={entry}>
               {control(entry, entry, {
                 className: "trc-pagination__page",
-                ariaLabel: pageLabel(entry),
+                ariaLabel: typeof pageLabel === "string" ? fill(pageLabel, { page: entry }) : pageLabel(entry),
                 current: entry === page,
               })}
             </li>

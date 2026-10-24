@@ -36,7 +36,11 @@ export function SegmentedControl({
   const [selected, setSelected] = useControllable(value, defaultValue ?? options[0]?.value ?? "", onValueChange);
   const generated = useId();
   return (
-    <div role="radiogroup" aria-label={label} className={cx("trc-segmented", size === "sm" && "trc-segmented--sm", className)}>
+    <div
+      role="radiogroup"
+      aria-label={label}
+      className={cx("trc-segmented", size === "sm" && "trc-segmented--sm", className)}
+    >
       {options.map((option) => (
         <label key={option.value} className="trc-segmented__option">
           <input

@@ -87,7 +87,6 @@ describe("toast", () => {
     act(() => vi.advanceTimersByTime(300));
     expect(screen.queryByText("Second")).toBeNull();
   });
-
 });
 
 it("toaster is accessible", async () => {

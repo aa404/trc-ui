@@ -17,7 +17,10 @@ describe("Accordion", () => {
     const button = screen.getByRole("button", { name: "What is trc ui?" });
     expect(button.closest("h2")).toBeInTheDocument();
     expect(button).toHaveAttribute("aria-expanded", "false");
-    expect(document.getElementById(button.getAttribute("aria-controls")!)).toHaveAttribute("aria-labelledby", button.id);
+    expect(document.getElementById(button.getAttribute("aria-controls")!)).toHaveAttribute(
+      "aria-labelledby",
+      button.id,
+    );
   });
 
   it("opens one item at a time by default", async () => {

@@ -61,7 +61,13 @@ export type TextProps<C extends ElementType = "p"> = {
 } & Omit<ComponentPropsWithoutRef<C>, "as" | "size">;
 
 /** Body text; `tone="muted"` (default) so that it does not compete with headings. */
-export function Text<C extends ElementType = "p">({ as, size = "md", tone = "muted", className, ...props }: TextProps<C>) {
+export function Text<C extends ElementType = "p">({
+  as,
+  size = "md",
+  tone = "muted",
+  className,
+  ...props
+}: TextProps<C>) {
   const Tag: ElementType = as ?? "p";
   return <Tag className={cx("trc-text", `trc-text--${size}`, `trc-text--${tone}`, className)} {...props} />;
 }

@@ -51,7 +51,8 @@ export type DropdownMenuProps = {
 };
 
 const isAction = (item: MenuItem): item is MenuAction => item !== "separator";
-const textOf = (item: MenuAction) => (item.textValue ?? (typeof item.label === "string" ? item.label : "")).toLowerCase();
+const textOf = (item: MenuAction) =>
+  (item.textValue ?? (typeof item.label === "string" ? item.label : "")).toLowerCase();
 
 /**
  * Menu of actions opened from a trigger. Keyboard: Enter, Space or the arrows open it; the arrows,

@@ -70,13 +70,7 @@ describe("Pagination", () => {
 describe("Breadcrumbs", () => {
   it("links every item but the current page", () => {
     render(
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Docs", href: "/docs" },
-          { label: "Pagination" },
-        ]}
-      />,
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Docs", href: "/docs" }, { label: "Pagination" }]} />,
     );
     expect(screen.getByRole("navigation", { name: "Breadcrumb" })).toBeInTheDocument();
     expect(screen.getAllByRole("link")).toHaveLength(2);

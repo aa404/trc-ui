@@ -38,7 +38,11 @@ export function RadioGroup({
   orientation = "vertical",
   className,
 }: RadioGroupProps) {
-  const [selected, setSelected] = useControllable<string | undefined>(value, defaultValue, (v) => v && onValueChange?.(v));
+  const [selected, setSelected] = useControllable<string | undefined>(
+    value,
+    defaultValue,
+    (v) => v && onValueChange?.(v),
+  );
   const id = useId();
   const message = error ?? hint;
   return (

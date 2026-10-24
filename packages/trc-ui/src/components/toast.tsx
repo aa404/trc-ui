@@ -51,8 +51,10 @@ export function toast(title: ReactNode, options: ToastOptions = {}) {
   emit();
   return id;
 }
-toast.success = (title: ReactNode, options: Omit<ToastOptions, "tone"> = {}) => toast(title, { ...options, tone: "success" });
-toast.error = (title: ReactNode, options: Omit<ToastOptions, "tone"> = {}) => toast(title, { ...options, tone: "error" });
+toast.success = (title: ReactNode, options: Omit<ToastOptions, "tone"> = {}) =>
+  toast(title, { ...options, tone: "success" });
+toast.error = (title: ReactNode, options: Omit<ToastOptions, "tone"> = {}) =>
+  toast(title, { ...options, tone: "error" });
 /** Dismisses one toast, or all of them without an id. */
 toast.dismiss = dismiss;
 
@@ -69,8 +71,17 @@ export type ToasterProps = {
  * Notification area, placed once near the root of the app. New toasts are announced to screen
  * readers (errors right away); timers pause while the pointer or the keyboard focus is inside.
  */
-export function Toaster({ position = "bottom-right", duration = 5000, label = "Notifications", closeLabel = "Close" }: ToasterProps) {
-  const toasts = useSyncExternalStore(subscribe, () => items, () => EMPTY);
+export function Toaster({
+  position = "bottom-right",
+  duration = 5000,
+  label = "Notifications",
+  closeLabel = "Close",
+}: ToasterProps) {
+  const toasts = useSyncExternalStore(
+    subscribe,
+    () => items,
+    () => EMPTY,
+  );
   const [paused, setPaused] = useState(false);
 
   return (

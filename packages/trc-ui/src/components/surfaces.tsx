@@ -12,7 +12,12 @@ export type ContainerProps<C extends ElementType = "div"> = Polymorphic<
 >;
 
 /** Centered max width, with side gutters that grow with the screen. */
-export function Container<C extends ElementType = "div">({ as, size = "default", className, ...props }: ContainerProps<C>) {
+export function Container<C extends ElementType = "div">({
+  as,
+  size = "default",
+  className,
+  ...props
+}: ContainerProps<C>) {
   const Tag: ElementType = as ?? "div";
   return <Tag className={cx("trc-container", size !== "default" && `trc-container--${size}`, className)} {...props} />;
 }

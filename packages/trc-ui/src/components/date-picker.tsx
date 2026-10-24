@@ -77,7 +77,8 @@ export function DatePicker({
   const format = formatDate ?? ((d: Date) => display.format(d));
 
   const outOfRange = (date: Date) => (!!min && isBefore(date, min)) || (!!max && isBefore(max, date));
-  const clamp = (date: Date) => (min && isBefore(date, min) ? startOfDay(min) : max && isBefore(max, date) ? startOfDay(max) : date);
+  const clamp = (date: Date) =>
+    min && isBefore(date, min) ? startOfDay(min) : max && isBefore(max, date) ? startOfDay(max) : date;
 
   const openCalendar = () => {
     setFocused(clamp(startOfDay(selected ?? new Date())));
@@ -122,7 +123,9 @@ export function DatePicker({
   // Tab stays inside the calendar while it is open.
   const onPanelKeyDown = (e: KeyboardEvent) => {
     if (e.key !== "Tab") return;
-    const items = [...(panelRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]):not([tabindex='-1'])") ?? [])];
+    const items = [
+      ...(panelRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]):not([tabindex='-1'])") ?? []),
+    ];
     const first = items[0];
     const last = items[items.length - 1];
     if (e.shiftKey && document.activeElement === first) {
@@ -190,7 +193,12 @@ export function DatePicker({
                 <ChevronRight />
               </button>
             </div>
-            <table role="grid" aria-labelledby={`${uid}-title`} className="trc-calendar__grid" onKeyDown={onGridKeyDown}>
+            <table
+              role="grid"
+              aria-labelledby={`${uid}-title`}
+              className="trc-calendar__grid"
+              onKeyDown={onGridKeyDown}
+            >
               <thead>
                 <tr>
                   {weeks[0]!.map((day) => (

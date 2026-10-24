@@ -19,7 +19,11 @@ export function Skeleton({ width, height, circle = false, lines, className }: Sk
     return (
       <span aria-hidden className={cx("trc-skeleton-lines", className)} style={{ width: size(width) }}>
         {Array.from({ length: lines }, (_, i) => (
-          <span key={i} className="trc-skeleton trc-skeleton--text" style={{ width: i === lines - 1 ? "60%" : "100%" }} />
+          <span
+            key={i}
+            className="trc-skeleton trc-skeleton--text"
+            style={{ width: i === lines - 1 ? "60%" : "100%" }}
+          />
         ))}
       </span>
     );
@@ -27,7 +31,12 @@ export function Skeleton({ width, height, circle = false, lines, className }: Sk
   return (
     <span
       aria-hidden
-      className={cx("trc-skeleton", circle && "trc-skeleton--circle", !height && !circle && "trc-skeleton--text", className)}
+      className={cx(
+        "trc-skeleton",
+        circle && "trc-skeleton--circle",
+        !height && !circle && "trc-skeleton--text",
+        className,
+      )}
       style={{ width: size(width), height: size(height) ?? (circle ? size(width) : undefined) }}
     />
   );
@@ -106,7 +115,10 @@ export function Progress({
         aria-valuetext={text}
         className="trc-progress__track"
       >
-        <div className="trc-progress__fill" style={{ "--trc-progress": `${(clamped / max) * 100}%` } as CSSProperties} />
+        <div
+          className="trc-progress__fill"
+          style={{ "--trc-progress": `${(clamped / max) * 100}%` } as CSSProperties}
+        />
       </div>
     </div>
   );

@@ -28,11 +28,7 @@ export type ComboboxProps = {
 };
 
 /** Case and accent insensitive text, for matching "Bénin" with "benin". */
-const normalize = (text: string) =>
-  text
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase();
+const normalize = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 /**
  * Search field with a list of suggestions. Typing filters (ignoring case and accents); the arrows
@@ -77,13 +73,15 @@ export function Combobox({
   useAnchoredPosition(open, wrapperRef, listRef, { side: "bottom", align: "start", offset: 6 });
   // The list is as wide as the field.
   useIsomorphicLayoutEffect(() => {
-    if (open && listRef.current && wrapperRef.current) listRef.current.style.width = `${wrapperRef.current.offsetWidth}px`;
+    if (open && listRef.current && wrapperRef.current)
+      listRef.current.style.width = `${wrapperRef.current.offsetWidth}px`;
   }, [open]);
   useDismiss(open, [wrapperRef, listRef], () => close());
 
   // Keep the active option in view.
   useEffect(() => {
-    if (open && active >= 0) listRef.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({ block: "nearest" });
+    if (open && active >= 0)
+      listRef.current?.querySelector(`[data-index="${active}"]`)?.scrollIntoView({ block: "nearest" });
   }, [open, active]);
 
   const openList = (index?: number) => {

@@ -19,7 +19,11 @@ const columns: TableColumn<Invoice>[] = [
   { key: "date", header: "Date", sortable: true, render: (r) => r.date.toISOString().slice(0, 10) },
 ];
 
-const firstColumn = () => screen.getAllByRole("row").slice(1).map((row) => within(row).getAllByRole("cell")[0]!.textContent);
+const firstColumn = () =>
+  screen
+    .getAllByRole("row")
+    .slice(1)
+    .map((row) => within(row).getAllByRole("cell")[0]!.textContent);
 
 describe("Table", () => {
   it("renders a captioned table with headers", () => {

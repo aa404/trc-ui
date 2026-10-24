@@ -6,7 +6,10 @@ import { Field } from "./field";
 import { PinInput } from "./pin-input";
 
 const boxes = () => screen.getAllByRole("textbox") as HTMLInputElement[];
-const values = () => boxes().map((b) => b.value).join("|");
+const values = () =>
+  boxes()
+    .map((b) => b.value)
+    .join("|");
 
 describe("PinInput", () => {
   it("renders labelled boxes in a named group", () => {

@@ -3,6 +3,7 @@
 import { useRef, type ClipboardEvent, type KeyboardEvent } from "react";
 import { useControllable } from "../hooks/use-controllable";
 import { cx } from "../utils/cx";
+import { fill } from "../utils/label";
 import { useFieldProps } from "./field";
 
 export type PinInputProps = {
@@ -19,8 +20,11 @@ export type PinInputProps = {
   mask?: boolean;
   /** Accessible name of the group: "Verification code". */
   label?: string;
-  /** Accessible name of each box: "Character 1 of 6". */
-  charLabel?: (index: number, length: number) => string;
+  /**
+   * Accessible name of each box: a template such as "Character {index} of {length}" ({index} starts
+   * at 1), or a function receiving the 0-based index.
+   */
+  charLabel?: string | ((index: number, length: number) => string);
   invalid?: boolean;
   disabled?: boolean;
   id?: string;
@@ -42,7 +46,7 @@ export function PinInput({
   type = "numeric",
   mask = false,
   label = "Verification code",
-  charLabel = (i, n) => `Character ${i + 1} of ${n}`,
+  charLabel = "Character {index} of {length}",
   invalid,
   disabled,
   id,
@@ -133,7 +137,7 @@ export function PinInput({
           inputMode={type === "numeric" ? "numeric" : "text"}
           autoComplete={i === 0 ? "one-time-code" : "off"}
           maxLength={length}
-          aria-label={charLabel(i, length)}
+          aria-label={typeof charLabel === "string" ? fill(charLabel, { index: i + 1, length }) : charLabel(i, length)}
           aria-invalid={field["aria-invalid"]}
           disabled={disabled}
           value={charAt(i)}

@@ -21,9 +21,14 @@ export function Steps({ items, current, className }: StepsProps) {
   return (
     <ol className={cx("trc-steps", className)}>
       {items.map((item, i) => {
-        const state = current === undefined ? "default" : i < current ? "complete" : i === current ? "current" : "upcoming";
+        const state =
+          current === undefined ? "default" : i < current ? "complete" : i === current ? "current" : "upcoming";
         return (
-          <li key={i} className={cx("trc-steps__item", `trc-steps__item--${state}`)} aria-current={state === "current" ? "step" : undefined}>
+          <li
+            key={i}
+            className={cx("trc-steps__item", `trc-steps__item--${state}`)}
+            aria-current={state === "current" ? "step" : undefined}
+          >
             <span aria-hidden className="trc-steps__number">
               {String(i + 1).padStart(2, "0")}
             </span>

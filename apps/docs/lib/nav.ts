@@ -224,6 +224,47 @@ export const DOCS_NAV: DocSection[] = [
       },
     ],
   },
+  {
+    id: "data",
+    title: { en: "Data display", fr: "Affichage de données" },
+    description: {
+      en: "People, figures, tables, loading states and code.",
+      fr: "Personnes, chiffres, tableaux, chargements et code.",
+    },
+    pages: [
+      {
+        title: { en: "Avatar and tag", fr: "Avatar et étiquette" },
+        href: "/docs/avatar/",
+        description: {
+          en: "Pictures with initials as a fallback, small labels.",
+          fr: "Photos avec initiales de secours, petites étiquettes.",
+        },
+      },
+      {
+        title: { en: "Stat and table", fr: "Chiffre et tableau" },
+        href: "/docs/table/",
+        description: { en: "Key figures and sortable data tables.", fr: "Chiffres clés et tableaux triables." },
+      },
+      {
+        title: { en: "Loading", fr: "Chargement" },
+        href: "/docs/loading/",
+        description: {
+          en: "Skeleton, spinner and progress bar.",
+          fr: "Squelette, indicateur et barre de progression.",
+        },
+      },
+      {
+        title: { en: "Kbd and divider", fr: "Touches et séparateur" },
+        href: "/docs/kbd/",
+        description: { en: "Keyboard shortcuts and hairlines.", fr: "Raccourcis clavier et traits fins." },
+      },
+      {
+        title: { en: "Code block", fr: "Bloc de code" },
+        href: "/docs/code-block/",
+        description: { en: "File tab and copy button.", fr: "Onglet de fichier et bouton copier." },
+      },
+    ],
+  },
 ];
 
 export const ALL_PAGES = DOCS_NAV.flatMap((section) => section.pages);

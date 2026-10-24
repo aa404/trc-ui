@@ -26,13 +26,7 @@ export type DialogProps = {
  * Escape, the close button or the overlay close it, and focus returns to where it was.
  * Put `data-autofocus` on the element that should receive focus first.
  */
-export function Dialog({
-  size = "md",
-  closeLabel = "Close",
-  closeOnOverlay = true,
-  className,
-  ...props
-}: DialogProps) {
+export function Dialog({ size = "md", closeLabel = "Close", closeOnOverlay = true, className, ...props }: DialogProps) {
   return (
     <ModalLayer
       {...props}

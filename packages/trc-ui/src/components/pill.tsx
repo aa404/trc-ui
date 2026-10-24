@@ -1,10 +1,4 @@
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-  type ElementType,
-  type ReactNode,
-  type Ref,
-} from "react";
+import { forwardRef, type ComponentPropsWithoutRef, type ElementType, type ReactNode, type Ref } from "react";
 import { cx } from "../utils/cx";
 import { ArrowRight, Spinner } from "../utils/icons";
 
