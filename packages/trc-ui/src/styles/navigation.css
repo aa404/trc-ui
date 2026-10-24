@@ -124,3 +124,152 @@
     transition-duration: 1ms;
   }
 }
+
+/* ---------- Accordion ---------- */
+
+.trc-accordion {
+  border-top: 1px solid var(--trc-border);
+  font-family: var(--trc-font);
+}
+.trc-accordion__item {
+  border-bottom: 1px solid var(--trc-border);
+}
+.trc-accordion__heading {
+  margin: 0;
+  font: inherit;
+}
+.trc-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 22px 0;
+  border: 0;
+  background: none;
+  color: var(--trc-fg);
+  font: 400 18px/1.35 var(--trc-font);
+  letter-spacing: -0.015em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.trc-accordion__trigger:hover:not(:disabled) {
+  color: var(--trc-accent);
+}
+.trc-accordion__trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.trc-accordion__trigger:focus-visible {
+  outline: 2px solid var(--trc-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.trc-accordion__chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--trc-fg-subtle);
+  transition: transform 400ms var(--trc-ease-out);
+}
+.trc-accordion__item--open .trc-accordion__chevron {
+  transform: rotate(180deg);
+}
+/* The height animates from 0 to the content's height through a one-row grid. */
+.trc-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 400ms var(--trc-ease-out);
+}
+.trc-accordion__item--open .trc-accordion__panel {
+  grid-template-rows: 1fr;
+}
+.trc-accordion__inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s 400ms;
+}
+.trc-accordion__item--open .trc-accordion__inner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+.trc-accordion__content {
+  padding: 0 40px 24px 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--trc-fg-muted);
+}
+
+/* ---------- Steps ---------- */
+
+.trc-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--trc-font);
+}
+.trc-steps__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 20px;
+  padding-bottom: 36px;
+}
+.trc-steps__item:last-child {
+  padding-bottom: 0;
+}
+/* Hairline joining the numbers. */
+.trc-steps__item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  bottom: 8px;
+  left: 27px;
+  width: 1px;
+  background: var(--trc-border-strong);
+}
+.trc-steps__number {
+  font-size: 2.5rem;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--trc-accent);
+  text-align: center;
+}
+.trc-steps__text {
+  padding-top: 6px;
+}
+.trc-steps__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--trc-fg);
+}
+.trc-steps__description {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--trc-fg-muted);
+}
+.trc-steps__item--complete .trc-steps__number {
+  opacity: 0.55;
+}
+.trc-steps__item--complete:not(:last-child)::before {
+  background: color-mix(in srgb, var(--trc-accent) 50%, transparent);
+}
+.trc-steps__item--upcoming .trc-steps__number {
+  color: var(--trc-fg-faint);
+}
+.trc-steps__item--upcoming .trc-steps__title {
+  color: var(--trc-fg-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trc-accordion__panel,
+  .trc-accordion__chevron {
+    transition-duration: 1ms;
+  }
+}

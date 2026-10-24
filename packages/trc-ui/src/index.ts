@@ -44,3 +44,7 @@ export { Tabs } from "./components/tabs";
 export type { TabItem, TabsProps } from "./components/tabs";
 export { SegmentedControl } from "./components/segmented-control";
 export type { SegmentedControlProps, SegmentedOption } from "./components/segmented-control";
+export { Accordion } from "./components/accordion";
+export type { AccordionItem, AccordionProps } from "./components/accordion";
+export { Steps } from "./components/steps";
+export type { StepItem, StepsProps } from "./components/steps";
