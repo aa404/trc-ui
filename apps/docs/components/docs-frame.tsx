@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { DocsFooter } from "@/components/docs-footer";
 import { DocsHeader } from "@/components/docs-header";
 import { DocsSidebar } from "@/components/docs-sidebar";
 import type { Lang } from "@/lib/i18n";
@@ -12,6 +13,7 @@ export function DocsFrame({ lang, children }: { lang: Lang; children: ReactNode 
         <DocsSidebar lang={lang} />
         <main>{children}</main>
       </div>
+      <DocsFooter lang={lang} />
     </>
   );
 }
