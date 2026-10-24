@@ -10,6 +10,7 @@ export const DOCS_NAV: DocSection[] = [
     pages: [
       { title: { en: "Installation", fr: "Installation" }, href: "/docs/getting-started/" },
       { title: { en: "Theming", fr: "Thème" }, href: "/docs/theming/" },
+      { title: { en: "Colors generator", fr: "Générateur de couleurs" }, href: "/docs/colors-generator/" },
     ],
   },
   {
