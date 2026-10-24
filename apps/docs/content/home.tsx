@@ -2,15 +2,18 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { BackToTop, Card, Container, Heading, PillLink, Section, Text } from "trc-ui";
 import { CopyButton } from "@/components/copy-button";
+import { HeroPreview } from "@/components/hero-preview";
 import { Compass, Layers, Spark } from "@/components/demo-icons";
 import { DocsFooter } from "@/components/docs-footer";
 import { DocsHeader } from "@/components/docs-header";
 import { UI, localePath, type Lang } from "@/lib/i18n";
-import { COMPONENT_SECTIONS, DOCS_NAV, REPO_URL } from "@/lib/nav";
+import { COMPONENT_SECTIONS, DOCS_NAV } from "@/lib/nav";
 
 const T = {
   en: {
     title: "Interfaces in *deep black.*",
+    browse: "Browse components",
+    meta: ["Open source, MIT", "React 18+", "50+ components", "English and French docs"],
     pillars: "Calm by *design*",
     pillarsLead: "Three rules carry the whole library, so every page you build stays consistent.",
     items: [
@@ -26,6 +29,8 @@ const T = {
   },
   fr: {
     title: "Des interfaces en *noir profond.*",
+    browse: "Voir les composants",
+    meta: ["Open source, MIT", "React 18+", "Plus de 50 composants", "Doc en anglais et en français"],
     pillars: "Calme par *conception*",
     pillarsLead: "Trois règles portent toute la bibliothèque : chaque page que vous construisez reste cohérente.",
     items: [
@@ -54,31 +59,46 @@ export function HomeContent({ lang }: { lang: Lang }) {
     <>
       <DocsHeader lang={lang} />
       <main>
-        <Container className="home-hero">
-          <Heading as="h1" size="display" className="trc-enter" style={enter(100)}>
-            {t.title}
-          </Heading>
-          <Text size="lg" className="home-hero__lead trc-enter" style={enter(200)}>
-            {ui.tagline}
-          </Text>
-          <div className="home-hero__actions trc-enter" style={enter(300)}>
-            <PillLink as={Link} href={localePath(lang, "/docs/getting-started/")} solid>
-              {ui.getStarted}
-            </PillLink>
-            <PillLink as={Link} href={REPO_URL}>
-              GitHub
-            </PillLink>
+        <section className="home-hero">
+          <div className="home-hero__card">
+            <div aria-hidden className="home-hero__glow" />
+            <div className="home-hero__inner">
+              <div className="home-hero__text">
+                <Heading as="h1" size="display" className="trc-enter" style={enter(100)}>
+                  {t.title}
+                </Heading>
+                <Text size="lg" className="home-hero__lead trc-enter" style={enter(200)}>
+                  {ui.tagline}
+                </Text>
+                <div className="home-hero__actions trc-enter" style={enter(300)}>
+                  <PillLink as={Link} href={localePath(lang, "/docs/getting-started/")} solid>
+                    {ui.getStarted}
+                  </PillLink>
+                  <PillLink as={Link} href={localePath(lang, "/docs/components/")}>
+                    {t.browse}
+                  </PillLink>
+                </div>
+                <div className="home-install trc-enter" style={enter(400)}>
+                  <code>
+                    <span aria-hidden className="home-install__prompt">
+                      $
+                    </span>{" "}
+                    npm install trc-ui
+                  </code>
+                  <CopyButton code="npm install trc-ui" />
+                </div>
+                <ul className="home-hero__meta trc-enter" style={enter(500)}>
+                  {t.meta.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="trc-enter" style={enter(350)}>
+                <HeroPreview lang={lang} />
+              </div>
+            </div>
           </div>
-          <div className="home-install trc-enter" style={enter(400)}>
-            <code>
-              <span aria-hidden className="home-install__prompt">
-                $
-              </span>{" "}
-              npm install trc-ui
-            </code>
-            <CopyButton code="npm install trc-ui" />
-          </div>
-        </Container>
+        </section>
 
         <Section spacing="lg">
           <Container>

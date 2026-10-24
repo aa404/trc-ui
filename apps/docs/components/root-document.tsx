@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import type { ReactNode } from "react";
 import { Toaster } from "trc-ui";
+import { ACCENT_BOOT_SCRIPT } from "@/lib/accent";
 import { BASE_PATH } from "@/lib/asset";
 import { UI, type Lang } from "@/lib/i18n";
 import "trc-ui/styles.css";
@@ -18,7 +19,11 @@ export const rootMetadata = (lang: Lang): Metadata => ({
 /** HTML document shared by both languages: each has its own root layout, for a correct `<html lang>`. */
 export function RootDocument({ lang, children }: { lang: Lang; children: ReactNode }) {
   return (
-    <html lang={lang} className={montserrat.variable}>
+    // The accent script sets a style on <html> before hydration: expected, not a mismatch.
+    <html lang={lang} className={montserrat.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: ACCENT_BOOT_SCRIPT }} />
+      </head>
       <body className="trc">
         {children}
         <Toaster label={UI[lang].notifications} closeLabel={UI[lang].close} />

@@ -10,7 +10,8 @@ const LANG_BADGE: Record<string, string> = { tsx: "TS", ts: "TS", css: "CSS", ba
  */
 export async function CodeBlock({ code, lang = "tsx", title }: { code: string; lang?: string; title?: string }) {
   const source = code.trim();
-  const html = await codeToHtml(source, { lang, theme: noirProfond });
+  // The theme's accent is fixed at build time: point it to the variable, so it follows the chosen accent.
+  const html = (await codeToHtml(source, { lang, theme: noirProfond })).replace(/#08c8d8/gi, "var(--trc-accent)");
   return (
     <div className={title ? "docs-code" : "docs-code docs-code--bare"}>
       {title ? (
