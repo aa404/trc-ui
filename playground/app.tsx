@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import {
   ArrowLeft,
+  BackToTop,
   Card,
   Checkbox,
   Container,
   Field,
   Heading,
+  HeroVideo,
   Input,
+  PageHero,
   PillButton,
   PillLink,
   Section,
@@ -53,14 +56,32 @@ export function App() {
   return (
     <>
       <SiteHeader logo={<Logo />} logoLabel="trc-ui" nav={NAV} cta={{ label: "Installer", href: "#" }} />
-      <Container as="main" className="pg">
-        <Heading as="h1" size="display">
+      <HeroVideo
+        clips={[1, 2].map((n) => ({
+          webm: `/media/hero-${n}.webm`,
+          mp4: `/media/hero-${n}.mp4`,
+          poster: `/media/hero-${n}-poster.jpg`,
+        }))}
+        aside={<Text tone="subtle">React 18+ · Next.js · Vite</Text>}
+      >
+        <Heading as="h1" size="display" className="trc-enter" style={{ "--trc-delay": "150ms" } as CSSProperties}>
           Des interfaces en *noir profond.*
         </Heading>
-        <Text size="lg" style={{ marginTop: 24, maxWidth: 640 }}>
+        <Text
+          size="lg"
+          className="trc-enter"
+          style={{ marginTop: 24, maxWidth: 640, "--trc-delay": "250ms" } as CSSProperties}
+        >
           Fonds quasi noirs, cartes graphite, titres fins et une seule couleur d'accent.
         </Text>
-
+        <div className="pg-row trc-enter" style={{ marginTop: 40, "--trc-delay": "350ms" } as CSSProperties}>
+          <PillLink href="#" solid>
+            Commencer
+          </PillLink>
+          <PillLink href="#">Voir les composants</PillLink>
+        </div>
+      </HeroVideo>
+      <Container as="main" className="pg">
         <section className="pg-section">
           <Heading>Comment ça *marche*</Heading>
           <Heading size="lg" accentLast={2}>
@@ -169,6 +190,16 @@ export function App() {
           </Card>
         </section>
       </Container>
+      <PageHero
+        title="Une page intérieure, en retrait des bords"
+        description="PageHero : photo de fond assombrie, titre fin dont les derniers mots prennent l'accent."
+        meta="Mis à jour le 24 octobre 2026"
+        image="/media/page.webp"
+      />
+      <PageHero
+        title="Sans photo, un halo discret"
+        description="Le fond par défaut quand aucune image n'est fournie."
+      />
       <Section inset spacing="lg">
         <Container size="narrow" style={{ textAlign: "center" }}>
           <Heading>Prêt à *commencer* ?</Heading>
@@ -214,6 +245,7 @@ export function App() {
       >
         <PillLink href="#">Commencer</PillLink>
       </SiteFooter>
+      <BackToTop />
     </>
   );
 }

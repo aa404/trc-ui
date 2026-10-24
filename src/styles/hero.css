@@ -1,0 +1,213 @@
+/* Carte de héros en retrait des bords, comme les sections `inset`. */
+.trc-hero-inset {
+  box-sizing: border-box;
+  padding: 8px;
+}
+@media (min-width: 640px) {
+  .trc-hero-inset {
+    padding: 16px;
+  }
+}
+
+/* Fond photo ou vidéo, couvrant la carte sous les voiles. */
+.trc-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.trc-hero__media > img,
+.trc-hero__media > picture,
+.trc-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- PageHero ---------- */
+
+.trc-page-hero {
+  position: relative;
+  isolation: isolate;
+  max-width: 1600px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+  color: var(--trc-fg);
+}
+/* Sans photo : un halo d'accent discret. */
+.trc-page-hero__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 85% 0%, color-mix(in srgb, var(--trc-accent) 16%, transparent), transparent 60%);
+}
+.trc-page-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    rgba(11, 12, 15, 0.97) 0%,
+    rgba(11, 12, 15, 0.85) 50%,
+    rgba(11, 12, 15, 0.55) 100%
+  );
+}
+.trc-page-hero:not(:has(img, picture, video)) .trc-page-hero__veil {
+  display: none;
+}
+.trc-page-hero__content {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 144px 24px 64px;
+}
+.trc-page-hero__title {
+  max-width: 56rem;
+  font-size: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+}
+.trc-page-hero__description {
+  max-width: 42rem;
+  margin: 24px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--trc-fg-muted);
+}
+.trc-page-hero__meta {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--trc-fg-subtle);
+}
+.trc-page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+@media (min-width: 640px) {
+  .trc-page-hero__content {
+    padding-inline: 40px;
+  }
+}
+@media (min-width: 768px) {
+  .trc-page-hero__content {
+    padding-block: 176px 80px;
+  }
+}
+
+/* ---------- HeroVideo ---------- */
+
+.trc-hero-video {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  min-height: calc(100svh - 16px);
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+  color: var(--trc-fg);
+  /* `overflow: hidden` ne rogne pas toujours l'arrondi d'une couche animée (vidéo en parallaxe). */
+  clip-path: inset(0 round var(--trc-radius));
+}
+@media (min-width: 640px) {
+  .trc-hero-video {
+    min-height: calc(100svh - 32px);
+  }
+}
+/* Couche plus haute que la carte : la parallaxe la fait descendre sans découvrir le fond. */
+.trc-hero-video__media {
+  inset: -16px 0 -128px;
+  will-change: transform;
+}
+.trc-hero-video__clip {
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+.trc-hero-video__clip--active {
+  opacity: 1;
+}
+/* Voiles : assombrit la vidéo, renforce le bas (texte) et la gauche. */
+.trc-hero-video__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(11, 12, 15, 0.95) 0%, rgba(11, 12, 15, 0.55) 40%, rgba(11, 12, 15, 0.1) 75%),
+    linear-gradient(to right, rgba(11, 12, 15, 0.6), transparent 60%),
+    rgba(0, 0, 0, 0.45);
+}
+.trc-hero-video__content {
+  box-sizing: border-box;
+  display: grid;
+  align-items: end;
+  gap: 40px;
+  margin-top: auto;
+  padding: 144px 24px 40px;
+}
+.trc-hero-video__main {
+  max-width: 48rem;
+}
+@media (min-width: 640px) {
+  .trc-hero-video__content {
+    padding: 160px 40px 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .trc-hero-video__content {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+/* ---------- Haut de page ---------- */
+
+.trc-back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--trc-accent);
+  color: var(--trc-on-accent);
+  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--trc-accent) 60%, transparent);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+.trc-back-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.trc-back-to-top--visible:hover {
+  transform: translateY(-2px);
+}
+.trc-back-to-top:focus-visible {
+  outline: none;
+  box-shadow: var(--trc-ring);
+}
+.trc-back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+@media (min-width: 640px) {
+  .trc-back-to-top {
+    right: 32px;
+    bottom: 32px;
+  }
+}

@@ -6,7 +6,7 @@ export type { HeadingProps, HeadingSize, TextProps } from "./components/typograp
 export { PillButton, PillLink } from "./components/pill";
 export type { PillButtonProps, PillLinkProps } from "./components/pill";
 
-export { ArrowLeft, ArrowRight, Check, ChevronDown, Close, Menu } from "./utils/icons";
+export { ArrowLeft, ArrowRight, ArrowUp, Check, ChevronDown, Close, Menu } from "./utils/icons";
 
 export { Card, Container, Section } from "./components/surfaces";
 export type { CardProps, ContainerProps, SectionProps } from "./components/surfaces";
@@ -20,3 +20,8 @@ export { SiteHeader } from "./components/site-header";
 export type { NavItem, NavLink, NavMenu, SiteHeaderProps } from "./components/site-header";
 export { SiteFooter } from "./components/site-footer";
 export type { FooterLink, SiteFooterProps } from "./components/site-footer";
+
+export { HeroVideo, PageHero } from "./components/hero";
+export type { HeroClip, HeroVideoProps, PageHeroProps } from "./components/hero";
+export { BackToTop } from "./components/back-to-top";
+export type { BackToTopProps } from "./components/back-to-top";

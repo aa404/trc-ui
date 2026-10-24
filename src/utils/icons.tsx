@@ -54,3 +54,9 @@ export const Close = (props: IconProps) => (
     <path d="M18 6 6 18M6 6l12 12" />
   </svg>
 );
+
+export const ArrowUp = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <path d="M12 19V5M6 11l6-6 6 6" />
+  </svg>
+);

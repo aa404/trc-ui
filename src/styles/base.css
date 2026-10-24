@@ -41,3 +41,20 @@
     transform: rotate(360deg);
   }
 }
+
+/* Apparition douce au chargement ; `--trc-delay` échelonne les éléments. */
+.trc-enter {
+  animation: trc-enter 900ms var(--trc-ease-out) both;
+  animation-delay: var(--trc-delay, 0ms);
+}
+@keyframes trc-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trc-enter {
+    animation: none;
+  }
+}
