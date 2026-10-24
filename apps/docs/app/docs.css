@@ -145,20 +145,46 @@ body {
 /* ---------- Code blocks ---------- */
 
 .docs-code {
+  position: relative;
   overflow: hidden;
   border: 1px solid var(--trc-border);
   border-radius: var(--trc-radius);
   background: var(--trc-surface);
 }
-.docs-code__title {
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--trc-border);
+/* File tab on the left, copy button on the right. */
+.docs-code__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 12px 0 16px;
+}
+.docs-code__file {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 7px 14px 7px 8px;
+  border: 1px solid var(--trc-border-strong);
+  border-radius: 10px;
+  background: var(--trc-bg);
+  font-family: var(--trc-font-mono);
   font-size: 13px;
-  color: var(--trc-fg-subtle);
+  color: var(--trc-fg);
+  white-space: nowrap;
+}
+.docs-code__lang {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--trc-accent);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--trc-on-accent);
 }
 .docs-code pre {
   margin: 0;
-  padding: 20px;
+  padding: 16px 20px 20px;
   overflow-x: auto;
   background: transparent !important;
   font-family: var(--trc-font-mono);
@@ -612,4 +638,48 @@ body {
     top: 12px;
     bottom: auto;
   }
+}
+
+/* ---------- Copy button ---------- */
+
+.docs-copy {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--trc-fg-subtle);
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
+}
+.docs-copy:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--trc-fg);
+}
+.docs-copy[data-copied="true"] {
+  color: var(--trc-accent);
+}
+.docs-copy:focus-visible {
+  outline: 2px solid var(--trc-accent);
+  outline-offset: 1px;
+}
+.docs-copy svg {
+  width: 18px;
+  height: 18px;
+}
+/* Without a file tab, the button floats in the top-right corner and the code makes room for it. */
+.docs-code--bare > .docs-copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.docs-code--bare pre {
+  padding: 20px 56px 20px 20px;
 }
