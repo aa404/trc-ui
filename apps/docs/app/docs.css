@@ -683,3 +683,20 @@ body {
 .docs-code--bare pre {
   padding: 20px 56px 20px 20px;
 }
+
+/* Framed demo: a transform makes the preview the containing block of fixed elements. */
+.docs-demo__preview--frame {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.docs-demo__preview--frame .trc-header {
+  position: absolute;
+}
+.docs-demo__preview--frame .trc-hero-video {
+  min-height: 560px;
+}
+.docs-demo__preview--frame .trc-footer {
+  padding-top: 8px;
+}
