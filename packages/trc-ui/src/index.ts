@@ -62,3 +62,5 @@ export { PinInput } from "./components/pin-input";
 export type { PinInputProps } from "./components/pin-input";
 export { Combobox } from "./components/combobox";
 export type { ComboboxOption, ComboboxProps } from "./components/combobox";
+export { Dropzone, FileInput, acceptsFile, formatBytes, validateFiles } from "./components/file-input";
+export type { DropzoneProps, FileInputProps, FileRejection } from "./components/file-input";
