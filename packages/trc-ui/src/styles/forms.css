@@ -328,3 +328,28 @@
   outline: none;
   box-shadow: var(--trc-ring);
 }
+
+/* ---------- PIN / one-time code ---------- */
+
+.trc-pin {
+  display: flex;
+  gap: 8px;
+}
+.trc-pin__box {
+  width: 48px;
+  height: 56px;
+  padding: 0;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  caret-color: var(--trc-accent);
+}
+@media (max-width: 400px) {
+  .trc-pin {
+    gap: 6px;
+  }
+  .trc-pin__box {
+    width: 42px;
+    height: 52px;
+  }
+}

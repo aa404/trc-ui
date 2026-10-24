@@ -58,3 +58,5 @@ export { RadioGroup } from "./components/radio-group";
 export type { RadioGroupProps, RadioOption } from "./components/radio-group";
 export { PasswordInput } from "./components/password-input";
 export type { PasswordInputProps } from "./components/password-input";
+export { PinInput } from "./components/pin-input";
+export type { PinInputProps } from "./components/pin-input";
