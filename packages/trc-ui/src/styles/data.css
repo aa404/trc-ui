@@ -108,6 +108,8 @@
 
 .trc-stat {
   display: grid;
+  /* Stretched by a parent grid, the stat keeps its rows packed at the top. */
+  align-content: start;
   gap: 6px;
   margin: 0;
   font-family: var(--trc-font);
