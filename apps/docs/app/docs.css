@@ -800,3 +800,8 @@ body {
   padding: 10px 14px;
   font-size: 14px;
 }
+
+/* Install commands: the tab panel sits right under the tabs. */
+.docs-install-tabs .trc-tabs__panel {
+  padding-top: 16px;
+}

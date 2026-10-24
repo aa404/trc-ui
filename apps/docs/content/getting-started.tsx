@@ -1,6 +1,7 @@
 import { Heading } from "trc-ui";
 import { CodeBlock } from "@/components/code-block";
 import { DocPage } from "@/components/doc-page";
+import { InstallTabs } from "@/components/install-tabs";
 import type { Lang } from "@/lib/i18n";
 
 export const gettingStartedTitle = { en: "Installation", fr: "Installation" };
@@ -87,7 +88,7 @@ export function GettingStartedContent({ lang }: { lang: Lang }) {
       <Heading as="h2" size="lg">
         {en ? "Install the *package*" : "Installer le *paquet*"}
       </Heading>
-      <CodeBlock lang="bash" code="npm install trc-ui" />
+      <InstallTabs lang={lang} />
       {en ? (
         <p>
           The package only depends on <code>react</code> and <code>react-dom</code>. It ships its components as ESM and

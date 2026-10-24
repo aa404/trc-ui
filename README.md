@@ -19,6 +19,10 @@
 
 ```bash
 npm install trc-ui
+# or
+yarn add trc-ui
+pnpm add trc-ui
+bun add trc-ui
 ```
 
 **Documentation and live demos: [ui.theringconcept.com](https://ui.theringconcept.com)**

@@ -17,6 +17,10 @@ React components with a deep black design: near-black backgrounds, graphite card
 
 ```bash
 npm install trc-ui
+# or
+yarn add trc-ui
+pnpm add trc-ui
+bun add trc-ui
 ```
 
 React 18 or later is required.
