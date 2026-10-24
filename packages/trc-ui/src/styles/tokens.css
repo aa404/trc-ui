@@ -23,7 +23,6 @@
 
   /* A single accent color; `--trc-on-accent` is the text placed on it. */
   --trc-accent: #08c8d8;
-  --trc-accent-soft: color-mix(in srgb, var(--trc-accent) 12%, transparent);
   --trc-on-accent: #0b0c0f;
 
   /* Reserved for form error messages. */
@@ -42,6 +41,15 @@
   --trc-ease: cubic-bezier(0.77, 0, 0.175, 1);
   --trc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --trc-duration: 500ms;
+}
 
+/*
+ * Derived tokens, recomputed on every element: an accent overridden on a single area
+ * (style="--trc-accent: …") also changes the focus ring and the soft accent there.
+ */
+*,
+::before,
+::after {
+  --trc-accent-soft: color-mix(in srgb, var(--trc-accent) 12%, transparent);
   --trc-ring: 0 0 0 2px var(--trc-bg), 0 0 0 4px var(--trc-accent);
 }
