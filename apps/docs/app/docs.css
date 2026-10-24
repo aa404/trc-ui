@@ -220,9 +220,22 @@ body {
 }
 
 .docs-logo {
-  font-size: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
   font-weight: 500;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--trc-fg);
+}
+.docs-logo__mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.docs-logo__ui {
+  color: var(--trc-fg-subtle);
 }
 
 /* ---------- Language switch ---------- */

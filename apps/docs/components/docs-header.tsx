@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SiteHeader, type NavItem } from "trc-ui";
 import { LanguageSwitch } from "@/components/language-switch";
+import { Logo } from "@/components/logo";
 import { UI, localePath, type Lang } from "@/lib/i18n";
 import { DOCS_NAV, REPO_URL } from "@/lib/nav";
 
@@ -24,7 +25,7 @@ export function DocsHeader({ lang }: { lang: Lang }) {
   ];
   return (
     <SiteHeader
-      logo={<span className="docs-logo">trc</span>}
+      logo={<Logo />}
       logoLabel={UI[lang].home}
       homeHref={localePath(lang, "/")}
       linkAs={Link}
