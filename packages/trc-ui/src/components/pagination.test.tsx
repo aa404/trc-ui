@@ -44,8 +44,13 @@ describe("Pagination", () => {
     expect(screen.getByRole("button", { name: "Next" })).toBeDisabled();
   });
 
-  it("renders links with getHref", () => {
-    render(<Pagination page={1} total={3} getHref={(p) => `/blog/page/${p}`} />);
+  it("renders links from a function", () => {
+    render(<Pagination page={2} total={3} href={(p) => `/blog?page=${p}`} />);
+    expect(screen.getByRole("link", { name: "Page 3" })).toHaveAttribute("href", "/blog?page=3");
+  });
+
+  it("renders links from a pattern", () => {
+    render(<Pagination page={1} total={3} href="/blog/page/{page}" />);
     expect(screen.getByRole("link", { name: "Page 2" })).toHaveAttribute("href", "/blog/page/2");
     expect(screen.getByRole("link", { name: "Next" })).toHaveAttribute("href", "/blog/page/2");
     expect(screen.queryByRole("link", { name: "Previous" })).toBeNull();

@@ -24,8 +24,11 @@ export type PaginationProps = {
   total: number;
   /** Buttons mode: called with the new page. */
   onPageChange?: (page: number) => void;
-  /** Links mode (better for search engines): the address of each page. */
-  getHref?: (page: number) => string;
+  /**
+   * Links mode (better for search engines): the address of each page, as a function or as a
+   * pattern with `{page}`, such as `"/blog/page/{page}"`. The pattern also works from a server component.
+   */
+  href?: string | ((page: number) => string);
   siblings?: number;
   linkAs?: ElementType;
   label?: string;
@@ -41,7 +44,7 @@ export function Pagination({
   page,
   total,
   onPageChange,
-  getHref,
+  href,
   siblings = 1,
   linkAs: LinkTag = "a",
   label = "Pagination",
@@ -51,6 +54,7 @@ export function Pagination({
   className,
 }: PaginationProps) {
   if (total <= 1) return null;
+  const getHref = href === undefined ? undefined : typeof href === "string" ? (p: number) => href.replace("{page}", String(p)) : href;
 
   const control = (target: number, content: ReactNode, extra: { className: string; ariaLabel: string; current?: boolean }) => {
     const disabled = target < 1 || target > total;
