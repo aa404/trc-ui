@@ -9,11 +9,15 @@
   font-family: var(--trc-font);
   pointer-events: none;
 }
+/*
+ * Three columns: the two sides share the remaining width equally, so the navigation
+ * stays centered on the page whatever the width of the logo and of the actions.
+ */
 .trc-header__bar {
   box-sizing: border-box;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
   max-width: 1600px;
   height: 64px;
@@ -45,6 +49,8 @@
 }
 
 .trc-header__logo {
+  grid-column: 1;
+  justify-self: start;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
@@ -52,6 +58,7 @@
   text-decoration: none;
 }
 .trc-header__nav {
+  grid-column: 2;
   display: none;
   align-items: center;
   gap: 28px;
@@ -88,6 +95,8 @@
   transform: translateX(-50%);
 }
 .trc-header__end {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 8px;
