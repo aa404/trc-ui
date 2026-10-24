@@ -114,13 +114,14 @@ body {
 .docs-content h3 {
   margin-top: 40px;
 }
-.docs-content p,
-.docs-content li {
+/* Direct children only: demos render components (`<Text>`, `<Heading as="p">`) with their own sizes. */
+.docs-content > p,
+.docs-content > ul li {
   font-size: 16px;
   line-height: 1.7;
   color: var(--trc-fg-muted);
 }
-.docs-content ul {
+.docs-content > ul {
   padding-left: 20px;
 }
 .docs-content a:not([class]) {
