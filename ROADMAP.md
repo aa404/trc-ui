@@ -14,13 +14,13 @@ What comes next for trc ui, release by release. Every component ships with its d
 
 ## 0.3 — Navigation
 
-- [ ] `Tabs`: keyboard navigation with arrow keys (roving tabindex).
-- [ ] `SegmentedControl`: the pill switch used in the colors generator.
-- [ ] `Accordion`: one or several items open, animated height; the base of a FAQ.
-- [ ] `Breadcrumbs`.
-- [ ] `Pagination`.
-- [ ] `LanguageSwitcher`: the EN / FR switch of the docs, as a component.
-- [ ] `Steps`: a vertical timeline built on `StepNumber`.
+- [x] `Tabs`: keyboard navigation with arrow keys (roving tabindex).
+- [x] `SegmentedControl`: the pill switch used in the colors generator.
+- [x] `Accordion`: one or several items open, animated height; the base of a FAQ.
+- [x] `Breadcrumbs`.
+- [x] `Pagination`.
+- [x] `LanguageSwitcher`: the EN / FR switch of the docs, as a component.
+- [x] `Steps`: a vertical timeline built on `StepNumber`.
 
 ## 0.4 — Forms
 

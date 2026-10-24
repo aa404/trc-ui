@@ -13,6 +13,16 @@
 - `Alert`: inline message with a thin colored edge.
 - Floating elements are portaled and placed against their trigger, flipping when there is no room.
 
+### Navigation
+
+- `Tabs`: thin labels underlined with the accent, roving tabindex, automatic or manual activation.
+- `SegmentedControl`: pill switch built on native radio buttons.
+- `Accordion`: single or multiple, animated height, closed content out of the accessibility tree, arrow keys between titles.
+- `Breadcrumbs`: trail to the current page.
+- `Pagination`: constant-width range with ellipses, buttons or links (`href` function or `"/page/{page}"` pattern, usable from server components).
+- `LanguageSwitcher`: the EN | FR pill, as links (with `lang` and `hreflang`) or buttons.
+- `Steps`: vertical timeline with large thin numbers and the current step.
+
 ### Fixes
 
 - Header dropdowns opened by hovering no longer close on the click that follows.

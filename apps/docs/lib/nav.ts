@@ -118,6 +118,50 @@ export const DOCS_NAV: DocSection[] = [
     ],
   },
   {
+    id: "navigation",
+    title: { en: "Navigation", fr: "Navigation" },
+    description: {
+      en: "Move between views, pages, languages and steps.",
+      fr: "Passer d'une vue, d'une page, d'une langue ou d'une étape à l'autre.",
+    },
+    pages: [
+      {
+        title: { en: "Tabs and segmented control", fr: "Onglets et sélecteur" },
+        href: "/docs/tabs/",
+        description: {
+          en: "Panels behind tabs, and a pill switch between options.",
+          fr: "Des panneaux derrière des onglets, et une pilule pour choisir une option.",
+        },
+      },
+      {
+        title: { en: "Accordion", fr: "Accordéon" },
+        href: "/docs/accordion/",
+        description: {
+          en: "Items that open and close, the base of a FAQ.",
+          fr: "Des éléments qui s'ouvrent et se ferment, la base d'une FAQ.",
+        },
+      },
+      {
+        title: { en: "Breadcrumbs and pagination", fr: "Fil d'Ariane et pagination" },
+        href: "/docs/pagination/",
+        description: {
+          en: "Where the page is, and how to reach the next ones.",
+          fr: "Où se trouve la page, et comment atteindre les suivantes.",
+        },
+      },
+      {
+        title: { en: "Language switcher", fr: "Choix de la langue" },
+        href: "/docs/language-switcher/",
+        description: { en: "The EN | FR pill, as links or buttons.", fr: "La pilule EN | FR, en liens ou en boutons." },
+      },
+      {
+        title: { en: "Steps", fr: "Étapes" },
+        href: "/docs/steps/",
+        description: { en: "Vertical timeline with large thin numbers.", fr: "Frise verticale à grands numéros fins." },
+      },
+    ],
+  },
+  {
     id: "forms",
     title: { en: "Forms", fr: "Formulaires" },
     description: {
