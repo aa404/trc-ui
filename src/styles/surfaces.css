@@ -1,0 +1,158 @@
+/* Largeur maximale centrée : marges de 16 px sur mobile, 24 px sur tablette, 40 px au-delà. */
+.trc-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+.trc-container--narrow {
+  max-width: 768px;
+}
+.trc-container--wide {
+  max-width: 1600px;
+}
+@media (min-width: 640px) {
+  .trc-container {
+    padding-inline: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .trc-container {
+    padding-inline: 40px;
+  }
+}
+
+/* Espacement vertical des sections */
+.trc-section--sm {
+  padding-block: 48px;
+}
+.trc-section--md {
+  padding-block: 72px;
+}
+.trc-section--lg {
+  padding-block: 96px;
+}
+@media (min-width: 768px) {
+  .trc-section--md {
+    padding-block: 96px;
+  }
+  .trc-section--lg {
+    padding-block: 128px;
+  }
+}
+
+/* Section en carte, à 8 px des bords sur mobile et 16 px au-delà. */
+.trc-section-inset {
+  box-sizing: border-box;
+  padding-inline: 8px;
+}
+.trc-section-inset__card {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+}
+@media (min-width: 640px) {
+  .trc-section-inset {
+    padding-inline: 16px;
+  }
+}
+
+/* Carte graphite, sans ombre, bordure à peine visible. */
+.trc-card {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid var(--trc-border);
+  border-radius: var(--trc-radius);
+  background: var(--trc-surface);
+  color: var(--trc-fg);
+}
+.trc-card--alt {
+  background: var(--trc-surface-alt);
+}
+.trc-card--pad-sm {
+  padding: 20px;
+}
+.trc-card--pad-md {
+  padding: 28px;
+}
+.trc-card--pad-lg {
+  padding: 32px;
+}
+@media (min-width: 640px) {
+  .trc-card--pad-lg {
+    padding: 40px;
+  }
+}
+
+/* Carte cliquable : le fond s'éclaircit à peine. */
+.trc-card--interactive {
+  display: block;
+  text-decoration: none;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+a.trc-card--interactive,
+button.trc-card--interactive {
+  cursor: pointer;
+  font: inherit;
+  text-align: inherit;
+}
+.trc-card--interactive:hover {
+  background: var(--trc-surface-raised);
+  border-color: var(--trc-border-strong);
+}
+.trc-card--alt.trc-card--interactive:hover {
+  background: color-mix(in srgb, var(--trc-surface-alt) 92%, white);
+}
+.trc-card--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--trc-ring);
+}
+
+/* Icône en filigrane : très grande, trait fin, à demi sortie du coin, presque invisible au repos. */
+.trc-card--watermark {
+  isolation: isolate;
+  overflow: hidden;
+}
+.trc-card__watermark {
+  position: absolute;
+  z-index: -1;
+  top: -28px;
+  right: -28px;
+  display: flex;
+  width: 160px;
+  height: 160px;
+  color: var(--trc-fg);
+  opacity: 0.05;
+  pointer-events: none;
+  transition:
+    opacity 600ms var(--trc-ease-out),
+    color 600ms var(--trc-ease-out),
+    transform 600ms var(--trc-ease-out);
+}
+/* Trait fin quelle que soit la taille de l'icône. */
+.trc-card__watermark svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.25px;
+}
+.trc-card__watermark svg * {
+  vector-effect: non-scaling-stroke;
+}
+.trc-card--watermark:hover .trc-card__watermark {
+  color: var(--trc-accent);
+  opacity: 0.18;
+  transform: rotate(-6deg) scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .trc-card__watermark {
+    transition-duration: 1ms;
+  }
+}

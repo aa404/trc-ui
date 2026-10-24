@@ -2,10 +2,7 @@ body {
   margin: 0;
 }
 .pg {
-  box-sizing: border-box;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 64px 16px 96px;
+  padding-block: 64px 96px;
 }
 .pg-section {
   display: grid;
@@ -18,4 +15,16 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
+}
+.pg-grid {
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .pg-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pg-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
