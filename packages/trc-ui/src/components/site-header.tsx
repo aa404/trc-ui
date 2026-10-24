@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ElementType, type ReactNode } from "react";
-import { createPortal } from "react-dom";
-import { useModal } from "../hooks/use-modal";
 import { cx } from "../utils/cx";
-import { ChevronDown, Close, Menu } from "../utils/icons";
+import { ChevronDown, Menu } from "../utils/icons";
+import { Drawer } from "./drawer";
 import { PillLink } from "./pill";
 
 export type NavLink = {
@@ -207,10 +206,7 @@ function NavDropdown({ menu, linkAs: LinkTag }: { menu: NavMenu; linkAs: Element
   );
 }
 
-/**
- * Side panel of the mobile menu, rendered into `document.body`: otherwise the header's blurred bar
- * (`backdrop-filter`) would trap a `fixed` element within its own bounds.
- */
+/** Mobile menu: a `Drawer` holding the navigation, the main action and the extra content. */
 function MobileMenu({
   open,
   onClose,
@@ -230,73 +226,47 @@ function MobileMenu({
   title: string;
   closeLabel: string;
 }) {
-  const titleId = useId();
-  const panel = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  useModal(open, panel, onClose);
-
-  if (!mounted) return null;
-  return createPortal(
-    <div className={cx("trc-drawer", open && "trc-drawer--open")} aria-hidden={!open}>
-      <div className="trc-drawer__overlay" onClick={onClose} />
-      <div
-        ref={panel}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
-        tabIndex={-1}
-        className="trc-drawer__panel"
-      >
-        <div className="trc-drawer__head">
-          <p id={titleId} className="trc-drawer__title">
-            {title}
-          </p>
-          <button type="button" className="trc-drawer__close" aria-label={closeLabel} onClick={onClose}>
-            <Close />
-          </button>
-        </div>
-        <nav className="trc-mobile-nav">
-          {nav.map((item, i) =>
-            isMenu(item) ? (
-              <div key={i} className="trc-mobile-nav__group">
-                <p className="trc-mobile-nav__heading">{item.label}</p>
-                <ul className="trc-mobile-nav__sub">
-                  {item.items.map((sub, j) => (
-                    <li key={j}>
-                      <LinkTag
-                        href={sub.href}
-                        aria-current={sub.active ? "page" : undefined}
-                        onClick={onClose}
-                        className="trc-mobile-nav__sublink"
-                      >
-                        {sub.label}
-                      </LinkTag>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <LinkTag
-                key={i}
-                href={item.href}
-                aria-current={item.active ? "page" : undefined}
-                onClick={onClose}
-                className={cx("trc-mobile-nav__link", item.active && "trc-mobile-nav__link--active")}
-              >
-                {item.label}
-              </LinkTag>
-            ),
-          )}
-        </nav>
-        {cta && (
-          <PillLink as={LinkTag} href={cta.href} onClick={onClose} className="trc-drawer__cta">
-            {cta.label}
-          </PillLink>
+  return (
+    <Drawer open={open} onClose={onClose} title={title} closeLabel={closeLabel} className="trc-mobile-menu">
+      <nav className="trc-mobile-nav">
+        {nav.map((item, i) =>
+          isMenu(item) ? (
+            <div key={i} className="trc-mobile-nav__group">
+              <p className="trc-mobile-nav__heading">{item.label}</p>
+              <ul className="trc-mobile-nav__sub">
+                {item.items.map((sub, j) => (
+                  <li key={j}>
+                    <LinkTag
+                      href={sub.href}
+                      aria-current={sub.active ? "page" : undefined}
+                      onClick={onClose}
+                      className="trc-mobile-nav__sublink"
+                    >
+                      {sub.label}
+                    </LinkTag>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <LinkTag
+              key={i}
+              href={item.href}
+              aria-current={item.active ? "page" : undefined}
+              onClick={onClose}
+              className={cx("trc-mobile-nav__link", item.active && "trc-mobile-nav__link--active")}
+            >
+              {item.label}
+            </LinkTag>
+          ),
         )}
-        {footer != null && <div className="trc-drawer__footer">{footer}</div>}
-      </div>
-    </div>,
-    document.body,
+      </nav>
+      {cta && (
+        <PillLink as={LinkTag} href={cta.href} onClick={onClose} className="trc-mobile-menu__cta">
+          {cta.label}
+        </PillLink>
+      )}
+      {footer != null && <div className="trc-mobile-menu__footer">{footer}</div>}
+    </Drawer>
   );
 }

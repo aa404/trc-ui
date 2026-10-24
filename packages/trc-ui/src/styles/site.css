@@ -218,91 +218,21 @@
   color: var(--trc-fg-subtle);
 }
 
-/* ---------- Side panel (mobile menu) ---------- */
+/* ---------- Mobile menu (a Drawer) ---------- */
 
-.trc-drawer {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  font-family: var(--trc-font);
-  letter-spacing: -0.01em;
-  color: var(--trc-fg);
-  visibility: hidden;
-  transition: visibility 0s 400ms;
-}
-.trc-drawer--open {
-  visibility: visible;
-  transition-delay: 0s;
-}
-.trc-drawer__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  transition: opacity 400ms ease;
-}
-.trc-drawer--open .trc-drawer__overlay {
-  opacity: 1;
-}
-.trc-drawer__panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  width: min(380px, 88vw);
-  padding: 24px;
-  overflow-y: auto;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--trc-bg);
-  outline: none;
-  transform: translateX(100%);
-  transition: transform 400ms var(--trc-ease-out);
-}
-.trc-drawer--open .trc-drawer__panel {
-  transform: translateX(0);
-}
-.trc-drawer__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.trc-drawer__title {
-  margin: 0;
+/* The title of the mobile menu is a small spaced label rather than a heading. */
+.trc-mobile-menu .trc-layer__title {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
 }
-.trc-drawer__close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-right: -8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--trc-fg);
-  cursor: pointer;
-}
-.trc-drawer__close:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-.trc-drawer__close svg {
-  width: 20px;
-  height: 20px;
-}
-.trc-drawer__cta {
+.trc-mobile-menu__cta {
   align-self: flex-start;
   margin-top: 24px;
 }
-.trc-drawer__footer {
+.trc-mobile-menu__footer {
   margin-top: 24px;
 }
 
@@ -349,9 +279,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .trc-drawer,
-  .trc-drawer__overlay,
-  .trc-drawer__panel,
   .trc-dropdown__panel {
     transition-duration: 1ms;
   }
@@ -484,7 +411,6 @@
 .trc-header__link:focus-visible,
 .trc-header__burger:focus-visible,
 .trc-dropdown__item:focus-visible,
-.trc-drawer__close:focus-visible,
 .trc-mobile-nav a:focus-visible,
 .trc-footer a:focus-visible {
   outline: 2px solid var(--trc-accent);

@@ -25,3 +25,8 @@ export { HeroVideo, PageHero } from "./components/hero";
 export type { HeroClip, HeroVideoProps, PageHeroProps } from "./components/hero";
 export { BackToTop } from "./components/back-to-top";
 export type { BackToTopProps } from "./components/back-to-top";
+
+export { Dialog } from "./components/dialog";
+export type { DialogProps } from "./components/dialog";
+export { Drawer } from "./components/drawer";
+export type { DrawerProps } from "./components/drawer";
