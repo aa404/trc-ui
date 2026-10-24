@@ -72,3 +72,7 @@ export { Avatar, AvatarGroup, initials } from "./components/avatar";
 export type { AvatarGroupProps, AvatarProps } from "./components/avatar";
 export { Tag } from "./components/tag";
 export type { TagProps } from "./components/tag";
+export { Stat } from "./components/stat";
+export type { StatProps } from "./components/stat";
+export { Table } from "./components/table";
+export type { SortState, TableColumn, TableProps } from "./components/table";
