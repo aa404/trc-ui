@@ -1,0 +1,34 @@
+/* Racine d'une page ou d'une zone au design noir profond (toujours sombre). */
+.trc {
+  background-color: var(--trc-bg);
+  color: var(--trc-fg);
+  font-family: var(--trc-font);
+  letter-spacing: -0.01em;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titres fins, interlignage serré : la finesse donne l'élégance. */
+.trc-display {
+  font-family: var(--trc-font);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.trc-accent {
+  color: var(--trc-accent);
+}
+
+.trc-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
