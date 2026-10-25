@@ -20,3 +20,5 @@ export 'src/text_field.dart';
 export 'src/toggles.dart';
 export 'src/dialog.dart';
 export 'src/icon_button.dart';
+export 'src/menu.dart';
+export 'src/popover.dart';

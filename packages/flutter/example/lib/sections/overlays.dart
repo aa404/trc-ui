@@ -66,6 +66,33 @@ class OverlaysDemo extends StatelessWidget {
             ],
           ),
         ),
+        TrcMenu(
+          items: [
+            TrcMenuItem(label: 'Edit', hint: 'E', onSelected: () {}),
+            TrcMenuItem(label: 'Duplicate', hint: 'D', onSelected: () {}),
+            const TrcMenuItem(label: 'Archive', disabled: true),
+            const TrcMenuSeparator(),
+            TrcMenuItem(label: 'Delete', danger: true, onSelected: () {}),
+          ],
+          builder: (context, toggle, open) =>
+              TrcPillButton(label: 'Actions', onPressed: toggle),
+        ),
+        TrcPopover(
+          title: 'Share this page',
+          builder: (context, toggle, open) =>
+              TrcPillButton(label: 'Share', onPressed: toggle),
+          child: const Text(
+            'Anyone with the link can view it. Links expire after 30 days.',
+          ),
+        ),
+        TrcTooltip(
+          message: 'Copy the link',
+          child: TrcIconButton(
+            glyph: TrcGlyph.copy,
+            label: 'Copy',
+            onPressed: () {},
+          ),
+        ),
       ],
     );
   }
