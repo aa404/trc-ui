@@ -108,6 +108,58 @@ class DataDemo extends StatelessWidget {
             (page: '/blog/deep-black', visits: 960, rate: 55.1),
           ],
         ),
+        gap,
+        const Row(
+          children: [
+            TrcSkeleton(circle: true),
+            SizedBox(width: 16),
+            Expanded(child: TrcSkeleton(lines: 3, height: 12)),
+          ],
+        ),
+        const SizedBox(height: 32),
+        const Wrap(
+          spacing: 24,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            TrcSpinner(size: TrcSpinnerSize.sm),
+            TrcSpinner(),
+            TrcSpinner(size: TrcSpinnerSize.lg),
+          ],
+        ),
+        const SizedBox(height: 32),
+        const TrcProgress(
+          value: 64,
+          label: 'Uploading photos',
+          showValue: true,
+        ),
+        const SizedBox(height: 20),
+        const TrcProgress(label: 'Syncing'),
+        const TrcDivider(label: 'or'),
+        const Wrap(
+          spacing: 6,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            TrcText('Search with', size: TrcTextSize.sm),
+            TrcKbd('⌘'),
+            TrcKbd('K'),
+          ],
+        ),
+        gap,
+        const TrcCodeBlock(
+          title: 'lib/main.dart',
+          language: 'dart',
+          code: '''import 'package:flutter/material.dart';
+import 'package:trc_ui/trc_ui.dart';
+
+void main() => runApp(
+  MaterialApp(
+    theme: const TrcThemeData().toMaterialTheme(),
+    home: const HomePage(),
+  ),
+);''',
+        ),
+        const SizedBox(height: 16),
+        const TrcCodeBlock(code: 'flutter pub add trc_ui'),
       ],
     );
   }
