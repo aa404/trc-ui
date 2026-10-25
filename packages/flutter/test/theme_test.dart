@@ -47,37 +47,38 @@ void main() {
   });
 
   group('TrcTheme.of', () {
-    testWidgets('reads a TrcTheme, then the Material extension, then defaults', (
-      tester,
-    ) async {
-      late TrcThemeData found;
-      Widget probe() => Builder(
-        builder: (context) {
-          found = TrcTheme.of(context);
-          return const SizedBox();
-        },
-      );
+    testWidgets(
+      'reads a TrcTheme, then the Material extension, then defaults',
+      (tester) async {
+        late TrcThemeData found;
+        Widget probe() => Builder(
+          builder: (context) {
+            found = TrcTheme.of(context);
+            return const SizedBox();
+          },
+        );
 
-      await tester.pumpWidget(probe());
-      expect(found, const TrcThemeData());
+        await tester.pumpWidget(probe());
+        expect(found, const TrcThemeData());
 
-      final pink = const TrcThemeData().copyWith(
-        accent: const Color(0xFFD41367),
-      );
-      await tester.pumpWidget(
-        Theme(data: pink.toMaterialTheme(), child: probe()),
-      );
-      expect(found.accent, const Color(0xFFD41367));
+        final pink = const TrcThemeData().copyWith(
+          accent: const Color(0xFFD41367),
+        );
+        await tester.pumpWidget(
+          Theme(data: pink.toMaterialTheme(), child: probe()),
+        );
+        expect(found.accent, const Color(0xFFD41367));
 
-      final green = pink.copyWith(accent: const Color(0xFF00FF00));
-      await tester.pumpWidget(
-        Theme(
-          data: pink.toMaterialTheme(),
-          child: TrcTheme(data: green, child: probe()),
-        ),
-      );
-      expect(found.accent, const Color(0xFF00FF00));
-    });
+        final green = pink.copyWith(accent: const Color(0xFF00FF00));
+        await tester.pumpWidget(
+          Theme(
+            data: pink.toMaterialTheme(),
+            child: TrcTheme(data: green, child: probe()),
+          ),
+        );
+        expect(found.accent, const Color(0xFF00FF00));
+      },
+    );
   });
 
   test('fillLabel fills placeholders and keeps unknown ones', () {

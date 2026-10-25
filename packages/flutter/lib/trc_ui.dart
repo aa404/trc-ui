@@ -10,3 +10,4 @@ export 'src/focus_ring.dart';
 export 'src/foundation.dart' show fillLabel, TrcBreakpoints;
 export 'src/icons.dart';
 export 'src/theme.dart';
+export 'src/typography.dart';

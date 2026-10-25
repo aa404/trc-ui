@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
 import 'sections/tokens.dart';
+import 'sections/typography.dart';
 
 /// One block of the gallery.
 class GallerySection {
@@ -15,6 +16,7 @@ class GallerySection {
 
 final sections = <GallerySection>[
   GallerySection('tokens', 'Tokens', (_) => const TokensDemo()),
+  GallerySection('typography', 'Typography', (_) => const TypographyDemo()),
 ];
 
 class GalleryPage extends StatelessWidget {
@@ -33,7 +35,6 @@ class GalleryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = TrcTheme.of(context);
     final shown = only == null
         ? sections
         : sections.where((s) => s.id == only).toList();
@@ -51,10 +52,7 @@ class GalleryPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Text(
-                          section.title,
-                          style: theme.text(size: 24, height: 1.2),
-                        ),
+                        TrcHeading(section.title, size: TrcHeadingSize.md),
                         const SizedBox(height: 24),
                         section.builder(context),
                       ],

@@ -172,16 +172,12 @@ Path _glyphPath(TrcGlyph glyph) {
       line([4, 12, 20, 12]);
       line([4, 17, 20, 17]);
     case TrcGlyph.calendar:
-      p.addRRect(
-        RRect.fromLTRBR(3, 5, 21, 21, const Radius.circular(3)),
-      );
+      p.addRRect(RRect.fromLTRBR(3, 5, 21, 21, const Radius.circular(3)));
       line([3, 10, 21, 10]);
       line([8, 3, 8, 7]);
       line([16, 3, 16, 7]);
     case TrcGlyph.copy:
-      p.addRRect(
-        RRect.fromLTRBR(9, 9, 21, 21, const Radius.circular(2.5)),
-      );
+      p.addRRect(RRect.fromLTRBR(9, 9, 21, 21, const Radius.circular(2.5)));
       p.moveTo(5, 15);
       p.lineTo(4.5, 15);
       p.arcToPoint(const Offset(3, 13.5), radius: const Radius.circular(1.5));

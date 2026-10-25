@@ -117,7 +117,9 @@ class _TrcTappableState extends State<TrcTappable> {
   bool _pressed = false;
 
   late final Map<Type, Action<Intent>> _actions = {
-    ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: (_) => _activate()),
+    ActivateIntent: CallbackAction<ActivateIntent>(
+      onInvoke: (_) => _activate(),
+    ),
     ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
       onInvoke: (_) => _activate(),
     ),
