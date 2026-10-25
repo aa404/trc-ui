@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
 import 'sections/forms.dart';
+import 'sections/navigation.dart';
 import 'sections/overlays.dart';
 import 'sections/pill.dart';
 import 'sections/surfaces.dart';
@@ -29,6 +30,7 @@ final sections = <GallerySection>[
     'Overlays and feedback',
     (_) => const OverlaysDemo(),
   ),
+  GallerySection('navigation', 'Navigation', (_) => const NavigationDemo()),
 ];
 
 class GalleryPage extends StatelessWidget {

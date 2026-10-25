@@ -49,8 +49,9 @@ class TrcIconButton extends StatelessWidget {
       button: true,
       enabled: onPressed != null,
       label: label,
-      excludeSemantics: true,
+      container: true,
       child: TrcTappable(
+        excludeChildSemantics: true,
         enabled: onPressed != null,
         onTap: onPressed,
         builder: (context, state) => TrcFocusRing(

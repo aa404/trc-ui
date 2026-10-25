@@ -177,12 +177,13 @@ class _TrcSelectState<T> extends State<TrcSelect<T>> {
         validationResult: invalid
             ? SemanticsValidationResult.invalid
             : SemanticsValidationResult.none,
-        excludeSemantics: true,
+        container: true,
         child: Focus(
           canRequestFocus: false,
           skipTraversal: true,
           onKeyEvent: _onKey,
           child: TrcTappable(
+            excludeChildSemantics: true,
             enabled: _enabled,
             focusNode: widget.focusNode ?? field?.focusNode,
             onTap: _open ? _close : _show,

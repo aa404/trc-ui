@@ -24,3 +24,7 @@ export 'src/menu.dart';
 export 'src/popover.dart';
 export 'src/alert.dart';
 export 'src/toast.dart';
+export 'src/accordion.dart';
+export 'src/pagination.dart';
+export 'src/steps.dart';
+export 'src/tabs.dart';

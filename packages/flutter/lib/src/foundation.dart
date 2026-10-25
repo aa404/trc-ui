@@ -78,6 +78,7 @@ class TrcTappable extends StatefulWidget {
     this.onHoverChange,
     this.onStateChange,
     this.behavior = HitTestBehavior.opaque,
+    this.excludeChildSemantics = false,
   });
 
   /// Builds the element for its current state.
@@ -110,6 +111,10 @@ class TrcTappable extends StatefulWidget {
 
   /// How the area takes hits.
   final HitTestBehavior behavior;
+
+  /// Hides what [builder] returns from screen readers, while keeping the tap
+  /// and focus actions: the caller gives the label instead.
+  final bool excludeChildSemantics;
 
   @override
   State<TrcTappable> createState() => _TrcTappableState();
@@ -201,7 +206,9 @@ class _TrcTappableState extends State<TrcTappable> {
           onTapUp: enabled ? (_) => _setPressed(false) : null,
           onTapCancel: enabled ? () => _setPressed(false) : null,
           onTap: enabled ? widget.onTap : null,
-          child: widget.builder(context, _state),
+          child: widget.excludeChildSemantics
+              ? ExcludeSemantics(child: widget.builder(context, _state))
+              : widget.builder(context, _state),
         ),
       ),
     );

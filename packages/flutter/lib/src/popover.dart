@@ -213,41 +213,43 @@ class _TrcTooltipState extends State<TrcTooltip> {
           ),
         ),
       ),
-      child: Semantics(
-        tooltip: widget.message,
-        child: Focus(
-          canRequestFocus: false,
-          skipTraversal: true,
-          onFocusChange: (focused) {
-            final highlight =
-                FocusManager.instance.highlightMode ==
-                FocusHighlightMode.traditional;
-            if (focused && highlight) {
-              _schedule(true, Duration.zero);
-            } else if (!focused) {
-              _schedule(false, Duration.zero);
-            }
-          },
-          child: MouseRegion(
-            onEnter: (_) {
-              _hoverAnchor = true;
-              _schedule(true, widget.delay);
-            },
-            onExit: (_) {
-              _hoverAnchor = false;
-              _leave();
-            },
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              excludeFromSemantics: true,
-              onLongPress: () {
-                HapticFeedback.selectionClick();
+      child: MergeSemantics(
+        child: Semantics(
+          tooltip: widget.message,
+          child: Focus(
+            canRequestFocus: false,
+            skipTraversal: true,
+            onFocusChange: (focused) {
+              final highlight =
+                  FocusManager.instance.highlightMode ==
+                  FocusHighlightMode.traditional;
+              if (focused && highlight) {
                 _schedule(true, Duration.zero);
-                _timer = Timer(const Duration(milliseconds: 1500), () {
-                  if (mounted) setState(() => _open = false);
-                });
+              } else if (!focused) {
+                _schedule(false, Duration.zero);
+              }
+            },
+            child: MouseRegion(
+              onEnter: (_) {
+                _hoverAnchor = true;
+                _schedule(true, widget.delay);
               },
-              child: widget.child,
+              onExit: (_) {
+                _hoverAnchor = false;
+                _leave();
+              },
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                excludeFromSemantics: true,
+                onLongPress: () {
+                  HapticFeedback.selectionClick();
+                  _schedule(true, Duration.zero);
+                  _timer = Timer(const Duration(milliseconds: 1500), () {
+                    if (mounted) setState(() => _open = false);
+                  });
+                },
+                child: widget.child,
+              ),
             ),
           ),
         ),
