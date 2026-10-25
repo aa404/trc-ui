@@ -76,6 +76,7 @@ class TrcTappable extends StatefulWidget {
     this.cursor,
     this.onFocusChange,
     this.onHoverChange,
+    this.onStateChange,
     this.behavior = HitTestBehavior.opaque,
   });
 
@@ -104,6 +105,9 @@ class TrcTappable extends StatefulWidget {
   /// Called when the mouse enters or leaves.
   final ValueChanged<bool>? onHoverChange;
 
+  /// Called whenever the hover, focus or press state changes.
+  final ValueChanged<TrcInteractionState>? onStateChange;
+
   /// How the area takes hits.
   final HitTestBehavior behavior;
 
@@ -130,8 +134,45 @@ class _TrcTappableState extends State<TrcTappable> {
     return null;
   }
 
+  TrcInteractionState get _state => TrcInteractionState(
+    hovered: _hovered && widget.enabled,
+    focused: _focused && widget.enabled,
+    pressed: _pressed && widget.enabled,
+    enabled: widget.enabled,
+  );
+
+  void _set({bool? hovered, bool? focused, bool? pressed}) {
+    final before = _state;
+    setState(() {
+      _hovered = hovered ?? _hovered;
+      _focused = focused ?? _focused;
+      _pressed = pressed ?? _pressed;
+    });
+    final after = _state;
+    if (before.hovered != after.hovered ||
+        before.focused != after.focused ||
+        before.pressed != after.pressed) {
+      widget.onStateChange?.call(after);
+    }
+  }
+
+  void _hover(bool value) {
+    if (_hovered == value) return;
+    _set(hovered: value);
+    widget.onHoverChange?.call(value);
+  }
+
   void _setPressed(bool value) {
-    if (_pressed != value) setState(() => _pressed = value);
+    if (_pressed != value) _set(pressed: value);
+  }
+
+  @override
+  void didUpdateWidget(TrcTappable oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.enabled && !widget.enabled) {
+      _pressed = false;
+      widget.onStateChange?.call(_state);
+    }
   }
 
   @override
@@ -146,28 +187,21 @@ class _TrcTappableState extends State<TrcTappable> {
       mouseCursor: enabled
           ? (widget.cursor ?? SystemMouseCursors.click)
           : SystemMouseCursors.forbidden,
-      onShowHoverHighlight: (value) {
-        if (_hovered != value) setState(() => _hovered = value);
-        widget.onHoverChange?.call(value);
-      },
       onShowFocusHighlight: (value) {
-        if (_focused != value) setState(() => _focused = value);
+        if (_focused != value) _set(focused: value);
       },
       onFocusChange: widget.onFocusChange,
-      child: GestureDetector(
-        behavior: widget.behavior,
-        onTapDown: enabled ? (_) => _setPressed(true) : null,
-        onTapUp: enabled ? (_) => _setPressed(false) : null,
-        onTapCancel: enabled ? () => _setPressed(false) : null,
-        onTap: enabled ? widget.onTap : null,
-        child: widget.builder(
-          context,
-          TrcInteractionState(
-            hovered: _hovered && enabled,
-            focused: _focused && enabled,
-            pressed: _pressed && enabled,
-            enabled: enabled,
-          ),
+      // Hover from a mouse, whatever the focus highlight mode.
+      child: MouseRegion(
+        onEnter: (_) => _hover(true),
+        onExit: (_) => _hover(false),
+        child: GestureDetector(
+          behavior: widget.behavior,
+          onTapDown: enabled ? (_) => _setPressed(true) : null,
+          onTapUp: enabled ? (_) => _setPressed(false) : null,
+          onTapCancel: enabled ? () => _setPressed(false) : null,
+          onTap: enabled ? widget.onTap : null,
+          child: widget.builder(context, _state),
         ),
       ),
     );
