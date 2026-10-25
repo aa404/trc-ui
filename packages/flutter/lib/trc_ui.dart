@@ -13,3 +13,8 @@ export 'src/theme.dart';
 export 'src/typography.dart';
 export 'src/pill.dart';
 export 'src/surfaces.dart';
+export 'src/field.dart';
+export 'src/floating.dart' show TrcSide, TrcAlign, TrcFloatingPanel;
+export 'src/select.dart';
+export 'src/text_field.dart';
+export 'src/toggles.dart';
