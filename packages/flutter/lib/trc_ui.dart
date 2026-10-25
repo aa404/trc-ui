@@ -18,3 +18,5 @@ export 'src/floating.dart' show TrcSide, TrcAlign, TrcFloatingPanel;
 export 'src/select.dart';
 export 'src/text_field.dart';
 export 'src/toggles.dart';
+export 'src/dialog.dart';
+export 'src/icon_button.dart';
