@@ -188,6 +188,7 @@ class TrcHeading extends StatelessWidget {
     final metrics = headingMetrics(size, MediaQuery.sizeOf(context).width);
     return Semantics(
       header: true,
+      container: true,
       headingLevel: level,
       child: TrcAccentText(
         text,

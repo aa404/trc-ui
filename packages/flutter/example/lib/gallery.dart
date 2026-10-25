@@ -41,7 +41,14 @@ final sections = <GallerySection>[
   GallerySection('data', 'Data display', (_) => const DataDemo()),
 ];
 
-class GalleryPage extends StatelessWidget {
+const _accents = {
+  'Cyan': Color(0xFF08C8D8),
+  'Magenta': Color(0xFFD41367),
+  'Lime': Color(0xFFB4E033),
+  'Amber': Color(0xFFF5A623),
+};
+
+class GalleryPage extends StatefulWidget {
   const GalleryPage({
     super.key,
     required this.accent,
@@ -56,34 +63,152 @@ class GalleryPage extends StatelessWidget {
   final String? only;
 
   @override
+  State<GalleryPage> createState() => _GalleryPageState();
+}
+
+class _GalleryPageState extends State<GalleryPage> {
+  final _scroll = ScrollController();
+  final _keys = {for (final s in sections) s.id: GlobalKey()};
+
+  @override
+  void dispose() {
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  void _goTo(String id) {
+    final context = _keys[id]?.currentContext;
+    if (context == null) return;
+    Scrollable.ensureVisible(
+      context,
+      duration: const Duration(milliseconds: 600),
+      curve: TrcTheme.of(this.context).ease,
+      alignmentPolicy: ScrollPositionAlignmentPolicy.explicit,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final shown = only == null
+    final only = widget.only;
+    final shown = only == null || only == 'chrome'
         ? sections
         : sections.where((s) => s.id == only).toList();
+    final chrome = only == null || only == 'chrome';
+    TrcNavItem nav(String label, String id) =>
+        TrcNavItem(label: label, onTap: () => _goTo(id));
+
     return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-          children: [
-            for (final section in shown)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 56),
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 1040),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        TrcHeading(section.title, size: TrcHeadingSize.md),
-                        const SizedBox(height: 24),
-                        section.builder(context),
-                      ],
+      body: Stack(
+        children: [
+          ListView(
+            controller: _scroll,
+            padding: EdgeInsets.only(bottom: 32, top: chrome ? 0 : 32),
+            children: [
+              if (chrome) ...[
+                TrcPageHero(
+                  title: 'Flutter widgets in *deep black*',
+                  description:
+                      'Near-black backgrounds, graphite cards, thin headings, one '
+                      'accent color and pill buttons whose dot stretches on hover.',
+                  meta: const Text('trc_ui · every widget on one page'),
+                  actions: [
+                    TrcPillButton(
+                      label: 'See the components',
+                      solid: true,
+                      onPressed: () => _goTo('pill'),
+                    ),
+                    TrcPillButton(
+                      label: 'Forms',
+                      onPressed: () => _goTo('forms'),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 48),
+              ],
+              for (final section in shown)
+                Padding(
+                  key: _keys[section.id],
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 56),
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 1040),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TrcHeading(section.title, size: TrcHeadingSize.md),
+                          const SizedBox(height: 24),
+                          section.builder(context),
+                        ],
+                      ),
                     ),
                   ),
                 ),
+            ],
+          ),
+          if (chrome)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: TrcHeader(
+                controller: _scroll,
+                logo: Text(
+                  'trc ui',
+                  style: TrcTheme.of(
+                    context,
+                  ).text(size: 20, letterSpacing: -0.03),
+                ),
+                onLogoTap: () => _scroll.animateTo(
+                  0,
+                  duration: const Duration(milliseconds: 600),
+                  curve: TrcTheme.of(context).ease,
+                ),
+                nav: [
+                  TrcNavItem(
+                    label: 'Overview',
+                    active: true,
+                    onTap: () => _goTo('tokens'),
+                  ),
+                  TrcNavItem(
+                    label: 'Components',
+                    children: [
+                      nav('Pill buttons', 'pill'),
+                      nav('Surfaces', 'surfaces'),
+                      nav('Forms', 'forms'),
+                      nav('Overlays', 'overlays'),
+                      nav('Navigation', 'navigation'),
+                      nav('Data display', 'data'),
+                    ],
+                  ),
+                  nav('Typography', 'typography'),
+                ],
+                actions: [
+                  TrcMenu(
+                    align: TrcAlign.end,
+                    items: [
+                      for (final entry in _accents.entries)
+                        TrcMenuItem(
+                          label: entry.key,
+                          hint: entry.value == widget.accent ? 'Current' : null,
+                          onSelected: () => widget.onAccentChange(entry.value),
+                        ),
+                    ],
+                    builder: (context, toggle, open) => TrcPillButton(
+                      label: 'Accent',
+                      small: true,
+                      onPressed: toggle,
+                    ),
+                  ),
+                ],
               ),
-          ],
-        ),
+            ),
+          if (chrome)
+            PositionedDirectional(
+              end: 24,
+              bottom: 24,
+              child: TrcBackToTop(controller: _scroll),
+            ),
+        ],
       ),
     );
   }

@@ -64,6 +64,7 @@ class _LayerContent extends StatelessWidget {
             Expanded(
               child: Semantics(
                 header: true,
+                container: true,
                 child: Text(
                   title,
                   style: theme.text(

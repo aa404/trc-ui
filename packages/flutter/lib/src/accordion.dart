@@ -227,6 +227,7 @@ class _AccordionRowState<T> extends State<_AccordionRow<T>>
         children: [
           Semantics(
             header: true,
+            container: true,
             headingLevel: widget.headingLevel,
             child: Semantics(
               button: true,
