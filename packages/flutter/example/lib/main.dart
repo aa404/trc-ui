@@ -22,6 +22,7 @@ class _GalleryAppState extends State<GalleryApp> {
       title: 'trc ui',
       debugShowCheckedModeBanner: false,
       theme: _tokens.toMaterialTheme(),
+      builder: (context, child) => TrcToaster(child: child!),
       home: GalleryPage(
         accent: _tokens.accent,
         onAccentChange: (color) =>

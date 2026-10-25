@@ -22,3 +22,5 @@ export 'src/dialog.dart';
 export 'src/icon_button.dart';
 export 'src/menu.dart';
 export 'src/popover.dart';
+export 'src/alert.dart';
+export 'src/toast.dart';

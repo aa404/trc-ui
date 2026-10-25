@@ -6,6 +6,29 @@ class OverlaysDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _buttons(context),
+        const SizedBox(height: 32),
+        const TrcAlert(
+          title: 'Your trial ends in 3 days',
+          child: Text('Choose a plan to keep your projects online.'),
+        ),
+        const SizedBox(height: 12),
+        TrcAlert(
+          title: 'Payment failed',
+          tone: TrcAlertTone.error,
+          actions: [
+            TrcPillButton(label: 'Update card', small: true, onPressed: () {}),
+          ],
+          child: const Text('Your card was declined. Check its details.'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buttons(BuildContext context) {
     return Wrap(
       spacing: 12,
       runSpacing: 12,
@@ -84,6 +107,20 @@ class OverlaysDemo extends StatelessWidget {
           child: const Text(
             'Anyone with the link can view it. Links expire after 30 days.',
           ),
+        ),
+        TrcPillButton(
+          label: 'Toast',
+          onPressed: () => TrcToast.success(
+            context,
+            'Changes saved',
+            description: 'Your page is online.',
+            action: TrcToastAction(label: 'Undo', onPressed: () {}),
+          ),
+        ),
+        TrcPillButton(
+          label: 'Error toast',
+          onPressed: () =>
+              TrcToast.error(context, 'Could not reach the server'),
         ),
         TrcTooltip(
           message: 'Copy the link',
