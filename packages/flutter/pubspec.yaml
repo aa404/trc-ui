@@ -14,6 +14,16 @@ topics:
   - dark-theme
   - components
 
+screenshots:
+  - description: A page built with trc_ui, with its floating header and inset hero.
+    path: doc/screenshots/hero.png
+  - description: The floating glass bottom navigation over scrolling content.
+    path: doc/screenshots/bottom-nav.png
+  - description: Form controls with a select open on its list.
+    path: doc/screenshots/forms.png
+  - description: Pill buttons, one hovered with its dot stretched.
+    path: doc/screenshots/pill.png
+
 environment:
   sdk: ^3.8.0
   flutter: ">=3.32.0"
