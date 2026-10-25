@@ -228,11 +228,10 @@ class _TrcTextFieldState extends State<TrcTextField> {
           invalid: invalid,
           enabled: widget.enabled,
           height: widget.height,
+          // The trailing button sits 6 px from the edge, like the React one.
           padding: widget.trailing == null
               ? widget.contentPadding
-              : widget.contentPadding.add(
-                  const EdgeInsetsDirectional.only(end: -10),
-                ),
+              : const EdgeInsetsDirectional.only(start: 16, end: 6),
           child: Material(
             type: MaterialType.transparency,
             child: Row(

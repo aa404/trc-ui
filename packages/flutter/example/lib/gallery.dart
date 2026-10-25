@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
+import 'sections/advanced_forms.dart';
 import 'sections/forms.dart';
 import 'sections/navigation.dart';
 import 'sections/overlays.dart';
@@ -25,6 +26,11 @@ final sections = <GallerySection>[
   GallerySection('pill', 'Pill buttons', (_) => const PillDemo()),
   GallerySection('surfaces', 'Surfaces', (_) => const SurfacesDemo()),
   GallerySection('forms', 'Forms', (_) => const FormsDemo()),
+  GallerySection(
+    'advanced-forms',
+    'More form controls',
+    (_) => const AdvancedFormsDemo(),
+  ),
   GallerySection(
     'overlays',
     'Overlays and feedback',

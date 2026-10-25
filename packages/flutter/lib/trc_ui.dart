@@ -28,3 +28,6 @@ export 'src/accordion.dart';
 export 'src/pagination.dart';
 export 'src/steps.dart';
 export 'src/tabs.dart';
+export 'src/password_field.dart';
+export 'src/pin_input.dart';
+export 'src/radio_group.dart';
