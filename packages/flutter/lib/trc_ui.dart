@@ -31,3 +31,5 @@ export 'src/tabs.dart';
 export 'src/password_field.dart';
 export 'src/pin_input.dart';
 export 'src/radio_group.dart';
+export 'src/combobox.dart';
+export 'src/slider.dart';

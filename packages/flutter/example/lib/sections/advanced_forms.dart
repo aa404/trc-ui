@@ -10,6 +10,8 @@ class AdvancedFormsDemo extends StatefulWidget {
 
 class _AdvancedFormsDemoState extends State<AdvancedFormsDemo> {
   String? _plan = 'pro';
+  String? _country;
+  double _budget = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,36 @@ class _AdvancedFormsDemoState extends State<AdvancedFormsDemo> {
         child: TrcPinInput(
           onCompleted: (code) =>
               TrcToast.success(context, 'Code $code entered'),
+        ),
+      ),
+      TrcField(
+        label: 'Country',
+        hint: 'Accents and case do not matter.',
+        child: TrcCombobox<String>(
+          value: _country,
+          placeholder: 'Search a country',
+          onChanged: (v) => setState(() => _country = v),
+          options: const [
+            TrcComboboxOption(value: 'bj', label: 'Bénin'),
+            TrcComboboxOption(value: 'bf', label: 'Burkina Faso'),
+            TrcComboboxOption(value: 'cm', label: 'Cameroun'),
+            TrcComboboxOption(value: 'ci', label: "Côte d'Ivoire"),
+            TrcComboboxOption(value: 'gh', label: 'Ghana'),
+            TrcComboboxOption(value: 'ng', label: 'Nigeria'),
+            TrcComboboxOption(value: 'sn', label: 'Sénégal'),
+            TrcComboboxOption(value: 'tg', label: 'Togo'),
+          ],
+        ),
+      ),
+      TrcField(
+        label: 'Monthly budget',
+        child: TrcSlider(
+          value: _budget,
+          max: 200,
+          step: 5,
+          showValue: true,
+          formatValue: (v) => '€ ${v.round()}',
+          onChanged: (v) => setState(() => _budget = v),
         ),
       ),
     ];

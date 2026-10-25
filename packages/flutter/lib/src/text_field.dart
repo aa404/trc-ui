@@ -28,6 +28,7 @@ class TrcTextField extends StatefulWidget {
     this.maxLength,
     this.onChanged,
     this.onSubmitted,
+    this.onTap,
     this.enabled = true,
     this.readOnly = false,
     this.autofocus = false,
@@ -83,6 +84,9 @@ class TrcTextField extends StatefulWidget {
 
   /// Called when the keyboard action is pressed.
   final ValueChanged<String>? onSubmitted;
+
+  /// Called on a tap in the text.
+  final VoidCallback? onTap;
 
   /// Whether the control accepts input.
   final bool enabled;
@@ -191,6 +195,7 @@ class _TrcTextFieldState extends State<TrcTextField> {
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
       onChanged: widget.onChanged,
       onSubmitted: widget.onSubmitted,
+      onTap: widget.onTap,
       enabled: widget.enabled,
       readOnly: widget.readOnly,
       autofocus: widget.autofocus,
