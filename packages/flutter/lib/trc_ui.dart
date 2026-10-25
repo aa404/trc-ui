@@ -12,3 +12,4 @@ export 'src/icons.dart';
 export 'src/theme.dart';
 export 'src/typography.dart';
 export 'src/pill.dart';
+export 'src/surfaces.dart';

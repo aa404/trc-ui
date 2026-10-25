@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
 import 'sections/pill.dart';
+import 'sections/surfaces.dart';
 import 'sections/tokens.dart';
 import 'sections/typography.dart';
 
@@ -19,6 +20,7 @@ final sections = <GallerySection>[
   GallerySection('tokens', 'Tokens', (_) => const TokensDemo()),
   GallerySection('typography', 'Typography', (_) => const TypographyDemo()),
   GallerySection('pill', 'Pill buttons', (_) => const PillDemo()),
+  GallerySection('surfaces', 'Surfaces', (_) => const SurfacesDemo()),
 ];
 
 class GalleryPage extends StatelessWidget {
