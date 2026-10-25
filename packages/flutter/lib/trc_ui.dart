@@ -35,3 +35,4 @@ export 'src/combobox.dart';
 export 'src/slider.dart';
 export 'src/date_picker.dart';
 export 'src/dates.dart';
+export 'src/files.dart';

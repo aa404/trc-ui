@@ -88,6 +88,24 @@ class _AdvancedFormsDemoState extends State<AdvancedFormsDemo> {
           onChanged: (d) => setState(() => _arrival = d),
         ),
       ),
+      TrcField(
+        label: 'Resume',
+        child: TrcFileField(
+          // A real app opens its file picker here (file_picker, image_picker…).
+          onPick: () async => const [
+            TrcFile(name: 'resume-2026.pdf', size: 184320),
+          ],
+        ),
+      ),
+      TrcDropzone(
+        accept: 'image/*,.pdf',
+        maxSize: 5 * 1024 * 1024,
+        hint: 'PNG, JPG or PDF, up to 5 MB',
+        onPick: () async => const [
+          TrcFile(name: 'cover.png', size: 812000, mimeType: 'image/png'),
+          TrcFile(name: 'archive.zip', size: 2048, mimeType: 'application/zip'),
+        ],
+      ),
     ];
     return LayoutBuilder(
       builder: (context, constraints) {
