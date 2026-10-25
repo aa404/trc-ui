@@ -12,6 +12,7 @@ class _AdvancedFormsDemoState extends State<AdvancedFormsDemo> {
   String? _plan = 'pro';
   String? _country;
   double _budget = 40;
+  DateTime? _arrival;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +77,15 @@ class _AdvancedFormsDemoState extends State<AdvancedFormsDemo> {
           showValue: true,
           formatValue: (v) => '€ ${v.round()}',
           onChanged: (v) => setState(() => _budget = v),
+        ),
+      ),
+      TrcField(
+        label: 'Arrival',
+        hint: 'Check-in from 3 pm.',
+        child: TrcDatePicker(
+          value: _arrival,
+          min: DateTime.now(),
+          onChanged: (d) => setState(() => _arrival = d),
         ),
       ),
     ];

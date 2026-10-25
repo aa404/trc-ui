@@ -33,3 +33,5 @@ export 'src/pin_input.dart';
 export 'src/radio_group.dart';
 export 'src/combobox.dart';
 export 'src/slider.dart';
+export 'src/date_picker.dart';
+export 'src/dates.dart';
