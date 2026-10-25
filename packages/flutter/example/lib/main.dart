@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
 import 'gallery.dart';
+import 'sections/bottom_nav.dart';
 
 void main() => runApp(const GalleryApp());
 
@@ -23,12 +24,15 @@ class _GalleryAppState extends State<GalleryApp> {
       debugShowCheckedModeBanner: false,
       theme: _tokens.toMaterialTheme(),
       builder: (context, child) => TrcToaster(child: child!),
-      home: GalleryPage(
-        accent: _tokens.accent,
-        onAccentChange: (color) =>
-            setState(() => _tokens = _tokens.copyWith(accent: color)),
-        only: Uri.base.queryParameters['section'],
-      ),
+      // `?screen=bottom-nav` opens the bottom navigation screen directly.
+      home: Uri.base.queryParameters['screen'] == 'bottom-nav'
+          ? const BottomNavScreen()
+          : GalleryPage(
+              accent: _tokens.accent,
+              onAccentChange: (color) =>
+                  setState(() => _tokens = _tokens.copyWith(accent: color)),
+              only: Uri.base.queryParameters['section'],
+            ),
     );
   }
 }

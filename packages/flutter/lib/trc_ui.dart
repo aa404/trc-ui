@@ -41,3 +41,4 @@ export 'src/table.dart';
 export 'src/code_block.dart';
 export 'src/loading.dart';
 export 'src/chrome.dart';
+export 'src/bottom_nav.dart';

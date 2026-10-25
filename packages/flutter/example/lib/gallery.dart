@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trc_ui/trc_ui.dart';
 
 import 'sections/advanced_forms.dart';
+import 'sections/bottom_nav.dart';
 import 'sections/data.dart';
 import 'sections/forms.dart';
 import 'sections/navigation.dart';
@@ -39,6 +40,11 @@ final sections = <GallerySection>[
   ),
   GallerySection('navigation', 'Navigation', (_) => const NavigationDemo()),
   GallerySection('data', 'Data display', (_) => const DataDemo()),
+  GallerySection(
+    'bottom-nav',
+    'Bottom navigation',
+    (_) => const BottomNavDemo(),
+  ),
 ];
 
 const _accents = {
