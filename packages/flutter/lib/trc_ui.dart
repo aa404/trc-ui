@@ -36,3 +36,5 @@ export 'src/slider.dart';
 export 'src/date_picker.dart';
 export 'src/dates.dart';
 export 'src/files.dart';
+export 'src/avatar.dart';
+export 'src/table.dart';
