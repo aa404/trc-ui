@@ -1,0 +1,43 @@
+name: trc_ui
+description: >-
+  Flutter widgets with a deep black design: near-black backgrounds, graphite
+  cards, thin Montserrat headings, one accent color and pill buttons whose dot
+  stretches on hover.
+version: 0.1.0
+homepage: https://ui.theringconcept.com
+repository: https://github.com/aa404/trc-ui/tree/main/packages/flutter
+issue_tracker: https://github.com/aa404/trc-ui/issues
+topics:
+  - ui
+  - widgets
+  - design-system
+  - dark-theme
+  - components
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  # Montserrat ships with the package (SIL Open Font License, see fonts/OFL.txt).
+  # Widgets reference it with `package: 'trc_ui'`, so apps need no font setup.
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Light.ttf
+          weight: 300
+        - asset: fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: fonts/Montserrat-SemiBold.ttf
+          weight: 600

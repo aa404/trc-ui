@@ -36,6 +36,7 @@ This repository is a monorepo with npm workspaces:
 | Folder | Contents |
 | --- | --- |
 | [`packages/trc-ui`](packages/trc-ui) | The library published on npm. |
+| [`packages/flutter`](packages/flutter) | The Flutter port, `trc_ui` (a Dart package, outside the npm workspaces). |
 | [`apps/docs`](apps/docs) | The documentation site (Next.js, static export), in English and French, with live demos and a colors generator. |
 | [`apps/playground`](apps/playground) | A Vite playground to try components quickly. |
 | [`assets/brand`](assets/brand) | The trc ui mark. |
